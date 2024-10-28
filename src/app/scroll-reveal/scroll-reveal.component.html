@@ -1,8 +1,8 @@
 <div class="scroll-container" (window:scroll)="onScroll()">
     <!-- Sección de la imagen -->
-    <div class="image-section" [ngClass]="{'hidden': isScrolled}">
-      <img src="/assets/BwimVFondoB.png" draggable="false" alt="Image"/>
-    </div>
+    <div class="image-section" [ngClass]="{'hidden': isScrolled}"  (window:scroll)="onScroll()">
+      <!--<img src="/assets/BwimVFondoB.png" draggable="false" alt="Image" fluid/>-->
+    </div> 
   
     <!-- Segunda vista (pantalla negra con texto) -->
     <div class="text-section" [ngClass]="{'visible': isScrolled}">
