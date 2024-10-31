@@ -39,4 +39,27 @@ export class CharactersService {
     return this.http.get<Character[]>(`${this.urlBase}?projectId=${id}`)
   }
 
+  updateCharacter_Name(n:string,id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{name:n})
+  }
+
+  updateCharacter_Age(n:number,id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{age:n})
+  }
+
+  updateCharacter_Description(n:string,id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{description:n})
+  }
+
+  updateCharacter_Birthdate(n:string,id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{birthdate:n})
+  }
+
+  updateCharacter_ProjectId(n:string,id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{projectId:n})
+  }
+
+  updateCharacter_Images(n:string[],id:string):Observable<Character>{
+    return this.http.patch<Character>(`${this.urlBase}/${id}`,{images:n})
+  }
 }

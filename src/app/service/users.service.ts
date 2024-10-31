@@ -48,4 +48,34 @@ export class UsersService {
   getUser_BySurname(surname:string):Observable<User>{
     return this.http.get<User>(`${this.urlBase}?surname=${surname}`)
   }
+
+  getAdmin(){
+    return this.http.get<User>(`${this.urlBase}?admin=true`)
+  }
+
+  update_UserToAdmin(id:string){
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{admin:true})
+  }
+
+  update_UserName(n:string,id:string){
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{name:n})
+  }
+
+  update_UserSurname(n:string,id:string){
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{surname:n})
+  }
+
+  update_UserNickname(n:string,id:string){
+    /*CREAR FUNCION PARA 'VERIFICAR EXISTENCIA', PARA QUE NO SE REPITA EL NICKNAME CON OTRO EXISTENTE */
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{nickname:n})
+  }
+
+  udpate_UserEmail(n:string,id:string){
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{email:n})
+  }
+
+  update_UserPassword(n:string,id:string){
+    /*CREAR CONFIRMACION DE LA CONTRASEÑA */
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{password:n})
+  }
 }
