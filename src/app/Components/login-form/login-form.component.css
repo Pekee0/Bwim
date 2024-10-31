@@ -5,3 +5,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+#form
+{
+    background-color: white;
+}
+#background
+{
+    background-color:rgb(18, 12, 39);
+}
