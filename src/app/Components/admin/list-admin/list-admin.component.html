@@ -1,0 +1,15 @@
+
+<h2>Admin list</h2>
+<app-add-admin (emitirAdmin)="addAdmin($event)"></app-add-admin>
+
+<section>
+  <ul>
+    @for (item of adminList; track $index) {
+      <li>Name: {{item.name}} | Surname: {{item.surname}}| Email: {{item.email}}</li>
+    }
+  </ul>
+</section>
+
+
+
+

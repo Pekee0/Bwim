@@ -1,0 +1,91 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "nickname": "Nicolas912",
+      "name": "Nicolas",
+      "surname": "Alvarez",
+      "email": "nico@gmail.com"
+    },
+    {
+      "id": "2",
+      "nickname": "MarcosUwU",
+      "name": "Marcos",
+      "surname": "Gallardo",
+      "email": "marcos@gmail.com"
+    },
+    {
+      "id": "3",
+      "nickname": "Peke777",
+      "name": "Gonzalo",
+      "surname": "Vegetta",
+      "email": "peke@gmail.com"
+    },
+    {
+      "id": "401d",
+      "name": "Nicolas",
+      "nickname": "NiccoRz",
+      "surname": "Ruiz",
+      "email": "nico.ruiz.mdp@gmail.com",
+      "password": "nico123"
+    },
+    {
+      "id": "ba4c",
+      "name": "Idolo",
+      "nickname": "Falopa",
+      "surname": "Crack",
+      "email": "dd@ff",
+      "password": "ff22"
+    },
+    {
+      "id": "7507",
+      "name": "Idolo",
+      "nickname": "Falopa",
+      "surname": "Crack",
+      "email": "dd@ff",
+      "password": "ff22"
+    },
+    {
+      "id": "3835",
+      "name": "222",
+      "nickname": "554",
+      "surname": "333",
+      "email": "2222",
+      "password": "sssss"
+    },
+    {
+      "id": "216c",
+      "name": "a",
+      "nickname": "c",
+      "surname": "b",
+      "email": "3",
+      "password": "qq"
+    },
+    {
+      "id": "b9f3",
+      "name": "adadasda",
+      "nickname": "434344",
+      "surname": "22313132",
+      "email": "55555",
+      "password": "wwwww"
+    }
+  ],
+  "admin": [
+    {
+      "id": "1",
+      "nickname": "GOD",
+      "name": "Iker",
+      "surname": "Muniain",
+      "email": "aldofito@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "e1a4",
+      "name": "1",
+      "nickname": "3",
+      "surname": "2",
+      "email": "45",
+      "password": "5"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<section>
+  <h2>Create User Account</h2>
+  <fieldset>
+    <legend>Complete</legend>
+    <form [formGroup]="formulario" (ngSubmit)="addUser()" >
+
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name" id="name">
+
+      <label for="surname">Surname:</label>
+      <input type="text" formControlName="surname" id="surname">
+
+      <label for="nickname">Nickname:</label>
+      <input type="text" formControlName="nickname" id="nickname">
+
+      <label for="email">Email:</label>
+      <input type="text" formControlName="email" id="email">
+
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" id="password">
+
+      <button>Create Account</button>
+
+    </form>
+  </fieldset>
+</section>

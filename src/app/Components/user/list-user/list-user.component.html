@@ -1,0 +1,10 @@
+<h2>User list</h2>
+<app-add-user (emitirUser)="addUser($event)"></app-add-user>
+
+<section>
+  <ul>
+    @for (item of usersList; track $index) {
+      <li>Name: {{item.name}} | Surname: {{item.surname}}| Nickname:{{item.nickname}} | Email: {{item.email}}</li>
+    }
+  </ul>
+</section>
