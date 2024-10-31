@@ -18,7 +18,6 @@
   width: 100%;
   height: 100vh; 
   overflow: hidden;
-  position: relative;
   background-image: url("/assets/BwimVFondoB.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,15 +43,15 @@
   color: white;
   top: 0;
   width: 100%;
-  min-height: 90vh;
-  max-height: 100vh; /* Cambia a max-height para no exceder */
+  min-height: 75vh;
+  max-height: 75vh; /* Cambia a max-height para no exceder */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   opacity: 0;
   z-index: -1;
-  transform: translateY(500px); /* Inicialmente desplazado hacia abajo */
+  transform: translateY(600px); /* Inicialmente desplazado hacia abajo */
   transition: opacity 1s ease-in, transform 1s ease-in;
   overflow: hidden; /* Para ocultar el desbordamiento */
   bottom: 6rem;
