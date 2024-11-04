@@ -1,0 +1,6 @@
+<!-- transition.component.html -->
+<div class="transition-overlay" *ngIf="isVisible">
+    <img src="assets/portal-transition.gif" alt="Transición">
+    <audio #audioPlayer src="assets/portal-audio.wav" autoplay (ended)="onAudioEnded()"></audio>
+  </div>
+  
