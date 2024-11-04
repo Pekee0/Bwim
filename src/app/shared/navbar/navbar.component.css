@@ -4,7 +4,7 @@
   top: 0; 
   left: 0; 
   width: 100%; 
-  z-index: 1000; 
+  z-index: 1; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,32 +14,56 @@
   font-style: normal;
   padding: 10px 20px;
   font-size: 20px;
-  height: 100px;
+  height: 85px;
+  border-bottom: 2.5px solid rgba(85, 85, 88, 0.2);
+
 }
 
 .nav-elements
 {
   display: flex;
   list-style: none;
+  justify-items: center; 
   margin: 0;  
-  padding: 0;
+  padding: 0 20px;
 }
 
-.menu-container
+.nav-elements li {
+
+  display: flex;
+  justify-content: ;
+  padding: 0 20px;
+  margin: 2rem; 
+  color: burlywood;
+  list-style: none;   
+  
+}
+
+.nav-elements li a {
+  text-decoration: none;
+  color: inherit; 
+  position: relative;
+  padding: 0.2em;
+}
+
+ .menu-container
 {
+   
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
-}
+  flex: 1;
+}  
 
 
 
-.NavLogo {
-  position: relative; 
+.nav-logo {
+  width: 14%;
+  position: fixed; 
   display: flex; 
   align-items: center; 
   height: 100%; 
+  margin-right: 1rem;
 }
 
 .white-logo,
@@ -47,6 +71,7 @@
   position: absolute; 
   transform: translateY(-50%); 
   transition: opacity 0.5s ease ease-in; 
+  cursor: pointer;
 }
 
 .white-logo {
@@ -64,41 +89,13 @@ transform: scale(0.8);
 }
 
 .logo-container:hover .purple-logo {
-opacity: 1;
-transform: scale(1.5); 
-transform: translateY(-50%); 
-transition: opacity 0.3s ease, transform 0.3s ease; 
-}
-
-.logo-container:hover .white-logo {
-  opacity: 0; 
-  transform: scale(0.8);
-  }
-
-
-.nav-elements {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-elements li {
-  margin: 2rem; 
-  color: burlywood;
-  list-style: none; 
-  
-}
-
-.nav-elements li a {
-  text-decoration: none;
-  color: inherit; 
-  position: relative;
-  padding: 0.2em;
+opacity: 1; 
 }
 
 .nav-elements li a::after {
   content: "";
   position: absolute;
-  top: 2rem; 
+  top: 35px; 
   left: 0;
   bottom: 0;
   width: 0;                
@@ -118,14 +115,15 @@ transition: opacity 0.3s ease, transform 0.3s ease;
 .nav-elements li a::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 5px;
   left: 0;
   right: 0; /* Asegura que el rectángulo se extienda hasta el borde derecho */
-  bottom: 0; /* Asegura que el rectángulo se extienda hasta el borde inferior */
-  background-color: rgba(0, 0, 255, 0.2); /* Color del resaltado (ajustar según sea necesario) */
+  bottom: 3px; /* Asegura que el rectángulo se extienda hasta el borde inferior */
+  background-color: rgba(85, 85, 88, 0.2); /* Color del resaltado (ajustar según sea necesario) */
   z-index: -1; /* Coloca el rectángulo detrás del texto */
   opacity: 0; /* Inicialmente invisible */
-  transition: opacity 0.2s; /* Transición suave para la opacidad */
+  transition: none; 
+  border-radius: 5%;
 }
 
 /* Mostrar el rectángulo al hacer hover */
@@ -133,3 +131,34 @@ transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1; /* Hace que el rectángulo sea visible en hover */
 }
 
+@media (max-width: 768px) {
+
+  .nav-elements li {
+    padding: 0 10px; 
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .nav-elements li:nth-child(4){
+    display: none; 
+  }
+}
+
+@media (max-width: 850px) {
+  .nav-elements li:nth-child(3){
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-elements li:nth-child(2){
+    display: none; 
+  }
+}
+
+@media (max-width: 450px) {
+  .nav-elements li:nth-child(1){
+    display: none; 
+  }
+}
