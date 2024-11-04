@@ -25,11 +25,11 @@ export class UsersService {
     return this.http.put<User>(`${this.urlBase}/${id}`,user)
   }
 
-  deleteUser(id:string):Observable<User>{
-    return this.http.delete<User>(`${this.urlBase}/${id}`)
+  deleteUser(id:string | undefined):Observable<void>{
+    return this.http.delete<void>(`${this.urlBase}/${id}`)
   }
 
-  getUser_ById(id:string):Observable<User>{
+  getUser_ById(id:string | null):Observable<User>{
     return this.http.get<User>(`${this.urlBase}/${id}`)
   }
 
@@ -37,7 +37,7 @@ export class UsersService {
     return this.http.get<User>(`${this.urlBase}?name=${name}`)
   }
 
-  getUser_ByEmail(email:string):Observable<User>{
+  getUser_ByEmail(email:string | null):Observable<User>{
     return this.http.get<User>(`${this.urlBase}?email=${email}`)
   }
 
@@ -53,29 +53,31 @@ export class UsersService {
     return this.http.get<User>(`${this.urlBase}?admin=true`)
   }
 
-  update_UserToAdmin(id:string){
+  patch_UserToAdmin(id:string | undefined){
     return this.http.patch<User>(`${this.urlBase}/${id}`,{admin:true})
   }
 
-  update_UserName(n:string,id:string){
+  patch_UserName(n:string,id:string | null){
     return this.http.patch<User>(`${this.urlBase}/${id}`,{name:n})
   }
 
-  update_UserSurname(n:string,id:string){
+  patch_UserSurname(n:string,id:string | null){
     return this.http.patch<User>(`${this.urlBase}/${id}`,{surname:n})
   }
 
-  update_UserNickname(n:string,id:string){
+  patch_UserNickname(n:string,id:string | null){
     /*CREAR FUNCION PARA 'VERIFICAR EXISTENCIA', PARA QUE NO SE REPITA EL NICKNAME CON OTRO EXISTENTE */
     return this.http.patch<User>(`${this.urlBase}/${id}`,{nickname:n})
   }
 
-  udpate_UserEmail(n:string,id:string){
+  patch_UserEmail(n:string,id:string | null){
     return this.http.patch<User>(`${this.urlBase}/${id}`,{email:n})
   }
 
-  update_UserPassword(n:string,id:string){
+  patch_UserPassword(n:string,id:string | null){
     /*CREAR CONFIRMACION DE LA CONTRASEÑA */
     return this.http.patch<User>(`${this.urlBase}/${id}`,{password:n})
   }
+
+
 }

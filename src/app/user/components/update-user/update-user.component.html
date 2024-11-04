@@ -1,0 +1,54 @@
+<section>
+  <h2>User Profile</h2>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <form [formGroup]="formulario">
+
+      <div class="form-group">
+        <label for="id">Id:</label>
+        <p>{{ formulario.get('id')?.value }}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="nickname">Nickname:</label>
+        <p>{{ displayedNickname }}</p>
+        <input type="text" placeholder="Update nickname" id="nickname"
+        formControlName="nickname">
+        <button (click)="updateUserName()">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <p>{{ displayedName }}</p>
+        <input type="text" placeholder="Update name" id="name"
+        formControlName="name">
+        <button (click)="updateUserName()">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label for="surname">Surname:</label>
+        <p>{{ displayedSurname }}</p>
+        <input type="text" placeholder="Update surname" id="surname" formControlName = 'surname'>
+        <button (click)="updateUserSurname()">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <p>{{ displayedEmail }}</p>
+        <input type="text" placeholder="Update email" id="email" formControlName="email">
+        <button>Update</button>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Current password" id="password" formControlName="password">
+      </div>
+
+      <div class="form-group">
+        <label for="newPassword">New Password:</label>
+        <input type="password" placeholder="Update password" id="newPassword">
+        <button>Update</button>
+      </div>
+    </form>
+  </fieldset>
+</section>

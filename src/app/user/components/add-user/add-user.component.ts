@@ -23,7 +23,8 @@ export class AddUserComponent {
     nickname:['',[Validators.required]],
     surname:['',[Validators.required]],
     email:['',[Validators.required]],
-    password:['',[Validators.required]]
+    password:['',[Validators.required]],
+    admin:false
     }
   );
 
