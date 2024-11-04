@@ -1,4 +1,3 @@
-
 .pag-princip{
     display: flex;
     height: 100vh;
@@ -7,8 +6,6 @@
 }
 
 .div-button{
-
-
     position: absolute;
     height: 100%;
     top:130px;
@@ -16,7 +13,6 @@
 }
 
 .button-addP{
-
     height: 55px;
     width: 182px;
     border-radius: 8px;
@@ -30,14 +26,11 @@
 }
 
 .button-addP:hover{
-
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
-    
 }
 
 .our-p{
-
     font-family: "Teko", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
