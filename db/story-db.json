@@ -1,0 +1,26 @@
+{
+  "characters":[
+      {"id": 1, "name": "Nicolas", "age": 25, "description": "description...", "birthdate": "26-11-1998", "projectId": 2, "images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 2, "name": "Leo", "age": 37, "description": "description...", "birthdate": "26-11-1998", "projectId": 2,"images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 3, "name": "Diego", "age": 21, "description": "description...", "birthdate": "26-11-1998", "projectId": 1,"images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 4, "name": "Momo", "age": 30, "description": "description...", "birthdate": "26-11-1998", "projectId": 3,"images":["URL imagen 1", "URL imagen 2"]}
+  ],
+
+  "objects":[
+      {"id": 1, "name": "Pala", "description": "Para cavar", "projectId": 1,"images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 2, "name": "Guante", "description": "Para ponerte en las manos", "projectId": 1,"images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 3, "name": "Pico", "description": "Para picar", "projectId": 2,"images":["URL imagen 1", "URL imagen 2"]}
+  ],
+
+  "shortstories":[
+      {"id": 1,"name":"La uno","description":"Descripcion 1...","images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 2,"name":"La dos","description":"Descripcion 2......","images":["URL imagen 1", "URL imagen 2"]},
+      {"id": 3,"name":"La tres","description":"Descripcion 3...","images":["URL imagen 1", "URL imagen 2"]}
+  ],
+
+  "projects":[
+      {"id":1,"name":"Proyecto 1","urlProject":"URL proyect 1...","images":["URL imagen 1", "URL imagen 2"]},
+      {"id":2,"name":"Proyecto 1","urlProject":"URL proyect 2...","images":["URL imagen 1", "URL imagen 2"]}
+  ]
+
+}
