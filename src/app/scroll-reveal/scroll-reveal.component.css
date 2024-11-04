@@ -1,19 +1,34 @@
-.scroll-container {
+/* .scroll-container {
   width: 100%;
   height: 175vh; 
   overflow: hidden;
   position: relative;
-}
+  background-image: url("/assets/BwimVFondoB.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+} */
+
 
 .image-section {
   position: relative;
-  height: 100vh;
+  /* height: 80vh; */
   transition: opacity 0.5s ease-in-out;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+  background-image: url("/assets/BwimVFondoB.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  
 }
 
 .image-section.hidden {
-  opacity: 0; 
 
+  opacity: 0;
+ 
 }
 
 .image-section img{
@@ -26,20 +41,21 @@
 .text-section {
   background-color: rgb(18, 12, 39);
   color: white;
-  /* position: fixed; */
   top: 0;
   width: 100%;
-  max-height: 20vh; /* Cambia a max-height para no exceder */
+  min-height: 75vh;
+  max-height: 75vh; /* Cambia a max-height para no exceder */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   opacity: 0;
   z-index: -1;
-  transform: translateY(500px); /* Inicialmente desplazado hacia abajo */
+  transform: translateY(600px); /* Inicialmente desplazado hacia abajo */
   transition: opacity 1s ease-in, transform 1s ease-in;
   overflow: hidden; /* Para ocultar el desbordamiento */
   bottom: 6rem;
+  
 }
 
 
