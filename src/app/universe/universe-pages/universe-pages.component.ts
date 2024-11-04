@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../character/card/card.component';
+import { CharacterListComponent } from "../character/character-list/character-list.component";
 
 @Component({
   selector: 'app-universe-pages',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CharacterListComponent],
   templateUrl: './universe-pages.component.html',
   styleUrl: './universe-pages.component.css'
 })

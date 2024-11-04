@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UniverseCharacter } from '../interface/interface';
 
 @Component({
@@ -10,6 +10,8 @@ import { UniverseCharacter } from '../interface/interface';
 })
 export class CardComponent {
 
-  character: UniverseCharacter | null = null
+  @Input()
+  character!: UniverseCharacter
+
 
 }

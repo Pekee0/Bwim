@@ -5,5 +5,5 @@ export interface UniverseCharacter {
     description: string,
     birthdate: string,
     projectId: string,
-    images?: string[]
+    images: string[]
 }
