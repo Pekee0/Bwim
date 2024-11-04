@@ -1,8 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { User } from '../../../interfaces/user.interface';
 import { UsersService } from '../../../service/users.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, catchError, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-update-user',
@@ -37,15 +38,17 @@ export class UpdateUserComponent implements OnInit{
   fb = inject(FormBuilder);
   usersService = inject(UsersService);
   activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router) //Lo utilizo para redireccionar la pagina
+
 
   formulario = this.fb.nonNullable.group(
     {
       id:'',
-      nickname:'',
-      name:'',
-      surname:'',
-      email:'',
-      password:'',
+      nickname:['',[Validators.required]],
+      name:['',[Validators.required]],
+      surname:['',[Validators.required]],
+      email:['',[Validators.required]],
+      password:['',[Validators.required]],
       admin:[false]
     }
   )
@@ -92,34 +95,66 @@ export class UpdateUserComponent implements OnInit{
     })
   }
 
-  updateUserEmail(){
-    if(this.formulario.invalid)return;
-
+  updateUserEmail() {
     const email = this.formulario.controls['email'].value;
-
-    this.usersService.patch_UserEmail(email,this.id).subscribe({
-      next:()=>{
-        this.displayedEmail = email;
-        console.log('Updated email...');
-      },error:(e:Error)=>{
-        console.log(e.message);
+    this.checkEmailExists(email).subscribe(exists => {
+      if (exists) {
+        // El email ya existe
+        alert('Email already exists...');
+      } else {
+        this.usersService.patch_UserEmail(email,this.id).subscribe({
+          next:(user:User)=>{
+            this.displayedEmail=user.email;
+            console.log(user);
+            console.log('Updated email!');
+          },error:(e:Error)=>{
+            console.log(e.message);
+          }
+        })
       }
-    })
+    });
   }
 
- emailValidator:string = '';
-
- email_validator(email:string | null){
-  (!this.emailValidator)?false : true;
-}
-
-  getUserByEmail(email:string | null){
-    this.usersService.getUser_ByEmail(email).subscribe({
-      next:(user:User)=>{
-        this.emailValidator = user.email;
-      },error:(e:Error)=>{
-        console.log(e.message);
-      }
-    })
+  checkEmailExists(email: string): Observable<boolean> {
+    return this.usersService.getUser_ByEmail(email).pipe(
+      map(users => users.length > 0) // Devuelve true si hay usuarios con ese email
+    );
   }
+
+  updateUserNickname()
+  {
+    const nickname = this.formulario.controls['nickname'].value;
+    this.checkNicknameExists(nickname).subscribe(exists => {
+      if (exists) {
+        // El nickname ya existe
+        alert('Nickname already exists...');
+      } else {
+        this.usersService.patch_UserNickname(nickname,this.id).subscribe({
+          next:(user:User)=>{
+            this.displayedNickname=user.nickname;
+            console.log(user);
+            console.log('Updated nickname!');
+          },error:(e:Error)=>{
+            console.log(e.message);
+          }
+        })
+      }
+    });
+  };
+
+  checkNicknameExists(nickname: string): Observable<boolean> {
+    return this.usersService.getUser_ByNickname(nickname).pipe(
+      map(users => users.length > 0) // Devuelve true si hay usuarios con ese nickname
+    );
+  }
+
+  updateUserPassword(){
+    const password = this.formulario.controls['password'];
+
+  }
+
+  goBack(){
+    this.router.navigate(['/allUsers'])
+  }
+
 }

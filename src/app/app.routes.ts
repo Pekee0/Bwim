@@ -4,6 +4,7 @@ import { UpdateUserPageComponent } from './user/pages/update-user-page/update-us
 import { AddUserComponent } from './user/components/add-user/add-user.component';
 import { ScrollRevealComponent } from './scroll-reveal/scroll-reveal.component';
 import { ListUserComponent } from './user/components/list-user/list-user.component';
+import { LogInPageComponent } from './user/pages/log-in-page/log-in-page.component';
 
 export const routes: Routes = [
   {
@@ -23,15 +24,15 @@ export const routes: Routes = [
     component:UpdateUserPageComponent
   },
   {
+    path:'logIn',
+    component:LogInPageComponent
+  },
+  {
     path:'allUsers/update/:id',
     redirectTo:'update/:id'
   },
   {
-    path:'log-in',
-    component:AddUserComponent
-  },
-  {
     path:'**',
     redirectTo:''
-  }
+  },
 ];

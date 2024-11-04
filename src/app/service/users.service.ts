@@ -33,20 +33,21 @@ export class UsersService {
     return this.http.get<User>(`${this.urlBase}/${id}`)
   }
 
-  getUser_ByName(name:string):Observable<User>{
-    return this.http.get<User>(`${this.urlBase}?name=${name}`)
+  getUser_ByName(name:string):Observable<User[]>{
+    return this.http.get<User[]>(`${this.urlBase}?name=${name}`)
   }
 
-  getUser_ByEmail(email:string | null):Observable<User>{
-    return this.http.get<User>(`${this.urlBase}?email=${email}`)
+  getUser_ByEmail(email: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.urlBase}?email=${email}`);
   }
 
-  getUser_ByNickname(nickname:string):Observable<User>{
-    return this.http.get<User>(`${this.urlBase}?nickname=${nickname}`)
+
+  getUser_ByNickname(nickname:string):Observable<User[]>{
+    return this.http.get<User[]>(`${this.urlBase}?nickname=${nickname}`)
   }
 
-  getUser_BySurname(surname:string):Observable<User>{
-    return this.http.get<User>(`${this.urlBase}?surname=${surname}`)
+  getUser_BySurname(surname:string):Observable<User[]>{
+    return this.http.get<User[]>(`${this.urlBase}?surname=${surname}`)
   }
 
   getAdmin(){
