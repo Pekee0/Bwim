@@ -2,7 +2,7 @@ section {
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  background-color: rgb(18, 12, 39); /* Fondo oscuro */
+  background-color: rgb(28, 16, 68); /* Fondo oscuro */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   font-family: 'Arial', sans-serif;
@@ -12,12 +12,8 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 20px; /* Espacio entre el título y el contenido */
-  color: #FFD700; /* Título en dorado */
-}
-
-.fieldset {
-  border: none; /* Sin borde */
-  padding: 0; /* Sin padding para un diseño limpio */
+  color: burlywood; /* Título en dorado */
+  font-size: 35px;
 }
 
 .form-group {
@@ -34,7 +30,7 @@ h2 {
 label {
   flex-basis: 30%; /* Ancho fijo para el label */
   font-weight: bold;
-  color: #FFD700; /* Dorado para los labels */
+  color: burlywood; /* Dorado para los labels */
 }
 
 p {
@@ -60,7 +56,7 @@ input {
 }
 
 input:focus {
-  border-color: #FFD700; /* Borde dorado al enfocar */
+  border-color: burlywood; /* Borde dorado al enfocar */
   outline: none; /* Quita el contorno */
 }
 
@@ -68,7 +64,7 @@ button {
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #FFD700; /* Dorado para los botones */
+  background-color: burlywood; /* Dorado para los botones */
   color: rgb(18, 12, 39); /* Texto en color de fondo */
   cursor: pointer;
   font-size: 16px; /* Tamaño de fuente más grande */
@@ -108,4 +104,8 @@ button:active {
   button {
     width: 100%; /* Botón ocupa todo el ancho */
   }
+}
+
+.validator{
+  color:rgb(253, 101, 101); ;
 }

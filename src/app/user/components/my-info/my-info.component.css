@@ -1,0 +1,149 @@
+/* Estilo general para la sección */
+.user-profile {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Estilo para cada grupo de formulario */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para el botón de "Actualizar" */
+.update-btn {
+  background-color: #007BFF;
+  margin-top: 5px;
+}
+
+.update-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para el botón "Back" */
+.back-btn {
+  background-color: #f44336;
+}
+
+.back-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Estilo para el contenedor del botón de "Back" */
+.back-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* Estilos para el modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content input {
+  width: 80%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+.modal-content button:last-child {
+  background-color: #f44336;
+}
+
+.modal-content button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+.validator{
+  color: rgb(232, 75, 75);
+}

@@ -1,160 +1,157 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { User } from '../../../interfaces/user.interface';
-import { UsersService } from '../../../service/users.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from '../../../service/user.service';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
+import { EmailValidatorService } from '../../directives/check-email-exists.directive';
+import { NicknameValidatorService } from '../../directives/check-nickname-exists.directive';
 
 @Component({
   selector: 'app-update-user',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.css'
+  styleUrl: './update-user.component.css',
 })
-export class UpdateUserComponent implements OnInit{
+export class UpdateUserComponent implements OnInit {
   /* Variables para que se muestren en el html :) */
-  displayedName: string = '';
-  displayedSurname: string = '';
-  displayedEmail: string = '';
-  displayedNickname:string = '';
-
+  pName: string = '';
+  pSurname: string = '';
+  pEmail: string = '';
+  pNickname: string = '';
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(
-      {
-        next:(param)=>{
-          this.id = param.get('id');
-          this.getUserByID(this.id);
-        },error:(e:Error)=>{
-          console.log(e.message);
+    this.activatedRoute.paramMap.subscribe({
+      next: (param) => {
+        this.id = param.get('id');
+        if (this.id) {
+          this.loadInformation();
+        } else {
+          console.error("ID not found");
         }
-      }
-      )
+      },
+      error: (e: Error) => {
+        console.log(e.message);
+      },
+    });
   }
 
-  id:string | null = null;
+
+  id: string | null = null;
 
   fb = inject(FormBuilder);
-  usersService = inject(UsersService);
+  userService = inject(UserService);
   activatedRoute = inject(ActivatedRoute);
-  private router = inject(Router) //Lo utilizo para redireccionar la pagina
+  private router = inject(Router); //Lo utilizo para redireccionar la pagina
 
+  emailValidatorService = inject(EmailValidatorService);
+  nicknameValidatorService = inject(NicknameValidatorService);
 
-  formulario = this.fb.nonNullable.group(
-    {
-      id:'',
-      nickname:['',[Validators.required]],
-      name:['',[Validators.required]],
-      surname:['',[Validators.required]],
-      email:['',[Validators.required]],
-      password:['',[Validators.required]],
-      admin:[false]
-    }
-  )
+  formulario = this.fb.nonNullable.group({
+    id: '',
+    nickname: [
+      '',
+      [Validators.required,Validators.minLength(3)],
+      [this.nicknameValidatorService.checkNicknameExists()]
+    ],
+    name: ['', [Validators.required]],
+    surname: ['', [Validators.required]],
+    email: [
+      '',
+      [Validators.required,Validators.email,Validators.minLength(3)],
+      [this.emailValidatorService.checkEmailExists()]
+    ],
+    password: ['', [Validators.required]],
+    admin: [false],
+    newPassword: '',
+  });
 
-  getUserByID(id:string | null){
-    this.usersService.getUser_ById(id).subscribe({
-      next:(user:User)=>{
-        this.formulario.patchValue(user);
-
-        this.displayedName = user.name;
-        this.displayedSurname = user.surname;
-        this.displayedEmail = user.email;
-        this.displayedNickname = user.nickname;
-      }
-    })
+  loadInformation() {
+    this.userService.getUser_ById(this.id).subscribe({
+      next: (user: User) => {
+        this.pName = user.name;
+        this.pSurname = user.surname;
+        this.pEmail = user.email;
+        this.pNickname = user.nickname;
+      },
+    });
   }
 
-  updateUserName(){
-    if(this.formulario.invalid) return;
+  updateUserName() {
+    if (this.formulario.invalid) return;
 
     const name = this.formulario.controls['name'].value;
-    this.usersService.patch_UserName(name,this.id).subscribe({
-      next:()=>{
-          this.displayedName = name;
-          console.log('Updated name...');
-      },error:(e:Error)=>{
+    this.userService.patch_UserName(name, this.id).subscribe({
+      next: () => {
+        this.pName = name;
+        console.log('Updated name...');
+      },
+      error: (e: Error) => {
         console.log(e.message);
-      }
-    })
+      },
+    });
   }
 
-  updateUserSurname(){
-    if(this.formulario.invalid)return;
+  updateUserSurname() {
+    if (this.formulario.invalid) return;
 
     const surname = this.formulario.controls['surname'].value;
 
-    this.usersService.patch_UserSurname(surname,this.id).subscribe({
-      next:()=>{
-        this.displayedSurname = surname;
+    this.userService.patch_UserSurname(surname, this.id).subscribe({
+      next: () => {
+        this.pSurname = surname;
+        console.log(this.pSurname);
+        console.log('Llego?');
         console.log('Updated surname...');
-      },error:(e:Error)=>{
+      },
+      error: (e: Error) => {
         console.log(e.message);
-      }
-    })
+      },
+    });
   }
 
   updateUserEmail() {
+    if(this.formulario.invalid)return;
     const email = this.formulario.controls['email'].value;
-    this.checkEmailExists(email).subscribe(exists => {
-      if (exists) {
-        // El email ya existe
-        alert('Email already exists...');
-      } else {
-        this.usersService.patch_UserEmail(email,this.id).subscribe({
+    this.userService.patch_UserEmail(email,this.id).subscribe({
           next:(user:User)=>{
-            this.displayedEmail=user.email;
+            this.pEmail=user.email;
             console.log(user);
             console.log('Updated email!');
           },error:(e:Error)=>{
             console.log(e.message);
           }
-        })
-      }
     });
-  }
-
-  checkEmailExists(email: string): Observable<boolean> {
-    return this.usersService.getUser_ByEmail(email).pipe(
-      map(users => users.length > 0) // Devuelve true si hay usuarios con ese email
-    );
   }
 
   updateUserNickname()
   {
+    if(this.formulario.invalid)return;
+
     const nickname = this.formulario.controls['nickname'].value;
-    this.checkNicknameExists(nickname).subscribe(exists => {
-      if (exists) {
-        // El nickname ya existe
-        alert('Nickname already exists...');
-      } else {
-        this.usersService.patch_UserNickname(nickname,this.id).subscribe({
-          next:(user:User)=>{
-            this.displayedNickname=user.nickname;
-            console.log(user);
-            console.log('Updated nickname!');
-          },error:(e:Error)=>{
-            console.log(e.message);
-          }
-        })
+    this.userService.patch_UserNickname(nickname,this.id).subscribe({
+    next:(user:User)=>{
+      this.pNickname=user.nickname;
+      console.log(user);
+      console.log('Updated nickname!');
+    },error:(e:Error)=>{
+        console.log(e.message);
       }
-    });
+    })
   };
 
-  checkNicknameExists(nickname: string): Observable<boolean> {
-    return this.usersService.getUser_ByNickname(nickname).pipe(
-      map(users => users.length > 0) // Devuelve true si hay usuarios con ese nickname
-    );
+  updateUserPassword() {
+    if(this.formulario.invalid)return;
+    const password = this.formulario.controls['newPassword'];
   }
 
-  updateUserPassword(){
-    const password = this.formulario.controls['password'];
-
+  goBack() {
+    this.router.navigate(['/allUsers']);
   }
-
-  goBack(){
-    this.router.navigate(['/allUsers'])
-  }
-
 }

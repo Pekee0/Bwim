@@ -1,35 +1,48 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UsersService } from '../../../service/users.service';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { EmailValidator, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../../service/user.service';
+import { Router, RouterModule } from '@angular/router';
+import { Observable,map } from 'rxjs';
+import { User } from '../../../interfaces/user.interface';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
-export class LogInComponent {
+export class LogInComponent implements OnInit{
 
-  fb = inject(FormBuilder);
-  userService = inject(UsersService);
-  private router = inject(Router) //Lo utilizo para redireccionar la pagina
-
-  formulario = this.fb.nonNullable.group({
-    email:'',
-    password:''
-  });
-
-  logIn(){
+  ngOnInit(): void {
 
   }
 
-  // checkEmailExists(email: string): Observable<boolean> {
-  //   return this.usersService.getUser_ByEmail(email).pipe(
-  //     map(users => users.length > 0) // Devuelve true si hay usuarios con ese email
-  //   );
-  // }
+  fb = inject(FormBuilder);
+  userService = inject(UserService);
+  private router = inject(Router) //Lo utilizo para redireccionar la pagina
 
+  formulario = this.fb.nonNullable.group({
+    email:[''],
+    password:['']
+  });
+
+  logIn(){
+    this.userService.getUsers().subscribe({
+      next:(user:User[])=>{
+         const res = user.find((a:User)=>{
+          return a.email === this.formulario.value.email && a.password === this.formulario.value.password;
+         });
+         if(res){
+          console.log('Login Success');
+          this.formulario.reset();
+          this.router.navigate([''])
+         }else{
+            console.log('Wrong mail or password...')
+         }
+      },error:(e:Error)=>{
+        alert('Something went wrong...');
+      }
+    })
+  }
 }

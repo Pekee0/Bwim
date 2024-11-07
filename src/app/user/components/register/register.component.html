@@ -1,0 +1,97 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap');
+  </style>
+
+<div class ="flex min-h-[90vh] justify-center items-center flex-col">
+  <form [formGroup]="formulario" (ngSubmit)="addUser()"class = "shadow-md  border-gray-300 p-14 mb-3 border-2">
+      <div class ="flex justify-center grow ">
+          <h2 class ="font-Orbi font-medium">Register</h2>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
+              <input type="text" formControlName="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter name" required />
+
+              @if (formulario.controls['name'].getError('required') && formulario.controls['name'].touched) {
+                <div class="validator">Name required!</div>
+              }
+
+
+          </div>
+          <div>
+              <label for="surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name:</label>
+              <input type="text" formControlName="surname" id="surname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter last name" required />
+
+              @if (formulario.controls['surname'].getError('required') && formulario.controls['surname'].touched) {
+                <div class="validator">Surname required!</div>
+              }
+          </div>
+      </div>
+      <div class="mb-6">
+          <label for="nickname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nickname:</label>
+          <input type="text" formControlName="nickname" id="nickname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter nickname" required />
+
+          @if (formulario.controls['nickname'].getError('required') && formulario.controls['nickname'].touched) {
+            <div class="validator">Nickname required!</div>
+          }
+          @if (formulario.controls['nickname'].getError('nicknameTaken') && formulario.controls['nickname'].touched) {
+            <div class="validator">The nickname already exists!</div>
+          }
+          @if(formulario.controls['nickname'].getError('minlength') && formulario.controls['nickname'].touched){
+            <div class="validator">Min 3 characters</div>
+          }
+
+      </div>
+      <div class="mb-6">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address:</label>
+          <input type="email" formControlName="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter email address" required />
+
+          @if (formulario.controls['email'].getError('required') && formulario.controls['email'].touched) {
+            <div class="validator">Email required!</div>
+          }
+          @if(formulario.controls['email'].getError('minlength') && formulario.controls['email'].touched){
+            <div class="validator">Min 3 characters</div>
+          }
+
+          @if (formulario.controls['email'].getError('emailTaken') && formulario.controls['email'].touched) {
+            <div class="validator">The email already exists!</div>
+          }
+          @if(formulario.controls['email'].getError('email')&& formulario.controls['email'].touched){
+            <div class="validator">Email must be valid!</div>
+          }
+
+      </div>
+      <div class="mb-6">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+          <input type="password" formControlName="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter password" required />
+
+          @if (formulario.controls['password'].getError('required') && formulario.controls['password'].touched) {
+            <div class="validator">Password required!</div>
+          }
+          @if(formulario.controls['password'].getError('minlength') && formulario.controls['password'].touched){
+            <div class="validator">Min 8 characters</div>
+          }
+      </div>
+      <div class="mb-6">
+          <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password:</label>
+          <input type="password" formControlName="confirmPassword" id="confirmPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm password" required />
+
+           @if (formulario.controls['confirmPassword'].getError('required') && formulario.controls['confirmPassword'].touched) {
+            <div class="validator">Required to complete!</div>
+          }@else if(formulario.getError('passWordMatchValidator')) {
+            <div class="validator">Password should match!</div>
+          }
+        </div>
+
+
+
+
+      <div class="flex items-start mb-6 pt-7">
+          <div class="flex items-center h-5">
+          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
+          </div>
+      </div>
+  </form>
+
+
+</div>

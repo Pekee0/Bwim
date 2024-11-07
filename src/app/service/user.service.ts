@@ -1,23 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, delay, map, of } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UserService {
 
   urlBase:string = 'http://localhost:3001/users'
 
-  //http = inject(HttpClient) -- Solo se renderiza cuando lo seleccionan
-  constructor(private http:HttpClient) { } //Todo lo que esta inyectado en el constructor se va a renderizar
+  constructor(private http:HttpClient) { }
 
   getUsers():Observable<User[]>{
     return this.http.get<User[]>(this.urlBase);
   }
 
-  postUser(user:User):Observable<User>{
+  postUser(user:User | undefined):Observable<User>{
     return this.http.post<User>(this.urlBase,user)
     }
 
@@ -50,35 +49,39 @@ export class UsersService {
     return this.http.get<User[]>(`${this.urlBase}?surname=${surname}`)
   }
 
-  getAdmin(){
+  getAdmin():Observable<User>{
     return this.http.get<User>(`${this.urlBase}?admin=true`)
   }
 
-  patch_UserToAdmin(id:string | undefined){
+  patch_UserToAdmin(id:string | undefined):Observable<User>{
     return this.http.patch<User>(`${this.urlBase}/${id}`,{admin:true})
   }
 
-  patch_UserName(n:string,id:string | null){
+  patch_UserName(n:string,id:string | null):Observable<User>{
     return this.http.patch<User>(`${this.urlBase}/${id}`,{name:n})
   }
 
-  patch_UserSurname(n:string,id:string | null){
+  patch_UserSurname(n:string,id:string | null):Observable<User>{
     return this.http.patch<User>(`${this.urlBase}/${id}`,{surname:n})
   }
 
-  patch_UserNickname(n:string,id:string | null){
+  patch_UserNickname(n:string,id:string | null):Observable<User>{
     /*CREAR FUNCION PARA 'VERIFICAR EXISTENCIA', PARA QUE NO SE REPITA EL NICKNAME CON OTRO EXISTENTE */
     return this.http.patch<User>(`${this.urlBase}/${id}`,{nickname:n})
   }
 
-  patch_UserEmail(n:string,id:string | null){
+  patch_UserEmail(n:string,id:string | null):Observable<User>{
     return this.http.patch<User>(`${this.urlBase}/${id}`,{email:n})
   }
 
-  patch_UserPassword(n:string,id:string | null){
+  patch_UserPassword(n:string,id:string | null):Observable<User>{
     /*CREAR CONFIRMACION DE LA CONTRASEÑA */
     return this.http.patch<User>(`${this.urlBase}/${id}`,{password:n})
   }
 
+   // Método para verificar el login
+   login(email: string, password: string): Observable<User[]>{
+    return this.http.get<User[]>(`${this.urlBase}?email=${email}?password=${password}`)
+  }
 
 }

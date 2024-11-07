@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AddUserComponent } from "../add-user/add-user.component";
-import { UsersService } from '../../../service/users.service';
+import { UserService } from '../../../service/user.service';
 import { User } from '../../../interfaces/user.interface';
-import {RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-list-user',
   standalone: true,
-  imports: [AddUserComponent,RouterModule],
+  imports: [RegisterComponent,RouterModule],
   templateUrl: './list-user.component.html',
   styleUrl: './list-user.component.css'
 })
@@ -19,14 +19,14 @@ export class ListUserComponent implements OnInit{
   usersList: User[] = [];
 
 
-  usersService = inject(UsersService)
+  userService = inject(UserService)
 
   addUser(user:User){
     this.usersList.push({...user})
   }
 
   listUsers(){
-    this.usersService.getUsers().subscribe(
+    this.userService.getUsers().subscribe(
       {
         next:(users:User[])=>{
           this.usersList = users
@@ -39,7 +39,7 @@ export class ListUserComponent implements OnInit{
   }
 
   delete(id:string | undefined){
-    this.usersService.deleteUser(id).subscribe(
+    this.userService.deleteUser(id).subscribe(
       {
         next:()=>{
 
