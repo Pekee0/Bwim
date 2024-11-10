@@ -6,9 +6,14 @@
     margin: 0;
 }
 body{
-
     
-     background-color: rgb(18, 12, 39); /*rgb(25, 18, 51); */
-    }   
+    height: auto;
+    background-color: rgb(18, 12, 39);    /*rgb(25, 18, 51);  */
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}   
+
 
 

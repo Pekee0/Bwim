@@ -1,14 +1,41 @@
-
 .pag-princip{
     display: flex;
-    height: 100vh;
-    justify-content: flex-end;
-    align-items: flex-start;
+    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 95px;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.our-p{
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: regular;
+    font-size: 70px;
+    color: white;
+    letter-spacing: 2px;
+    /* height: 2rem; */
+    margin-top: 5%;
+}
+
+.detail-p{
+
+    font-family: inherit;
+    color: whitesmoke;
+    letter-spacing: 2px;
+    font-size: 22px;
+}
+
+.details{
+
+    display: flex;
+    justify-content: center;
+    
 }
 
 .div-button{
-
-
     position: absolute;
     height: 100%;
     top:130px;
@@ -16,7 +43,6 @@
 }
 
 .button-addP{
-
     height: 55px;
     width: 182px;
     border-radius: 8px;
@@ -30,19 +56,21 @@
 }
 
 .button-addP:hover{
-
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
-    
+    color: blueviolet;
 }
 
-.our-p{
+.button-addP:hover #lapiz{
 
-    font-family: "Teko", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: regular;
-    font-size: 70px;
-    color: white;
-    letter-spacing: 2px;
+    animation: shake 0.5s ease-in-out;
+    animation-iteration-count: 1.5;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
 }

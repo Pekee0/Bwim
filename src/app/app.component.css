@@ -1,6 +1,11 @@
-body{
+/* body{
 
 margin-top: 100px;
 height: 100vh;
 
+} */
+
+#nav{
+
+    max-height: 95px;
 }

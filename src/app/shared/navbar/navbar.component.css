@@ -14,7 +14,7 @@
   font-style: normal;
   padding: 10px 20px;
   font-size: 20px;
-  height: 85px;
+  height: 95px;
   border-bottom: 2.5px solid rgba(85, 85, 88, 0.2);
 
 }
@@ -31,7 +31,7 @@
 .nav-elements li {
 
   display: flex;
-  justify-content: ;
+  /* justify-content: ; */
   padding: 0 20px;
   margin: 2rem; 
   color: burlywood;

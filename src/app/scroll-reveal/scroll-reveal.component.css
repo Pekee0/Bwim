@@ -11,9 +11,8 @@
 } */
 
 
-.image-section {
+ .image-section {
   position: relative;
-  /* height: 80vh; */
   transition: opacity 0.5s ease-in-out;
   width: 100%;
   height: 100vh; 
@@ -44,16 +43,16 @@
   top: 0;
   width: 100%;
   min-height: 75vh;
-  max-height: 75vh; /* Cambia a max-height para no exceder */
+  max-height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   opacity: 0;
-  z-index: -1;
-  transform: translateY(600px); /* Inicialmente desplazado hacia abajo */
+  z-index: 0;
+  transform: translateY(500px); 
   transition: opacity 1s ease-in, transform 1s ease-in;
-  overflow: hidden; /* Para ocultar el desbordamiento */
+  overflow: hidden; 
   bottom: 6rem;
   
 }
@@ -61,10 +60,11 @@
 
 .text-section.visible {
   opacity: 1;
-  transform: translateY(0); /* Aparece desde abajo */
+  transform: translateY(0); 
   z-index: -1;
   overflow: visible;
-}
+  
+} 
 
 .haches{
 
@@ -72,11 +72,11 @@
 
 }
 
-h1 {
+/* h1 {
   font-family: "Chakra Petch", serif;
   font-weight: 600;
   font-style: italic;
-  margin-bottom: 2rem; /* Ajusta el valor según el espacio que quieras */
+  margin-bottom: 2rem;
   
 }
 
@@ -88,9 +88,12 @@ h2 {
   align-items: center;
   letter-spacing: 0.7px;
 
-}
+} */
 
-.h2Inicial{
+#h2Inicial{
 
-  margin: 2rem auto 0; /* Este margen superior crea espacio con el h1 */
-}
+  margin: 2rem auto 0; /* Este margen superior crea espacio con el h1  */
+} 
+
+
+
