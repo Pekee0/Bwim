@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "2",
+      "nickname": "MarcosUwU",
+      "name": "Marcos",
+      "surname": "Gallardo",
+      "email": "marcos@gmail.com",
+      "password": "soyUser",
+      "admin": false
+    },
+    {
+      "id": "3",
+      "nickname": "Peke777",
+      "name": "Gonzalo",
+      "surname": "Vegetta",
+      "email": "peke777@gmail.com",
+      "password": "soyUser",
+      "admin": false
+    },
+    {
+      "id": "401d",
+      "name": "Julián",
+      "nickname": "NiccoRz",
+      "surname": "Alvarez",
+      "email": "nico.ruiz.mdp@gmail.com",
+      "password": "nico123",
+      "admin": true
+    }
+  ]
+}

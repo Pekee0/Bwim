@@ -1,0 +1,93 @@
+<section>
+  <h2>User Profile</h2>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <form [formGroup]="formulario">
+
+      <div class="form-group">
+        <div class="label-value">
+          <label for="id">Id:</label>
+          <p>{{ formulario.get('id')?.value }}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label-value">
+          <label for="nickname">Nickname:</label>
+          <p>{{ displayedNickname }}</p>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Update nickname" id="nickname" formControlName="nickname">
+          <button (click)="updateUserNickname()">Update</button>
+        </div>
+        @if (formulario.controls['nickname'].getError('required') && formulario.controls['nickname'].touched) {
+          <div><p>Campo requerido...</p></div>
+           }
+      </div>
+
+      <div class="form-group">
+        <div class="label-value">
+          <label for="name">Name:</label>
+          <p>{{ displayedName }}</p>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Update name" id="name" formControlName="name">
+          <button (click)="updateUserName()">Update</button>
+        </div>
+        @if (formulario.controls['name'].getError('required') && formulario.controls['name'].touched) {
+          <div><p>Campo requerido...</p></div>
+           }
+      </div>
+
+      <div class="form-group">
+        <div class="label-value">
+          <label for="surname">Surname:</label>
+          <p>{{ displayedSurname }}</p>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Update surname" id="surname" formControlName="surname">
+          <button (click)="updateUserSurname()">Update</button>
+        </div>
+        @if (formulario.controls['surname'].getError('required') && formulario.controls['surname'].touched) {
+          <div><p>Campo requerido...</p></div>
+           }
+      </div>
+
+      <div class="form-group">
+        <div class="label-value">
+          <label for="email">Email:</label>
+          <p>{{ displayedEmail }}</p>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Update email" id="email" formControlName="email">
+          <button (click)="updateUserEmail()">Update</button>
+        </div>
+        @if (formulario.controls['email'].getError('required') && formulario.controls['email'].touched) {
+          <div><p>Campo requerido...</p></div>
+           }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Current password" id="password" formControlName="password">
+        <div>@if (formulario.controls['password'].getError('required') && formulario.controls['password'].touched) {
+          <div><p>Campo requerido...</p></div>
+           }</div>
+      </div>
+
+      <div class="form-group">
+        <label for="newPassword">New Password:</label>
+        <div class="input-group">
+          <input type="password" placeholder="Update password" id="newPassword">
+          <button>Update</button>
+        </div>
+        <div><p>Campo requerido...</p></div>
+      </div>
+
+      <div class="form-group back-button">
+        <button (click)="goBack()">Back</button>
+      </div>
+
+    </form>
+  </fieldset>
+</section>

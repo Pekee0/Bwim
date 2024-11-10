@@ -1,0 +1,21 @@
+<section>
+  <h2>Log In</h2>
+  <fieldset>
+    <legend>Log-In</legend>
+    <form [formGroup]="formulario" (ngSubmit)="logIn()">
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" placeholder="Enter email" name="email" formControlName="email">
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" placeholder="Enter password" name="password" formControlName="password">
+    </div>
+
+    <div>
+      <button type="submit">Continue</button>
+    </div>
+  </form>
+  </fieldset>
+</section>
