@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CharacterListComponent } from "../character/character-list/character-list.component";
+import { CharacterListComponent } from "../character/character-components/character-list/character-list.component";
 
 @Component({
   selector: 'app-universe-pages',

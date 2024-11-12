@@ -1,5 +1,5 @@
-export interface UniverseCharacter {
-    id: string,
+export interface Character {
+    id?: string,
     name: string,
     age: string,
     description: string,
