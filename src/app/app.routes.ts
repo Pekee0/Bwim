@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { UpdateUserPageComponent } from './user/pages/update-user-page/update-user-page.component';
 import { ListUserComponent } from './user/components/list-user/list-user.component';
 import { LogInPageComponent } from './user/pages/log-in-page/log-in-page.component';
 import { ScrollRevealComponent } from './scroll-reveal/scroll-reveal.component';
@@ -9,6 +8,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { UniversePagesComponent } from './universe/universe-pages/universe-pages.component';
 import { RegisterPageComponent } from './user/pages/register-page/register-page.component';
 import { MyInfoPageComponent } from './user/pages/my-info-page/my-info-page.component';
+import { AddCharacterPageComponent } from './character/pages/add-character-page/add-character-page.component';
+import { ListCharacterPageComponent } from './character/pages/list-character-page/list-character-page.component';
 
 export const routes: Routes = [
     {
@@ -43,10 +44,7 @@ export const routes: Routes = [
       path:'perfil/:id',
       component:MyInfoPageComponent
     },
-    {
-      path:'update/:id',
-      component:UpdateUserPageComponent
-    },
+
     {
       path:'login',
       component:LogInPageComponent
@@ -55,6 +53,14 @@ export const routes: Routes = [
       path:'allUsers/update/:id',
       redirectTo:'update/:id',
       pathMatch:'full'
+    },
+    {
+      path:'addCharacter',
+      component:AddCharacterPageComponent
+    },
+    {
+      path:'listCharacter',
+      component:ListCharacterPageComponent
     },
     {
       path: '**',

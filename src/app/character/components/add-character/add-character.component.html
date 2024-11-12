@@ -1,1 +1,71 @@
-<p>add-character works!</p>
+<section>
+  <div class="container">
+    <h2>Add Character</h2>
+  </div>
+
+  <div class="form-container">
+    <fieldset>
+      <legend>Character Information</legend>
+      <form [formGroup]="formulario" (ngSubmit)="addCharacter()">
+
+        <div class="input-group">
+          <label for="name">Name:</label>
+          <input type="text" name="name" placeholder="Enter a name" formControlName="name">
+          @if (formulario.controls['name'].getError('required') && formulario.controls['name'].touched) {
+            <div class="validator">Complete the field...</div>
+          }
+        </div>
+
+        <div class="input-group">
+          <label for="age">Age:</label>
+          <input type="number" name="age" placeholder="Enter an age" formControlName="age">
+          @if (formulario.controls['age'].getError('required') && formulario.controls['age'].touched) {
+            <div class="validator">Complete the field...</div>
+          }
+        </div>
+
+        <div class="input-group">
+          <label for="birthdate">Birthdate:</label>
+          <input type="date" name="birthdate" formControlName="birthdate">
+          @if (formulario.controls['birthdate'].getError('required') && formulario.controls['birthdate'].touched) {
+            <div class="validator">Complete the field...</div>
+          }
+        </div>
+
+        <div class="input-group">
+          <label for="projectId">Project Id:</label>
+          <input type="text" name="projectId" placeholder="Enter a project id" formControlName="projectId">
+          @if (formulario.controls['projectId'].getError('required') && formulario.controls['projectId'].touched) {
+            <div class="validator">Complete the field...</div>
+          }
+        </div>
+
+        <div class="input-group">
+          <label for="description">Description:</label>
+          <textarea type="text" name="description" placeholder="Enter a description" rows="5" formControlName="description"
+          class="description-input">
+          </textarea>
+
+          @if (formulario.controls['description'].getError('required') && formulario.controls['description'].touched) {
+            <div class="validator">Complete the field...</div>
+          }
+        </div>
+
+        <div class="input-group">
+          <label for="imgCharacter">Upload Image:</label>
+          <input type="file" id="imageInput" name="imgCharacter" accept="image/*" (change)="onImageChange($event)">
+        </div>
+
+        @if (imgUrl) {
+          <div>
+            <img [src]="imgUrl" alt="Image preview" style="max-width: 100%; margin-top: 10px; border-radius: 4px;">
+          </div>
+        }
+
+        <div class="submit-btn">
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</section>

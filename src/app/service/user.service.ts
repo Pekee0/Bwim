@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
@@ -36,7 +36,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.urlBase}?name=${name}`)
   }
 
-  getUser_ByEmail(email: string): Observable<User[]> {
+  getUser_ByEmail(email: string | undefined | null): Observable<User[]> {
     return this.http.get<User[]>(`${this.urlBase}?email=${email}`);
   }
 
@@ -80,8 +80,9 @@ export class UserService {
   }
 
    // Método para verificar el login
-   login(email: string, password: string): Observable<User[]>{
-    return this.http.get<User[]>(`${this.urlBase}?email=${email}?password=${password}`)
+   login(email: string | null, password: string | null): Observable<boolean>{
+    return this.http.get<boolean>(`${this.urlBase}?email=${email}?password=${password}`)
   }
+
 
 }

@@ -4,11 +4,10 @@ import { UserService } from '../../../service/user.service';
 import { User } from '../../../interfaces/user.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { map } from 'rxjs';
 import { NicknameValidatorService } from '../../directives/check-nickname-exists.directive';
 import { EmailValidatorService } from '../../directives/check-email-exists.directive';
 import { passWordMatchValidator } from '../../directives/password-match-validator.directive';
-import { passwordValidator } from '../../directives/password.validator';
+
 
 @Component({
   selector: 'app-my-info',
@@ -74,6 +73,7 @@ export class MyInfoComponent implements OnInit {
 
   closeModalNickname() {
     this.isModalOpenNickname = false;
+    this.formNickname.reset();
   }
 
   updateNickname(){
@@ -104,6 +104,7 @@ export class MyInfoComponent implements OnInit {
   }
   closeModalName(){
     this.isModalOpenName = false;
+    this.formName.reset();
   }
 
   updateName(){
@@ -135,6 +136,7 @@ openModalEmail(){
 }
 closeModalEmail(){
   this.isModalOpenEmail = false;
+  this.formEmail.reset();
 }
 
 updateEmail(){
@@ -166,6 +168,7 @@ openModalSurname(){
 }
 closeModalSurname(){
   this.isModalOpenSurname = false;
+  this.formSurname.reset();
 }
 
 updateSurname(){
@@ -192,7 +195,7 @@ updateSurname(){
 isModalOpenPassword = false;
 
 formPassword = this.fb.nonNullable.group({
-  currentPassword:['',[Validators.required],[passwordValidator(this.userService,this.id)]],
+  currentPassword:['',[Validators.required]],
   password:['',[Validators.required]],
   confirmPassword:['',[Validators.required]],
 },{
@@ -205,12 +208,20 @@ openModalPassword(){
 
 closeModalPassword(){
   this.isModalOpenPassword = false;
+  this.formPassword.reset();
 }
 
 updatePassword(){
+
   if(this.formPassword.invalid)return;
 
   const password =  this.formPassword.controls['password'].value;
+
+  if(!this.passwordCorrect(password)){
+    alert('Wrong Password');
+    this.formPassword.reset();
+    return
+  }
   this.userService.patch_UserPassword(password,this.id).subscribe({
     next:(user:User)=>{
       this.pPassword = user.password;
@@ -222,6 +233,15 @@ updatePassword(){
   this.formPassword.reset();
   this.closeModalPassword();
 }
+
+passwordCorrect(p:string):boolean{
+  return this.pPassword === p;
+}
+
+/************************************************Modal Imagen************************************************/
+
+
+
 }
 
 

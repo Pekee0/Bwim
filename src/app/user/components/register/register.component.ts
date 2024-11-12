@@ -15,8 +15,6 @@ import { NicknameValidatorService } from '../../directives/check-nickname-exists
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  @Output()
-  emitirUser:EventEmitter<User> = new EventEmitter();
 
   fb = inject(FormBuilder);
   userService= inject(UserService);
@@ -30,8 +28,8 @@ export class RegisterComponent {
     nickname:['',[Validators.required,Validators.minLength(3)],[this.nicknameValidatorService.checkNicknameExists()]],
     surname:['',[Validators.required]],
     email:['',[Validators.required,Validators.email,Validators.minLength(3)],[this.emailValidatorService.checkEmailExists()]],
-    password:['',[Validators.required,Validators.minLength(5)]],
-    confirmPassword:['',Validators.required]
+    password:['',[Validators.required,Validators.minLength(8)]],
+    confirmPassword:['',Validators.required],
     },{
       validators:passWordMatchValidator
     }
@@ -40,12 +38,6 @@ export class RegisterComponent {
   addUser(){
     if(this.formulario.invalid)return;
     const user = this.cargarUsuario();
-    console.log(user)
-    this.addUserDB(user);
-    this.emitirUser.emit(user);
-  };
-
-  addUserDB(user:User | undefined){
     this.userService.postUser(user).subscribe({
       next:(user:User)=>{
         console.log(user);
@@ -56,8 +48,9 @@ export class RegisterComponent {
         console.log(e.message);
       }
     });
-  }
+  };
 
+  //Esto se hace para evitar que se cree el atributo 'confirmPassword' en el objeto User
   cargarUsuario():User{
     const user:User = {
     "name" : this.formulario.controls['name'].value,
@@ -65,7 +58,8 @@ export class RegisterComponent {
     "password" : this.formulario.controls['password'].value,
     "surname" : this.formulario.controls['surname'].value,
     "nickname" : this.formulario.controls['nickname'].value,
-    "admin" : false
+    "admin" : false,
+    "imgPerfil":'src/assets/logo-perfil/pngwing.com.png'
     }
     return user;
   }

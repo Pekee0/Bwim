@@ -21,15 +21,11 @@ export class ListUserComponent implements OnInit{
 
   userService = inject(UserService)
 
-  addUser(user:User){
-    this.usersList.push({...user})
-  }
-
-  listUsers(){
+ listUsers(){
     this.userService.getUsers().subscribe(
       {
         next:(users:User[])=>{
-          this.usersList = users
+          this.usersList = users;
         },
         error:(e:Error)=>{
           console.log(e.message);
