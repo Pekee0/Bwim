@@ -1,1 +1,36 @@
-<p>add-project works!</p>
+<section class="add-envolture-section">
+    <form [formGroup]="formulario" class="add-project-form">
+
+        <label for="name-project" class="mt-6 block mb-4 text-sm font-medium text-gray-900 dark:text-white ">Nombre
+            Proyecto</label>
+        <input type="text" id="name-project"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+
+        <label for="description"
+            class="mt-4 block mb-4 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+        <textarea id="description" rows="4"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Ingrese Descripcion"></textarea>
+
+        <label for="widget" class="mt-4 block mb-4 text-sm font-medium text-gray-900 dark:text-white">Widget (pegar el
+            proporcionado por itch.io, recuerde puede configurarse a gusto desde la página)</label>
+        <textarea id="widget" rows="4"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Ingrese HTML"></textarea>
+
+        <label class="mt-4 block mb-4 text-sm font-medium text-gray-900 dark:text-white" for="file_input" id="aa">Imagen
+            de
+            fondo</label>
+        <div class="w-full flex justify-center">
+            <input
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 text-black font-medium focus:outline-none dark:bg-blue-500 dark:border-gray-600 dark:placeholder-gray-400 p-2"
+                aria-describedby="file_input_help" id="file_input" type="file">
+        </div>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (IDEAL:
+            2200x825px).
+        </p>
+
+    </form>
+
+</section>

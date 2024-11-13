@@ -9,50 +9,55 @@ import { ProjectPageComponent } from './project-page/project-page.component';
 import { AboutComponent } from './pages/about/about.component';
 import { UniversePagesComponent } from './universe/universe-pages/universe-pages.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
+import { AddProjectPageComponent } from './pages/add-project-page/add-project-page/add-project-page.component';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: HomePageComponent
-    },
-    {
-        path: 'projects',
-        component: ProjectPageComponent
-    },
-    {
-        path: 'about',
-        component: AboutComponent
-    },
-    {
-        path: 'universe',
-        component: UniversePagesComponent
-    },
-    {
-      path:'allUsers',
-      component:ListUserComponent
-    },
-    {
-      path:'signIn',
-      component:AddUserComponent
-    },
-    {
-      path:'',
-      component:ScrollRevealComponent
-    },
-    {
-      path:'update/:id',
-      component:UpdateUserPageComponent
-    },
-    {
-      path:'logIn',
-      component:LogInPageComponent
-    },
-    {
-      path:'allUsers/update/:id',
-      redirectTo:'update/:id'
-    },
-    {
-        path: '**',
-        component: HomePageComponent
-    }
+  {
+    path: '',
+    component: HomePageComponent
+  },
+  {
+    path: 'projects',
+    component: ProjectPageComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
+    path: 'universe',
+    component: UniversePagesComponent
+  },
+  {
+    path: 'allUsers',
+    component: ListUserComponent
+  },
+  {
+    path: 'signIn',
+    component: AddUserComponent
+  },
+  {
+    path: '',
+    component: ScrollRevealComponent
+  },
+  {
+    path: 'update/:id',
+    component: UpdateUserPageComponent
+  },
+  {
+    path: 'logIn',
+    component: LogInPageComponent
+  },
+  {
+    path: 'allUsers/update/:id',
+    redirectTo: 'update/:id'
+  },
+  {
+    path: 'projects/addProject',
+    component: AddProjectPageComponent
+  },
+  {
+    path: '**',
+    component: HomePageComponent
+  }
 ];

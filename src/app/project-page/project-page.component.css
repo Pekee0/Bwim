@@ -1,48 +1,90 @@
-.pag-princip{
-    display: flex;
-    height: auto;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 95px;
-    flex-direction: column;
-    gap: 50px;
+.title-section {
+    text-align: center;
+    padding-bottom: 7rem;
+    padding-top: 6rem;
+    background-image: url("/assets/BWIMA.png");
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: center center;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
 }
 
-.our-p{
+.our-p {
     font-family: "Teko", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: regular;
     font-size: 70px;
     color: white;
     letter-spacing: 2px;
-    /* height: 2rem; */
-    margin-top: 5%;
+    margin-bottom: 3rem;
 }
 
-.detail-p{
+.detail-p {
 
-    font-family: inherit;
     color: whitesmoke;
     letter-spacing: 2px;
     font-size: 22px;
 }
 
-.details{
+.game-list {
 
     display: flex;
     justify-content: center;
-    
+    flex-direction: column;
 }
 
-.div-button{
+.project-name {
+
+    color: white;
+    font-size: 35px;
+}
+
+.project-description {
+
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.game-list li {
+    border-top: solid 4px;
+    border-color: rgb(36, 36, 36);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 433.5px;
+}
+
+.game-list li h2 {
+
+    text-align: center;
+    margin-top: 1rem;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
+    /* Sombra suave */
+    margin-bottom: 3rem;
+}
+
+.project-content {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.project-content p {
+
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
+    width: 550px;
+}
+
+.div-button {
     position: absolute;
     height: 100%;
-    top:130px;
+    top: 130px;
     right: 75px;
 }
 
-.button-addP{
+.button-addP {
     height: 55px;
     width: 182px;
     border-radius: 8px;
@@ -55,22 +97,57 @@
     cursor: pointer;
 }
 
-.button-addP:hover{
+.button-addP:hover {
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
     color: blueviolet;
 }
 
-.button-addP:hover #lapiz{
+.button-addP:hover #lapiz {
 
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: 1.5;
 }
 
 @keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
-    75% { transform: rotate(-10deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media(max-width: 1200px) {
+
+    .project-content {
+
+
+        flex-direction: column;
+    }
+
+    .project-content p {
+
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+}
+
+body {
+
+    background-image: none;
 }

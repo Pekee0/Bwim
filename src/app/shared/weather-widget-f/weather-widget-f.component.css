@@ -1,11 +1,12 @@
 
-.ww {
+.ww{
+
     display: flex;
     justify-content: center;
     align-items: flex-end;
     position: fixed;
-    bottom: 1vh; /* Ajusta este valor para la distancia desde la parte inferior */
-    left: 1vh;  /* Ajusta este valor para la distancia desde el borde derecho */
+    bottom: 1vh; 
+    left: 1vh;  
     flex-direction: column-reverse;
     z-index: 4;
 }
@@ -13,7 +14,5 @@
 .weatherwidget-io{
 
     width: 318px;
-
-    border-radius: 5px;
-    
+    border-radius: 5px;   
 }

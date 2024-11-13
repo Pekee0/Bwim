@@ -1,17 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+
+* {
 
     margin: 0;
 }
-body{
-    
-    height: auto;
-    background-color: rgb(18, 12, 39);    /*rgb(25, 18, 51);  */
+
+/* body {
+
+
+    background-color: rgb(25, 18, 51);
+    rgb(25, 18, 51); 
     font-family: "Chakra Petch", serif;
     font-weight: 400;
     font-style: normal;
-    
-}   
+    color: rgb(18, 12, 39);
+    background-image: url("/assets/BWIMBodyLogo.png");
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center center;
 
+
+} */
+
+body {
+    background-color: rgb(25, 18, 51);
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+    /* color: rgb(18, 12, 39); */
+    background-image: url("/assets/BWIMBody.png");
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center center;
+    min-height: 100vh;
+
+
+}
+
+.body-blur {
+    backdrop-filter: blur(9px);
+}
