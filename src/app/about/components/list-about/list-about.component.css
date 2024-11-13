@@ -1,0 +1,23 @@
+.dev-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 100px;
+    padding-left: 17%;
+    padding-right: 17%;
+}
+
+.dev-card{
+    flex: 1;
+    transition: 0.3s;
+    background-color: gray;
+}
+
+.dev-card:hover{
+    flex: 3;
+}
+
+.dev-card:hover .description{
+    display: block;
+    background-color: gray;
+}

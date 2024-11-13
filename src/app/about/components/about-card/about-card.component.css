@@ -1,0 +1,21 @@
+.all-card{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.tarjeta{
+    width: 180px;
+    height: 300px;
+}
+
+.all-card:hover .description{
+    display: block;
+}
+
+.description{
+    display: none;
+    text-align: left;
+    color: whitesmoke;
+    font-weight: 200;
+}

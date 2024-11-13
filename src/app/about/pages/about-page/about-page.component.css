@@ -1,0 +1,25 @@
+all-about{
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.h1-about{
+    margin-top: 7rem;
+    text-align: center;
+    font-size: 3rem;
+    color: whitesmoke;
+}   
+
+.p-about{
+    margin-top: 2rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    text-align: center;
+    font-size: 17px;
+    color: whitesmoke;
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+}

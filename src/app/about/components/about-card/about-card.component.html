@@ -1,0 +1,14 @@
+<div class="all-card">
+    <img [src]="dev.img" alt="tarjeta" class="tarjeta">
+    <div class="description">
+        <p>Nombre: {{dev.nombre}}</p>
+        <p>Apodo: {{dev.apodo}}</p>
+        <p>Participaciones:</p>
+        <ul>
+            <li *ngFor="let item of dev.trabajos_participados">
+                <p>{{item}}</p>
+            </li>
+        </ul>
+        <p>Descripción: {{dev.descripcion}}</p>
+    </div>
+</div>
