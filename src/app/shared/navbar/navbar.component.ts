@@ -46,4 +46,12 @@ export class NavbarComponent implements OnInit{
     localStorage.clear();
     window.location.reload();
   }
+
+  isActive = false
+
+  toggleMenu()
+  {
+    this.isActive = !this.isActive   
+    
+  }
 }
