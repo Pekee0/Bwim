@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
+import { AuthService } from '../../auth/service/auth.service';
 import { User } from '../../interfaces/user.interface';
-import { UsersService } from '../../service/users.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,39 +13,37 @@ import { UsersService } from '../../service/users.service';
 })
 export class NavbarComponent implements OnInit{
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(
-      {
-        next:(param) =>
-          {
-            this.id = param.get('id')
-            this.loadUser(this.id)
-          }
-      }
-    )
+    if(localStorage.getItem('token')){
+      this.authService.isLogin =true;
+    }
+    this.id = localStorage.getItem('UsuarioActivo');
+    this.getUser();
   }
 
   
-  userService = inject(UsersService)
-  activatedRoute = inject(ActivatedRoute)
-  id: string|null = null
-  user: User|null = null
+  id:string | null = null;
+  authService = inject(AuthService);
+  router = inject(Router)
+  activatedRoute = inject(ActivatedRoute);
+  userService = inject(UserService);
+  usuarioActivo?:User;
 
-
-  loadUser(id: string | null)
-  {
-    this.userService.getUser_ById(id).subscribe({
-
-        next:(usuario:User) =>{
-            this.user = usuario 
-        },
-        error: (e:Error) =>
-        {
-          console.log(e.message);
-          
-        }     
+ 
+  getUser(){
+    this.userService.getUser_ById(this.id).subscribe({
+      next:(user:User)=>{
+        this.usuarioActivo = user;
+        console.log(user)
+      },error:(e:Error)=>{
+        console.log(e.message);
       }
-    )
+    })
   }
-  
 
+  logOut(){
+    this.authService.logOut();
+    this.router.navigateByUrl('/home');
+    localStorage.clear();
+    window.location.reload();
+  }
 }

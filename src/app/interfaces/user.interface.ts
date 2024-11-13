@@ -6,6 +6,6 @@ export interface User{
   surname:string,
   email:string,
   password:string,
-  admin:boolean
-  imgPerfil?:string, 
+  admin:boolean,
+  imgPerfil?:string
 }

@@ -1,68 +1,63 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { UpdateUserPageComponent } from './user/pages/update-user-page/update-user-page.component';
-import { AddUserComponent } from './user/components/add-user/add-user.component';
-import { ListUserComponent } from './user/components/list-user/list-user.component';
-import { LogInPageComponent } from './user/pages/log-in-page/log-in-page.component';
-import { ScrollRevealComponent } from './scroll-reveal/scroll-reveal.component';
-import { ProjectPageComponent } from './project-page/project-page.component';
+import { LogInPageComponent } from './pages/user-pages/log-in-page/log-in-page.component';
+import { ScrollRevealComponent } from './Components/scroll-reveal/scroll-reveal.component';
+import { ProjectPageComponent } from './Components/project-components/project-page/project-page.component';
 import { AboutComponent } from './pages/about/about.component';
-import { UniversePagesComponent } from './universe/universe-pages/universe-pages.component';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { UniversePagesComponent } from './pages/universe-pages/universe-pages.component';
+import { authGuardFn } from './auth/service/guard/auth.guard-fn';
+import { authGuardFnLogout } from './auth/service/guard/auth.guard-fn-logout';
+import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
+import { MyInfoPageComponent } from './pages/user-pages/my-info-page/my-info-page.component';
 import { MinigamesPageComponent } from './pages/minigames-page/minigames-page.component';
+
+
 
 export const routes: Routes = [
     {
-        path: '',
-        component: ScrollRevealComponent
+      path: 'home',
+      component: ScrollRevealComponent,
+      canActivate:[authGuardFnLogout]
     },
     {
-        path: 'projects',
-        component: ProjectPageComponent
+      path:'user/:id',
+      component: ScrollRevealComponent,
+      canActivate:[authGuardFn],
     },
     {
-        path: 'about',
-        component: AboutComponent
+      path:'register',
+      component: RegisterPageComponent,
+      canActivate:[authGuardFnLogout]
     },
     {
-        path: 'universe',
-        component: UniversePagesComponent
+      path: 'projects',
+      component: ProjectPageComponent
     },
     {
         path: 'minigames',
         component: MinigamesPageComponent
     },
     {
-      path:'allUsers',
-      component:ListUserComponent
+      path: 'about',
+       component: AboutComponent
     },
     {
-      path:'signIn',
-      component:AddUserComponent
-    },
-    {
-      path:'',
-      component:ScrollRevealComponent
+      path: 'universe',
+      component: UniversePagesComponent,
     },
     {
       path:'update/:id',
-      component:UpdateUserPageComponent
+      component:MyInfoPageComponent,
+      canActivate:[authGuardFn]
     },
     {
       path:'login',
-      component:LoginPageComponent
+      component:LogInPageComponent,
+      canActivate:[authGuardFnLogout]
     },
     {
-        path: 'register',
-        component: RegisterPageComponent
-    },
-    {
-      path:'allUsers/update/:id',
-      redirectTo:'update/:id'
-    },
-    {
-        path: '**',
-        component: ScrollRevealComponent
+      path: '**',
+      redirectTo: 'home',
+      pathMatch:'full'
     }
 ];

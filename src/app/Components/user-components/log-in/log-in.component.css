@@ -1,0 +1,23 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+#form
+{
+    background-color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.login-envolture-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+  flex-direction: column;
+}

@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { User } from '../../interfaces/user.interface';
+import { User } from '../../../interfaces/user.interface';
 import { EmailValidatorService } from '../Validaciones/check-email-exists.directive';
 import { NicknameValidatorService } from '../Validaciones/check-nickname-exists.directive';
 import { passWordMatchValidator } from '../Validaciones/password-match-validator.directive';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -21,11 +22,12 @@ export class RegisterFormComponent {
   userService= inject(UserService);
   emailValidatorService = inject(EmailValidatorService);
   nicknameValidatorService = inject(NicknameValidatorService);
+  router=inject(Router);
 
   formulario = this.fb.nonNullable.group(
     {
     name:['',[Validators.required]],
-    nickname:['',[Validators.required,Validators.minLength(3)],[this.nicknameValidatorService.checkNicknameExists()]], /// tiene que ser unico 
+    nickname:['',[Validators.required,Validators.minLength(3)],[this.nicknameValidatorService.checkNicknameExists()]], /// tiene que ser unico
     surname:['',[Validators.required]],
     email:['',[Validators.required,Validators.minLength(3),Validators.email],[this.emailValidatorService.checkEmailExists()]],
     password:['',[Validators.required,Validators.minLength(8)]],
@@ -57,7 +59,8 @@ export class RegisterFormComponent {
     this.userService.postUser(user).subscribe({
       next:(user:User)=>{
         console.log(user);
-        alert('Usuario guardado...')
+        alert('Usuario guardado...');
+        this.router.navigateByUrl('');
       },
       error:(e:Error)=>{
         console.log(e.message);
