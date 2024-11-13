@@ -6,6 +6,7 @@
             <img src="assets/logoVioleta.png" alt="purple-logo" class="logo purple-logo" draggable="false">
         </a>
     </div>
+   
     <div class="menu-container">
         <ul class="nav-elements">
 
@@ -19,11 +20,27 @@
                 <a routerLink="/about">Acerca de</a>
             </li>
             <li>
-                <a href="#">Minijuegos</a>
+                <a routerLink="/minigames">Minijuegos</a>
+            </li>
+
+        </ul>
+        
+    </div>
+    <div class="register-loginWrapper">
+        
+        <ul class="register-loginUl">
+            <li>
+                <a routerLink="/login">Iniciar Sesion</a>
+            </li>
+            <li>
+                <a routerLink="/register">Registrarse</a>
             </li>
         </ul>
     </div>
-
+    
+    <div class="container-img">
+        <img [src]="user?.imgPerfil" alt="perfil image" class="perfil-img">
+      </div>
 </nav>
 
 <body>

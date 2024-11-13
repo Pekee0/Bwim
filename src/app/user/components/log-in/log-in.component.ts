@@ -20,10 +20,11 @@ export class LogInComponent {
   formulario = this.fb.nonNullable.group({
     email:'',
     password:''
-  });
+  }); 
 
   logIn(){
-
+      // boolean sesion inicia. cambia cuando inicias sesion. 
+      
   }
 
   // checkEmailExists(email: string): Observable<boolean> {

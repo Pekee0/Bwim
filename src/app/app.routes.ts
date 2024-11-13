@@ -8,6 +8,9 @@ import { ScrollRevealComponent } from './scroll-reveal/scroll-reveal.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
 import { AboutComponent } from './pages/about/about.component';
 import { UniversePagesComponent } from './universe/universe-pages/universe-pages.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { MinigamesPageComponent } from './pages/minigames-page/minigames-page.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +30,10 @@ export const routes: Routes = [
         component: UniversePagesComponent
     },
     {
+        path: 'minigames',
+        component: MinigamesPageComponent
+    },
+    {
       path:'allUsers',
       component:ListUserComponent
     },
@@ -43,8 +50,12 @@ export const routes: Routes = [
       component:UpdateUserPageComponent
     },
     {
-      path:'logIn',
-      component:LogInPageComponent
+      path:'login',
+      component:LoginPageComponent
+    },
+    {
+        path: 'register',
+        component: RegisterPageComponent
     },
     {
       path:'allUsers/update/:id',

@@ -26,6 +26,25 @@
       "email": "nico.ruiz.mdp@gmail.com",
       "password": "nico123",
       "admin": true
+    },
+    {
+      "id": "172c",
+      "name": "gonza",
+      "nickname": "panchito",
+      "surname": "marsala",
+      "email": "panchito@gmail.com",
+      "password": "peke123",
+      "admin": false
+    },
+    {
+      "id": "19c6",
+      "name": "nico",
+      "email": "nico@gmail.com",
+      "password": "pepe",
+      "surname": "ruiz",
+      "nickname": "nickito",
+      "admin": false,
+      "imgPerfil": "assets/logo-perfil/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector.png"
     }
   ]
 }
