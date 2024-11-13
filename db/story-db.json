@@ -4,33 +4,36 @@
             "id": 1,
             "name": "Gabi",
             "age": 25,
-            "description": "El traidor",
+            "nickname": "El traidor",
+            "description": "El muchachos de los ojos tristes",
             "birthdate": "26-11-1998",
             "projectId": 2,
             "images": [
-                "assets/imgs/gabi-va.png"
+                "assets/images/gabriel-imgs/gabi-va.png"
             ]
         },
         {
             "id": 2,
             "name": "Manuel",
             "age": 37,
-            "description": "Sherlo Holm",
+            "nickname": "Sherlo Holm",
+            "description": "El mejor detective de su epoca la movia, la pisaba y la escondia",
             "birthdate": "26-11-1998",
             "projectId": 2,
             "images": [
-                "assets/imgs/manu-va.png"
+                "assets/images/manuel-imgs/manu-va.png"
             ]
         },
         {
             "id": 3,
             "name": "Paz",
             "age": 21,
-            "description": "La tia pachi",
+            "nickname": "La tia pachi",
+            "description": "Que pete... tomaba vino blanco, hasta la ultima gota. Borracha y sucia como me gustan a mi",
             "birthdate": "26-11-1998",
             "projectId": 1,
             "images": [
-                "assets/imgs/paz-va.png"
+                "assets/images/paz-imgs/paz-va.png"
             ]
         }
     ],
