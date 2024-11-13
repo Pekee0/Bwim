@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OraculoComponent } from '../../mingames/oraculo/oraculo.component';
+import { OraculoComponent } from '../../Components/mingames-component/oraculo/oraculo.component';
 
 @Component({
   selector: 'app-minigames-page',
