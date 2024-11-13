@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import { User } from '../interfaces/user.interface';
@@ -40,7 +40,6 @@ export class UserService {
     return this.http.get<User[]>(`${this.urlBase}?email=${email}`);
   }
 
-
   getUser_ByNickname(nickname:string):Observable<User[]>{
     return this.http.get<User[]>(`${this.urlBase}?nickname=${nickname}`)
   }
@@ -66,7 +65,6 @@ export class UserService {
   }
 
   patch_UserNickname(n:string,id:string | null):Observable<User>{
-    /*CREAR FUNCION PARA 'VERIFICAR EXISTENCIA', PARA QUE NO SE REPITA EL NICKNAME CON OTRO EXISTENTE */
     return this.http.patch<User>(`${this.urlBase}/${id}`,{nickname:n})
   }
 
@@ -75,10 +73,13 @@ export class UserService {
   }
 
   patch_UserPassword(n:string,id:string | null):Observable<User>{
-    /*CREAR CONFIRMACION DE LA CONTRASEÑA */
+
     return this.http.patch<User>(`${this.urlBase}/${id}`,{password:n})
   }
 
+  patch_UserImage(n:string | null | undefined | ArrayBuffer, id:string | null):Observable<User>{
+    return this.http.patch<User>(`${this.urlBase}/${id}`,{imgPerfil:n});
+  }
    // Método para verificar el login
    login(email: string | null, password: string | null): Observable<boolean>{
     return this.http.get<boolean>(`${this.urlBase}?email=${email}?password=${password}`)

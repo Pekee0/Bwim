@@ -1,0 +1,195 @@
+<section class="user-profile">
+  <h2>Personal Information</h2>
+
+  <div class="container-img">
+    <img [src]="pUrl" alt="perfil image" class="perfil-img">
+  </div>
+  <div class="container-btn-image">
+    <button class="update-btn" (click)="openImageModal()">Change Image</button>
+  </div>
+
+
+  <div class="form-group flex-row">
+    <div class="form-item">
+      <label for="name">Name:</label>
+      <p class="info">{{ pName }}</p>
+      <button class="update-btn" (click)="openModalName()">Change Name</button>
+    </div>
+
+    <div class="form-item">
+      <label for="surname">Surname:</label>
+      <p class="info">{{ pSurname }}</p>
+      <button class="update-btn" (click)="openModalSurname()">Change Surname</button>
+    </div>
+  </div>
+
+
+  <div class="form-group flex-row">
+    <div class="form-item">
+      <label for="email">Email:</label>
+      <p class="info">{{ pEmail }}</p>
+      <button class="update-btn" (click)="openModalEmail()">Change Mail</button>
+    </div>
+
+    <div class="form-item">
+      <label for="nickname">Nickname:</label>
+      <p class="info">{{pNickname}}</p>
+      <button class="update-btn" (click)="openNicknameModal()">Change Nickname</button>
+    </div>
+  </div>
+
+  <div class="form-group back-button">
+    <button class="back-btn" (click)="goBack()">Back</button>
+  </div>
+</section>
+
+
+
+<!-- Modal para Nickname (ventanas flotantes) -->
+<div class="modal" *ngIf="isModalOpenNickname">
+    <div class="modal-content">
+      <label>Enter new Nickname</label>
+      <form [formGroup]="formNickname">
+      <input type="text" name="newNickname" placeholder="New nickname" formControlName = 'newNickname'/>
+
+      @if (formNickname.controls['newNickname'].getError('required') && formNickname.controls['newNickname'].touched) {
+        <div class="validator">Complete the field...</div>
+      }
+
+      @if (formNickname.controls['newNickname'].getError('minlength') && formNickname.controls['newNickname'].touched) {
+        <div class="validator">Minimun 3 characters</div>
+      }
+
+      @if (formNickname.controls['newNickname'].getError('nicknameTaken') && formNickname.controls['newNickname'].touched) {
+        <div class="validator">Nickname already exists...</div>
+      }
+      <button (click)="updateNickname()">Update</button>
+      <button (click)="closeModalNickname()">Cancel</button>
+    </form>
+    </div>
+  </div>
+
+<!-- Modal para Nombre -->
+
+<div class="modal" *ngIf="isModalOpenName">
+  <div class="modal-content">
+    <label>Enter New Name</label>
+    <form [formGroup]="formName">
+    <input type="text" name="newName" placeholder="New Name" formControlName = 'newName'/>
+
+    @if (formName.controls['newName'].getError('required') && formName.controls['newName'].touched) {
+      <div class="validator">Complete the field...</div>
+    }
+
+    @if (formName.controls['newName'].getError('minlength') && formName.controls['newName'].touched) {
+      <div class="validator">Minimun 3 characters</div>
+    }
+
+    <button (click)="updateName()">Update</button>
+    <button (click)="closeModalName()">Cancel</button>
+  </form>
+  </div>
+</div>
+
+<!-- Modal para Email -->
+
+<div class="modal" *ngIf="isModalOpenEmail">
+  <div class="modal-content">
+    <label>Enter New Email</label>
+    <form [formGroup]="formEmail">
+    <input type="text" name="newEmail" placeholder="New Email" formControlName = 'newEmail'/>
+
+    @if (formEmail.controls['newEmail'].getError('required') && formEmail.controls['newEmail'].touched) {
+      <div class="validator">Complete the field...</div>
+    }
+
+    @if (formEmail.controls['newEmail'].getError('minlength') && formEmail.controls['newEmail'].touched) {
+      <div class="validator">Minimun 3 characters</div>
+    }
+
+    @if (formEmail.controls['newEmail'].getError('email')&& formEmail.controls['newEmail'].touched) {
+      <div class="validator">Email must be valid</div>
+    }
+
+    @if(formEmail.controls['newEmail'].getError('emailTaken')&& formEmail.controls['newEmail'].touched){
+      <div class="validator">Email already exists...</div>
+    }
+    <button (click)="updateEmail()">Update</button>
+    <button (click)="closeModalEmail()">Cancel</button>
+  </form>
+  </div>
+</div>
+
+<!-- Modal para Surname -->
+
+<div class="modal" *ngIf="isModalOpenSurname">
+  <div class="modal-content">
+    <label>Enter New Surname</label>
+    <form [formGroup]="formSurname">
+    <input type="text" name="newSurname" placeholder="New Surname" formControlName = 'newSurname'/>
+
+    @if (formSurname.controls['newSurname'].getError('required') && formSurname.controls['newSurname'].touched) {
+      <div class="validator">Complete the field...</div>
+    }
+
+    @if (formSurname.controls['newSurname'].getError('minlength') && formSurname.controls['newSurname'].touched) {
+      <div class="validator">Minimun 3 characters</div>
+    }
+
+    <button (click)="updateSurname()">Update</button>
+    <button (click)="closeModalSurname()">Cancel</button>
+  </form>
+  </div>
+</div>
+
+<!-- Modal Password -->
+
+<div class="modal" *ngIf="isModalOpenPassword">
+  <div class="modal-content">
+    <form [formGroup]="formPassword">
+
+      <label>Enter Password</label>
+      <input type="password" name="currentPassword" placeholder="Enter Current Password" formControlName="currentPassword">
+
+      @if(formPassword.controls['currentPassword'].getError('required') && formPassword.controls['currentPassword'].touched){
+        <div class="validator">Password required!</div>
+      }
+
+      <label>Enter New Password</label>
+      <input type="password" name="password" placeholder="Enter New Password" formControlName="password">
+
+      @if(formPassword.controls['password'].getError('required') && formPassword.controls['password'].touched){
+        <div class="validator">Password required!</div>
+      }
+
+      <label>Enter </label>
+
+      <label>Confirm Password</label>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+
+      @if(formPassword.controls['confirmPassword'].getError('required') && formPassword.controls['confirmPassword'].touched){
+        <div class="validator">Password required!</div>
+      }
+      @else if (formPassword.getError('passWordMatchValidator')) {
+        <div class="validator">Password must match!</div>
+      }
+
+      <button (click)="updatePassword()">Update</button>
+      <button (click)="closeModalPassword()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Image -->
+
+<div class="modal" *ngIf="isModalOpenImage">
+  <div class="modal-content">
+    <label>Enter New Image</label>
+    <form [formGroup]="formImage">
+    <input type="file" name="imageUrl" formControlName = 'imageUrl' accept="image/*" (change)="onImageChange($event)"/>
+
+    <button (click)="updateImage()">Update</button>
+    <button (click)="closeImageModal()">Cancel</button>
+  </form>
+  </div>
+</div>
