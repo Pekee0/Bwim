@@ -1,14 +1,14 @@
 <nav class="navbar">
     <div class="nav-logo">
 
-        <a href="http://localhost:4200/" class="logo-container">
+        <a href= "http://localhost:4200/" class="logo-container">
             <img src="assets/logoBlanco.png" alt="white-logo" class="logo white-logo" draggable="false">
             <img src="assets/logoVioleta.png" alt="purple-logo" class="logo purple-logo" draggable="false">
         </a>
     </div>
+
     <div class="menu-container">
         <ul class="nav-elements">
-
             <li>
                 <a routerLink="/projects">Proyectos</a>
             </li>
@@ -19,13 +19,32 @@
                 <a routerLink="/about">Acerca de</a>
             </li>
             <li>
-                <a href="#">Minijuegos</a>
+                <a href="/minigames">Minijuegos</a>
             </li>
         </ul>
     </div>
 
+
+    @if(!authService.isLogin){
+      <div class="register-loginWrapper">
+        <ul class="register-loginUl">
+            <li>
+                <a routerLink="/login">Iniciar Sesion</a>
+            </li>
+            <li>
+                <a routerLink="/register">Registrarse</a>
+            </li>
+        </ul>
+    </div>
+  }@else {
+    <div class="container-img">
+    <img [src]="usuarioActivo?.imgPerfil" alt="User image" class="usuario-activo-img" (click)="toggleMenu()">
+    <div class="sub-menu-wrapper" [class.open-menu]="isActive" [class.close-menu] ="!isActive">
+      <div class ="sub-menu"> 
+        <a class ="sub-menu-link" [routerLink]="['update',id]"><p>Perfil</p> <span></span></a>
+        <a class ="sub-menu-link" (click)="logOut()"><p>LogOut</p> <span></span></a>
+      </div>
+    </div>
+  </div>  
+  }
 </nav>
-
-<body>
-
-</body>
