@@ -13,35 +13,35 @@ import { AboutCardComponent } from '../about-card/about-card.component';
 export class ListAboutComponent {
   devs: Developer[] = [
     {
-      img: 'assets/images/cosmar.jpg',
+      img: 'assets/images/developers-imgs/cosmar.jpg',
       nombre: 'Marcos Bianchi',
       apodo: '"The Boss"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
       descripcion: 'we were on a break'
     },
     {
-      img: 'assets/images/ivi.jpg',
+      img: 'assets/images/developers-imgs/ivi.jpg',
       nombre: 'Ivan Ialonardi',
       apodo: '"The Developer"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
       descripcion: 'light weight baby'
     },
     {
-      img: 'assets/images/grande.png',
+      img: 'assets/images/developers-imgs/grande.png',
       nombre: 'Gonzalo Marsala',
       apodo: '"The Goat"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
       descripcion: 'bee bee'
     },
     {
-      img: 'assets/images/kuka.jpg',
+      img: 'assets/images/developers-imgs/kuka.jpg',
       nombre: 'Pablo Walter',
       apodo: '"The L. Enjoyer"',
       trabajos_participados:['Realloc','BWIM'],
       descripcion: 'soy un dragoncito violeta'
     },
     {
-      img: 'assets/images/nico.jpg',
+      img: 'assets/images/developers-imgs/nico.jpg',
       nombre: 'Nicolas Ruiz',
       apodo: '"The Wizard"',
       trabajos_participados:['BWIM'],
