@@ -1,0 +1,9 @@
+.character-hover-information {
+    /* display: none; */
+    visibility: hidden;
+}
+
+::ng-deep .characterCard:hover .character-hover-information {
+    /* display: block; */
+    visibility: visible;
+}

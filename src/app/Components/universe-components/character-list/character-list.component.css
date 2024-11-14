@@ -1,16 +1,16 @@
 .characterList {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
-    margin: 30px 60px;
+    justify-content: center;
 }
 
 .characterCard {
-    flex: 1;
+    flex-basis: 500px;
     transition: 0.3s;
 
 }
 
 .characterCard:hover {
-    flex: 3;
-
+    flex-basis: 650px;
 }
