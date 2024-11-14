@@ -1,20 +1,21 @@
 .dev-list{
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin: 100px;
-    padding-left: 17%;
-    padding-right: 17%;
+    justify-content: center;
+    gap: 60px;
+    margin: 3rem;
+    padding-inline: 13%;
 }
 
 .dev-card{
-    flex: 1;
+    flex-basis: 180px;
+    height: 300px;
     transition: 0.3s;
     background-color: gray;
 }
 
 .dev-card:hover{
-    flex: 3;
+    flex-basis: 360px;
 }
 
 .dev-card:hover .description{
