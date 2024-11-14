@@ -1,11 +1,11 @@
-/* body{
+#nav {
 
-margin-top: 100px;
-height: 100vh;
+  max-height: 95px;
+}
 
-} */
+body {
 
-#nav{
+  margin-top: 100px;
+  height: 100vh;
 
-    max-height: 95px;
 }

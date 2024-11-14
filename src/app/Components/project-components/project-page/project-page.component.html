@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+
+    @if(authService.isAdmin){
+
+    <div class="div-button">
+        <button class="button-addP" id="btn1" routerLink="addProject">
+            <i class="fa-regular fa-pen-to-square fa-xl" style="color: rgb(90, 58, 233);" id="lapiz"></i>
+            Agregar Proyecto
+        </button>
+    </div>
+    }
+
+    <section class="title-section">
+
+        <h1 class="our-p">Nuestros Proyectos</h1>
+        <p class="detail-p">Pueden conocer más acerca de nuestros proyectos y los próximos por llegar</p>
+    </section>
+
+    <ul class="game-list">
+
+        @for(project of arrProject; track $index){
+
+        <li style="background-image: url({{project.images}})">
+            <h2 class="project-name">{{project.name}}</h2>
+
+            <div class="project-content">
+                <div class="link" [innerHTML]="safeURL(project.urlProject)"></div>
+                <p class="project-description">{{project.description}}</p>
+            </div>
+
+        </li>
+
+
+        }
+
+
+    </ul>
+
+
+</body>

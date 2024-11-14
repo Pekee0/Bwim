@@ -112,20 +112,11 @@
   ],
   "projects": [
     {
-      "id": "123",
+      "id": 0,
       "name": "goto( future , past ) ;",
       "description": "goto es una novela interactiva del estilo 'Elige Tu Propia Aventura' donde serás testigo de algunos de los momentos más trascendentales en la historia de Argentina y del mundo. ",
       "urlProject": "<iframe frameborder=\"0\" src=\"https://itch.io/embed/2393332?border_width=5&amp;bg_color=f1f1f1&amp;fg_color=439BDB&amp;link_color=D49319&amp;border_color=d44c16\" width=\"600\" height=\"175\"><a href=\"https://ibm-entretainmient.itch.io/gotofuturepast\">goto( future , past ) ; by IBM Entretainmient</a></iframe>",
-      "images": ["assets/FondoComicResize.png"],
-      "comment": []
-    },
-    {
-      "id": "321",
-      "name": "realloc( timeline ) ;",
-      "description": "realloc es la secuela del aclamado 'goto'. Aquí, seguimos la historia de Damián en la línea temporal principal de la saga. Acompañalo en la busqueda del asesino de Gabriel. Pero no te confíes, nada acá es lo que parece",
-      "urlProject": "<iframe frameborder=\"0\" src=\"https://itch.io/embed/2393332?border_width=5&amp;bg_color=f1f1f1&amp;fg_color=439BDB&amp;link_color=D49319&amp;border_color=d44c16\" width=\"600\" height=\"175\"><a href=\"https://ibm-entretainmient.itch.io/gotofuturepast\">goto( future , past ) ; by IBM Entretainmient</a></iframe>",
-      "images": ["assets/FondoOficinaResized.png"],
-      "comment": []
+      "images": "assets/FondoComicResize.png"
     }
   ]
 }

@@ -1,24 +1,43 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { UpdateUserPageComponent } from './user/pages/update-user-page/update-user-page.component';
-import { AddUserComponent } from './user/components/add-user/add-user.component';
-import { ListUserComponent } from './user/components/list-user/list-user.component';
-import { LogInPageComponent } from './user/pages/log-in-page/log-in-page.component';
-import { ScrollRevealComponent } from './scroll-reveal/scroll-reveal.component';
-import { ProjectPageComponent } from './project-page/project-page.component';
+import { LogInPageComponent } from './pages/user-pages/log-in-page/log-in-page.component';
+import { ScrollRevealComponent } from './Components/scroll-reveal/scroll-reveal.component';
+import { ProjectPageComponent } from './Components/project-components/project-page/project-page.component';
 import { AboutComponent } from './pages/about/about.component';
-import { UniversePagesComponent } from './universe/universe-pages/universe-pages.component';
-import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
+import { UniversePagesComponent } from './pages/universe-pages/universe-pages.component';
+import { authGuardFn } from './auth/service/guard/auth.guard-fn';
+import { authGuardFnLogout } from './auth/service/guard/auth.guard-fn-logout';
+import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
+import { MyInfoPageComponent } from './pages/user-pages/my-info-page/my-info-page.component';
+import { MinigamesPageComponent } from './pages/minigames-page/minigames-page.component';
 import { AddProjectPageComponent } from './pages/add-project-page/add-project-page/add-project-page.component';
+import { authGuardAdmin } from './auth/service/guard/auth.guard-fn-admin';
+
+
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomePageComponent
+    path: 'home',
+    component: ScrollRevealComponent,
+    canActivate: [authGuardFnLogout]
+  },
+  {
+    path: 'user/:id',
+    component: ScrollRevealComponent,
+    canActivate: [authGuardFn],
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent,
+    canActivate: [authGuardFnLogout]
   },
   {
     path: 'projects',
     component: ProjectPageComponent
+  },
+  {
+    path: 'minigames',
+    component: MinigamesPageComponent
   },
   {
     path: 'about',
@@ -26,38 +45,26 @@ export const routes: Routes = [
   },
   {
     path: 'universe',
-    component: UniversePagesComponent
-  },
-  {
-    path: 'allUsers',
-    component: ListUserComponent
-  },
-  {
-    path: 'signIn',
-    component: AddUserComponent
-  },
-  {
-    path: '',
-    component: ScrollRevealComponent
+    component: UniversePagesComponent,
   },
   {
     path: 'update/:id',
-    component: UpdateUserPageComponent
+    component: MyInfoPageComponent,
+    canActivate: [authGuardFn]
   },
   {
-    path: 'logIn',
-    component: LogInPageComponent
-  },
-  {
-    path: 'allUsers/update/:id',
-    redirectTo: 'update/:id'
+    path: 'login',
+    component: LogInPageComponent,
+    canActivate: [authGuardFnLogout]
   },
   {
     path: 'projects/addProject',
-    component: AddProjectPageComponent
+    component: AddProjectPageComponent,
+    canActivate: [authGuardAdmin]
   },
   {
     path: '**',
-    component: HomePageComponent
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
