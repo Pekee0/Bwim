@@ -36,15 +36,22 @@
     cursor: pointer;
 }
 
-.button:hover {
+/* .button:hover {
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: 1.5;
+} */
+.button i {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.button:hover i {
+    animation: shake 0.5s ease-in-out 1;
+}
 #tacho:hover {
     color: rgb(245, 21, 21);
+    
 }
 
 #agregar:hover {
