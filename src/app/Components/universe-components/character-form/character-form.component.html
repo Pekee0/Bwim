@@ -1,0 +1,69 @@
+<fieldset>
+    <legend>ALTA PERSONAJE</legend>
+    <form [formGroup]="form" (ngSubmit)="addCharacter()">
+        <label>ID:</label>
+        <input 
+            type="text"
+            formControlName="id"
+        >
+
+        <label>Nombre:</label>
+        <input 
+            type="text"
+            formControlName="nombre"
+        >
+
+        <label>Apodo:</label>
+        <input 
+            type="text"
+            formControlName="nickname"
+        >
+
+        <label>Descripción:</label>
+        <input 
+            type="text"
+            formControlName="description"
+        >
+
+        <label>Fecha de Nacimiento:</label>
+        <input 
+            type="text"
+            formControlName="birthDate"
+        >
+
+        <label>Fecha de Defunción:</label>
+        <input 
+            type="text"
+            formControlName="deathDate"
+        >
+
+        <div formArrayName="projectName">
+            <div *ngFor="let project of projectName.controls; let i = index">
+                <div [formGroupName]="i">
+                    <label for="">Nombre del Projecto:</label>
+                    <input formControlName="projectName">
+                </div>
+            </div>
+            <button (click)="addProjectName()">Agregar Projecto</button>
+        </div>
+
+        <label>Lugar de Nacimiento:</label>
+        <input 
+            type="text"
+            formControlName="birthPlace"
+        >
+
+        <div formArrayName="images">
+            <div *ngFor="let image of images.controls; let i = index">
+                <div [formGroupName]="i">
+                    <label for="">Ruta de Imagenes:</label>
+                    <input formControlName="image">
+                </div>
+            </div>
+            <button (click)="addImages()">Agregar Ruta de Imagenes:</button>
+        </div>
+
+
+        <button type="submit"></button>
+    </form>
+</fieldset>

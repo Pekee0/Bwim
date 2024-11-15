@@ -1,13 +1,28 @@
-<div class ="flex items-center flex-col">
-    <h1>Minijuegos</h1>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<section class="oraculo">
 
-<div class="flex flex-col justify-between">
-    <div class="m-8 mr-4">
-        <p>Preguntale al oraculo..  Ella tiene las respuestas a tus preguntas.. <p>
+    <div class="pregunta">
+        <label for="" style="color: black; font-size: large;">Preguntale al Oráculo: </label> <br>
+        <textarea [(ngModel)]="pregunta" class="input-pregunta"></textarea>
+        <button (click)="recibirPregunta()">
+            <i class="fa-solid fa-share fa-xl" style="color: rgb(50, 50, 50);"></i>
+        </button>
     </div>
 
-    <div class="m-8 mr-4">
-        <p>Test de personalidad  Descubri cual de los personajes del universo yapeyu te representa mejor </p>
+    <div class="preguntas-y-respuestas">
+        <div>
+
+        </div>
+        <ul class="container-lista">
+            <li *ngFor="let pYr of pYrs">
+                <p class="p-lista border-pregunta"> P: {{pYr.pregunta}}?</p>
+                <p class="p-lista border-respuesta"> R: {{pYr.respuesta}}</p>
+            </li>
+        </ul>
+        <div>
+
+        </div>
     </div>
-</div>
+</section>
