@@ -15,4 +15,14 @@ export class AuthService {
   logOut(){
     this.isLogin = false;
   }
+
+  isAdmin:boolean = false;
+
+  adminIn(){
+    this.isAdmin = true;
+  }
+
+  adminOut(){
+    this.isAdmin = false;
+  }
 }

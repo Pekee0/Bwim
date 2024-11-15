@@ -11,6 +11,8 @@ import { authGuardFn } from './auth/service/guard/auth.guard-fn';
 import { authGuardFnLogout } from './auth/service/guard/auth.guard-fn-logout';
 import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
 import { MyInfoPageComponent } from './pages/user-pages/my-info-page/my-info-page.component';
+import { ContactPageComponent } from './shared/footer/pages/contact-page/contact-page.component';
+import { PrivacyPolicyPageComponent } from './shared/footer/pages/privacy-policy-page/privacy-policy-page.component';
 
 
 
@@ -51,6 +53,14 @@ export const routes: Routes = [
       path:'login',
       component:LogInPageComponent,
       canActivate:[authGuardFnLogout]
+    },
+    {
+      path:'contact',
+      component:ContactPageComponent
+    },
+    {
+      path:'PrivacyPolicy',
+      component:PrivacyPolicyPageComponent
     },
     {
       path: '**',
