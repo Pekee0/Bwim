@@ -1,6 +1,24 @@
-<h3 class="text-white text-center mb-10 ">ELENCO</h3>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<section class="characterList">
+
+<h3 class="text-white text-center mb-10 ">ELENCO</h3>
+<div class="div-button">
+    <button class="button" routerLink="delete-character" id="tacho">
+        <i class="fa-solid fa-trash" style="color: rgb(245, 21, 21)"></i>
+        Borrar character
+    </button>
+    <button class="button" id="lapiz" routerLink="">
+        <i class="fa-regular fa-pen-to-square fa-xl" style="color: rgb(90, 58, 233)"></i>
+        Modificar character
+    </button>
+    <button routerLink="add-character" class="button" id="agregar">
+        <i class="fa-solid fa-plus" style="color: rgb(61, 167, 19)"></i>
+        Agregar character
+    </button>
+</div>
+<section class="characterList mb-20">
     <app-character-card *ngFor="let character of characterList" [character]='character'
         class="characterCard"></app-character-card>
 </section>

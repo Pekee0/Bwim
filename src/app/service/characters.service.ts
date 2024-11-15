@@ -23,16 +23,16 @@ export class CharactersService {
         return this.http.put<Character>(`${this.urlBase}/${id}`, character);
     }
 
-    deleteCharacter(id: string): Observable<Character> {
-        return this.http.delete<Character>(`${this.urlBase}/${id}`);
+    deleteCharacter(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.urlBase}/${id}`);
     }
 
     getCharacter_ById(id: string): Observable<Character> {
         return this.http.get<Character>(`${this.urlBase}/${id}`)
     }
 
-    getCharacter_ByName(name: string): Observable<Character> {
-        return this.http.get<Character>(`${this.urlBase}?name=${name}`)
+    getCharacter_ByName(name: string): Observable<Character[]> {
+        return this.http.get<Character[]>(`${this.urlBase}?name=${name}`)
     }
 
     getCharacters_ByProjectId(id: string): Observable<Character[]> {

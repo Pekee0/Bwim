@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LogInPageComponent } from './pages/user-pages/log-in-page/log-in-page.component';
 import { ScrollRevealComponent } from './Components/scroll-reveal/scroll-reveal.component';
@@ -10,54 +9,66 @@ import { authGuardFnLogout } from './auth/service/guard/auth.guard-fn-logout';
 import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
 import { MyInfoPageComponent } from './pages/user-pages/my-info-page/my-info-page.component';
 import { MinigamesPageComponent } from './pages/minigames-page/minigames-page.component';
+import { FormPageComponent } from './pages/universe-pages/form-page/form-page.component';
+import { DeletePageComponent } from './pages/universe-pages/delete-page/delete-page.component';
+
 
 
 
 export const routes: Routes = [
-    {
-      path: 'home',
-      component: ScrollRevealComponent,
-      canActivate:[authGuardFnLogout]
-    },
-    {
-      path:'user/:id',
-      component: ScrollRevealComponent,
-      canActivate:[authGuardFn],
-    },
-    {
-      path:'register',
-      component: RegisterPageComponent,
-      canActivate:[authGuardFnLogout]
-    },
-    {
-      path: 'projects',
-      component: ProjectPageComponent
-    },
-    {
-        path: 'minigames',
-        component: MinigamesPageComponent
-    },
-    {
-      path: 'about',
-       component: AboutComponent
-    },
-    {
-      path: 'universe',
-      component: UniversePagesComponent,
-    },
-    {
-      path:'update/:id',
-      component:MyInfoPageComponent,
-      canActivate:[authGuardFn]
-    },
-    {
-      path:'login',
-      component:LogInPageComponent,
-      canActivate:[authGuardFnLogout]
-    },
-    {
-      path: '**',
-      redirectTo: 'home',
-      pathMatch:'full'
-    }
+  {
+    path: 'home',
+    component: ScrollRevealComponent,
+    canActivate: [authGuardFnLogout]
+  },
+  {
+    path: 'user/:id',
+    component: ScrollRevealComponent,
+    canActivate: [authGuardFn],
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent,
+    canActivate: [authGuardFnLogout]
+  },
+  {
+    path: 'projects',
+    component: ProjectPageComponent
+  },
+  {
+    path: 'minigames',
+    component: MinigamesPageComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
+    path: 'universe',
+    component: UniversePagesComponent,
+  },
+  {
+    path: 'universe/add-character',
+    component: FormPageComponent,
+    //canActivate:[authGuardAdmin]
+  },
+  {
+    path: 'universe/delete-character',
+    component: DeletePageComponent
+  },
+  {
+    path: 'update/:id',
+    component: MyInfoPageComponent,
+    canActivate: [authGuardFn]
+  },
+  {
+    path: 'login',
+    component: LogInPageComponent,
+    canActivate: [authGuardFnLogout]
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];

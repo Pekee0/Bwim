@@ -5,14 +5,24 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  isLogin:boolean = false;
+  isLogin: boolean = false;
   constructor() { }
 
-  logIn(){
+  logIn() {
     this.isLogin = true;
   }
 
-  logOut(){
+  logOut() {
     this.isLogin = false;
   }
+  isAdmin: boolean = false;
+
+  adminIn() {
+    this.isAdmin = true;
+  }
+
+  adminOut() {
+    this.isAdmin = false;
+  }
 }
+

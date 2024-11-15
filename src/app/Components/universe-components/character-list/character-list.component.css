@@ -8,9 +8,87 @@
 .characterCard {
     flex-basis: 500px;
     transition: 0.3s;
-
 }
 
 .characterCard:hover {
     flex-basis: 650px;
+}
+
+.div-button {
+    display: flex;
+    position: absolute;
+    height: max-content;
+    top: 130px;
+    right: 75px;
+    gap: 10px;
+}
+
+.button {
+    height: 55px;
+    width: 182px;
+    border-radius: 8px;
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16.5px;
+    background-color: whitesmoke;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.5ms;
+    animation: shake 0.5s ease-in-out;
+    animation-iteration-count: 1.5;
+}
+
+#tacho:hover {
+    color: rgb(245, 21, 21);
+}
+
+#agregar:hover {
+    color: rgb(61, 167, 19);
+}
+
+#lapiz:hover {
+    color: rgb(90, 58, 233);
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media(max-width: 1200px) {
+
+    .project-content {
+
+
+        flex-direction: column;
+    }
+
+    .project-content p {
+
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
 }

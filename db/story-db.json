@@ -1,13 +1,29 @@
 {
   "characters": [
     {
-      "id": 1,
+      "id": "1",
+      "name": "Damian",
+      "nickname": "El main character",
+      "description": "La joven promesa del espacio tiempo",
+      "birthDate": "26-11-1998",
+      "deathDate": "",
+      "birthPlace": "Yapeyú, Argentina",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/damian-imgs/damian.png"
+      ]
+    },
+    {
+      "id": "2",
       "name": "Gabriel",
       "nickname": "El traidor",
       "description": "El muchachos de los ojos tristes",
       "birthDate": "26-11-1998",
       "deathDate": "",
-      "birthPlace": "Argentina",
+      "birthPlace": "Yapeyú, Argentina",
       "projectName": [
         " Goto",
         " Realloc"
@@ -17,9 +33,9 @@
       ]
     },
     {
-      "id": 2,
+      "id": "3",
       "name": "Manuel Lublo",
-      "nickname": "Sherlok Holms",
+      "nickname": "Sherlok Holmes",
       "description": "El mejor detective de su epoca la movia, la pisaba y la escondia",
       "birthDate": "26-11-1998",
       "deathDate": "",
@@ -32,10 +48,10 @@
       ]
     },
     {
-      "id": 3,
+      "id": "4",
       "name": "Paz Maliquistain",
       "nickname": "La tia pachi",
-      "description": "Que pete... tomaba vino blanco, hasta la ultima gota. Borracha y sucia como me gustan a mi",
+      "description": "Que pete... y tomaba vino blanco, hasta la ultima gota. Borracha y sucia como me gustan a mi",
       "birthDate": "26-11-1998",
       "deathDate": "",
       "birthPlace": "Argentina",
@@ -47,13 +63,13 @@
       ]
     },
     {
-      "id": 4,
+      "id": "5",
       "name": "Mirtha Legrand",
       "nickname": "La chiqui",
       "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
-      "birthDate": "26-11-1998",
+      "birthDate": "",
       "deathDate": "",
-      "birthPlace": "Argentina",
+      "birthPlace": "Villa Cañás, Argentina",
       "projectName": [
         " Goto",
         " Realloc"
@@ -63,20 +79,7 @@
       ]
     },
     {
-      "id": 5,
-      "name": "Indica Flower",
-      "nickname": "Canna indica",
-      "description": "es una planta perenne de hasta 3 m de altura perteneciente a la familia de las cannaceas",
-      "birthDate": "",
-      "deathDate": "",
-      "birthPlace": "America del sur",
-      "projectName": [],
-      "images": [
-        "assets/images/libertadores-imgs/indica-flower.png"
-      ]
-    },
-    {
-      "id": 6,
+      "id": "6",
       "name": "Simón José Antonio de la Santísima Trinidad Bolívar Ponte y Palacios Blanco",
       "nickname": "El Libertador",
       "description": "Líder fundamental de la independencia de lo que son hoy Venezuela, Colombia, Ecuador y Panamá",
@@ -91,7 +94,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Juana Uzurduy",
       "nickname": "Teniente Coronel Independentista",
       "description": "Luchó en las guerras de independencia hispanoamericanas por la emancipación del Virreinato del Río de la Plata contra la Monarquía española",
@@ -106,7 +109,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "José Francisco de San Martín y Matorras",
       "nickname": "Comandante del Regimiento de Granaderos a Caballo",
       "description": "Militar y político argentino, conocido por ser el libertador de Argentina y Chile, además haber proclamado e impulsado la independencia de Perú",
@@ -122,7 +125,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Gengis Kan",
       "nickname": "Primer Gran Kan del Imperio mongol",
       "description": "Las estimaciones del número muertes como consecuencia de sus campañas militares oscilan entre los cuatro y los sesenta millones",
@@ -137,7 +140,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Alejandro III de Macedonia",
       "nickname": "Rey de Macedonia, Hegemón de Grecia, Faraón de Egipto, Gran rey de Media y Persia",
       "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
@@ -152,25 +155,68 @@
       ]
     },
     {
-      "id": 4,
-      "name": "Mirtha",
-      "nickname": "La chiqui",
-      "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
-      "birthDate": "26-11-1998",
+      "id": "11",
+      "name": "Napoleón Bonaparte",
+      "nickname": "Emperador de los franceses, Protector de la Confederación del Rin",
+      "description": "Entre tres y seis millones de civiles y soldados murieron en lo que se conoció como las guerras napoleónicas",
+      "birthDate": "15-08-1769",
+      "deathDate": "05-05-1821",
+      "birthPlace": "Ajaccio, Francia",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/napoleon.png"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Richard Milhous Nixon",
+      "nickname": "Trigésimo séptimo presidente de los Estados Unidos",
+      "description": "Entre tres y seis millones de civiles y soldados murieron en lo que se conoció como las guerras napoleónicas",
+      "birthDate": "09-01-1913",
+      "deathDate": "22-04-1994",
+      "birthPlace": "Yorba Linda, Estados Unidos",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/nixon.png"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "<Undefined>",
+      "nickname": "La figura misteriosa",
+      "description": "El criminal más escurridizo en los 7 mares del tiempo",
+      "birthDate": "",
       "deathDate": "",
-      "birthPlace": "Argentina",
+      "birthPlace": "",
       "projectName": [
         " Goto",
         " Realloc"
       ],
       "images": [
-        "assets/images/conquistadores-imgs/mirtha.png"
+        "assets/images/figura-imgs/figura-misteriosa.png"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Indica Flower",
+      "nickname": "Canna indica",
+      "description": "es una planta perenne de hasta 3 m de altura perteneciente a la familia de las cannaceas",
+      "birthDate": "",
+      "deathDate": "",
+      "birthPlace": "America del sur",
+      "projectName": [],
+      "images": [
+        "assets/images/libertadores-imgs/indica-flower.png"
       ]
     }
   ],
   "objects": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Pala",
       "description": "Para cavar",
       "projectId": 1,
@@ -180,7 +226,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Guante",
       "description": "Para ponerte en las manos",
       "projectId": 1,
@@ -190,7 +236,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Pico",
       "description": "Para picar",
       "projectId": 2,
@@ -202,7 +248,7 @@
   ],
   "shortstories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "La uno",
       "description": "Descripcion 1...",
       "images": [
@@ -211,7 +257,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "La dos",
       "description": "Descripcion 2......",
       "images": [
@@ -220,7 +266,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "La tres",
       "description": "Descripcion 3...",
       "images": [
@@ -231,7 +277,7 @@
   ],
   "projects": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Proyecto 1",
       "urlProject": "URL proyect 1...",
       "images": [
@@ -240,7 +286,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Proyecto 1",
       "urlProject": "URL proyect 2...",
       "images": [

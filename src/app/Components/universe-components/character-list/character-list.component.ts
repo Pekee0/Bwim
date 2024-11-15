@@ -3,18 +3,25 @@ import { CharacterCardComponent } from "../character-card/character-card.compone
 import { CommonModule, NgForOf } from '@angular/common';
 import { CharactersService } from '../../../service/characters.service';
 import { Character } from '../../../interfaces/universeCharacter.interface';
+import { AuthService } from '../../../auth/service/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
   standalone: true,
-  imports: [CharacterCardComponent, NgForOf, CommonModule],
+  imports: [CharacterCardComponent, NgForOf, CommonModule, RouterLink],
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.css'
 })
 export class CharacterListComponent implements OnInit {
   ngOnInit(): void {
     this.listCharacters()
+    if (localStorage.getItem('tokenAdmin')) {
+      this.authService.isAdmin = true;
+    }
   }
+
+  authService = inject(AuthService)
 
   service = inject(CharactersService)
 
