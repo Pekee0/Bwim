@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit{
     if(localStorage.getItem('token')){
       this.authService.isLogin =true;
     }
+    if(localStorage.getItem('tokenAdmin')){
+      this.authService.isAdmin = true;
+    }
     this.id = localStorage.getItem('UsuarioActivo');
     this.getUser();
   }

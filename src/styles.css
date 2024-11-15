@@ -16,4 +16,5 @@ body {
   background-size: 75%;
   background-position: center center;
   min-height: 100vh;
+  position: relative;
 }
