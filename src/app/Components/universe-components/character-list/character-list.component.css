@@ -92,3 +92,15 @@
     }
 
 }
+
+.listTitle {
+    margin-top: 2rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    text-align: center;
+    font-size: 17px;
+    color: whitesmoke;
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+}
