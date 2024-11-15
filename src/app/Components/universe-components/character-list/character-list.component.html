@@ -4,8 +4,12 @@
 
 
 <h3 class="mb-10 listTitle ">ELENCO</h3>
-<div class="div-button">
-    <button class="button" routerLink="delete-character" id="tacho">
+@if(authService.isAdmin)
+{
+
+    <div class="div-button">
+        
+        <button class="button" routerLink="delete-character" id="tacho">
         <i class="fa-solid fa-trash" style="color: rgb(245, 21, 21)"></i>
         Borrar character
     </button>
@@ -18,6 +22,7 @@
         Agregar character
     </button>
 </div>
+}
 <section class="characterList mb-20">
     <app-character-card *ngFor="let character of characterList" [character]='character'
         class="characterCard"></app-character-card>
