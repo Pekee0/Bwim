@@ -18,7 +18,7 @@ export class ListAboutComponent {
       nombre: 'Marcos Bianchi',
       apodo: '"The Boss"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
-      descripcion: 'Worst part of prision? The Dementors',
+      descripcion: 'PARKOUR!!',
       link_github: 'https://github.com/MarcoosB',
       link_linkedin: 'https://www.linkedin.com/in/marcos-bianchi-81bb45220/'
     },
@@ -36,7 +36,7 @@ export class ListAboutComponent {
       nombre: 'Gonzalo Marsala',
       apodo: '"The GOAT"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
-      descripcion: 'Bee bee',
+      descripcion: 'W A S D',
       link_github: 'https://github.com/Pekee0',
       link_linkedin: 'https://www.linkedin.com/in/gonza-marsala-2a1463233/'
     },
