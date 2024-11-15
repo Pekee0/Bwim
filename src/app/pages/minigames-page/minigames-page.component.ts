@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { OraculoComponent } from '../../Components/mingames-component/oraculo/oraculo.component';
+import { RouterLink } from '@angular/router';
+import { TestPersonalidadComponent } from '../../Components/mingames-component/test-personalidad/test-personalidad.component';
 
 @Component({
   selector: 'app-minigames-page',
   standalone: true,
-  imports: [OraculoComponent],
+  imports: [RouterLink],
   templateUrl: './minigames-page.component.html',
   styleUrl: './minigames-page.component.css'
 })

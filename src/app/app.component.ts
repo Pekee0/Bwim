@@ -10,12 +10,7 @@ import { FooterComponent } from "./shared/footer/footer.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, RegisterFormComponent,
-<<<<<<< HEAD
-    ScrollRevealComponent, WeatherWidgetFComponent, AboutComponent],
-=======
-    ScrollRevealComponent, WeatherWidgetFComponent, AboutComponent, FooterComponent],
->>>>>>> JsonServer
+  imports: [RouterOutlet, NavbarComponent, RegisterFormComponent,ScrollRevealComponent, WeatherWidgetFComponent, AboutComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

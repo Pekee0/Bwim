@@ -1,0 +1,43 @@
+
+.minigames-wrapper
+{
+    display: grid;
+    align-items: center;
+    justify-content: left;
+    grid-template-columns: 1fr 1fr;
+    height: 90vh;
+    overflow: hidden;
+}
+.wrapper
+{
+    display: grid;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+}
+.wrapper:hover
+{
+    scale: 1.1;
+}
+button
+{
+    height: 100%;
+}
+a
+{
+    margin-top: 20px;
+    justify-self: center;
+    align-self: center;
+}
+.oraculo-background
+{
+    background-image: url("/assets/Fondos/FondoMiniGameMirtha.png");
+}
+
+.test-background
+{
+    background-image: url("/assets/Fondos/FondoTest.png");
+}

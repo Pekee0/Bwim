@@ -15,15 +15,6 @@ export class AuthService {
   logOut() {
     this.isLogin = false;
   }
-<<<<<<< HEAD
-  isAdmin: boolean = false;
-
-  adminIn() {
-    this.isAdmin = true;
-  }
-
-  adminOut() {
-=======
 
   isAdmin:boolean = false;
 
@@ -32,7 +23,6 @@ export class AuthService {
   }
 
   adminOut(){
->>>>>>> JsonServer
     this.isAdmin = false;
   }
 }
