@@ -3,14 +3,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Project } from '../../../interfaces/project.interface';
 import { ProjectsService } from '../../../service/projects.service';
 import { AuthService } from '../../../auth/service/auth.service';
-<<<<<<< HEAD
 import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { timeout } from 'rxjs';
-=======
-import { RouterLink } from '@angular/router';
-
->>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 @Component({
   selector: 'app-project-page',
   standalone: true,
@@ -29,11 +24,7 @@ export class ProjectPageComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
   toastService = inject(ToastrService);
-=======
-
->>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
   authService = inject(AuthService);
   renderer = inject(Renderer2);
   sanitizer = inject(DomSanitizer);
@@ -41,10 +32,7 @@ export class ProjectPageComponent implements OnInit {
   arrProject: Project[] = []
   iframeString: string = '';
   safeIframe: SafeHtml = '';
-<<<<<<< HEAD
   router = inject(Router);
-=======
->>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 
   projectList() {
 
@@ -69,7 +57,6 @@ export class ProjectPageComponent implements OnInit {
     return this.safeIframe;
   }
 
-<<<<<<< HEAD
   delete(id: string) {
     this.projectService.deleteProject(id).subscribe(
       {
@@ -95,8 +82,6 @@ export class ProjectPageComponent implements OnInit {
     this.router.navigate([`projects/updateProject/${id}`])
   }
 
-=======
->>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 
 
 }

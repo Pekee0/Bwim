@@ -56,11 +56,4 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
   }
 
-  isActive = false
-
-  toggleMenu()
-  {
-    this.isActive = !this.isActive   
-    
-  }
 }

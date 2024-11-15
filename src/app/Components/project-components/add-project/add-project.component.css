@@ -24,12 +24,9 @@
 .error {
 
     color: red
-<<<<<<< HEAD
 }
 
 .buttons{
     display: flex;
     justify-content: space-between;
-=======
->>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 }
