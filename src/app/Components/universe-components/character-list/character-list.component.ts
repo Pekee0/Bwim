@@ -1,39 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { UniverseCharacter } from '../../../interfaces/universeCharacter.interface';
-import { CardComponent } from "../card/card.component";
-import { NgForOf } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { CharacterCardComponent } from "../character-card/character-card.component";
+import { CommonModule, NgForOf } from '@angular/common';
+import { CharactersService } from '../../../service/characters.service';
+import { Character } from '../../../interfaces/universeCharacter.interface';
+import { AuthService } from '../../../auth/service/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
   standalone: true,
-  imports: [CardComponent, NgForOf],
+  imports: [CharacterCardComponent, NgForOf, CommonModule, RouterLink],
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.css'
 })
 export class CharacterListComponent implements OnInit {
   ngOnInit(): void {
-
+    this.listCharacters()
+    if (localStorage.getItem('tokenAdmin')) {
+      this.authService.isAdmin = true;
+    }
   }
 
-  characterList: UniverseCharacter[] = [
-    {
-      id: '1',
-      name: 'Dami',
-      age: '',
-      description: 'La joven promesa',
-      birthdate: '',
-      projectId: '',
-      images: ['/assets/imgs/dami.png']
-    },
-    {
-      id: '2',
-      name: 'Gaby',
-      age: '',
-      description: 'El traidor',
-      birthdate: '',
-      projectId: '',
-      images: ['/assets/imgs/gabi.png']
-    }
-  ]
+  authService = inject(AuthService)
+
+  service = inject(CharactersService)
+
+  listCharacters() {
+    this.service.getCharacters().subscribe(
+      {
+        next: (characters: Character[]) => this.characterList = characters
+        ,
+        error: (e: Error) => console.error(e.message)
+      }
+    )
+  }
+
+  characterList: Character[] = []
 
 }

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 .title-section {
     text-align: center;
     padding-bottom: 7rem;
@@ -85,6 +88,7 @@
     right: 75px;
 }
 
+<<<<<<< HEAD
 .div-delete-updateB{
 
     position: relative;
@@ -108,6 +112,9 @@
 
 .button-addP, .button-deleteP,
 .button-updateP {
+=======
+.button-addP {
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
     height: 55px;
     width: 182px;
     border-radius: 8px;
@@ -123,6 +130,7 @@
 .button-addP:hover {
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
+<<<<<<< HEAD
     color: rgb(61,117,19);
 }
 
@@ -141,6 +149,12 @@
 }
 .button-addP:hover #lapiz, .button-deleteP:hover #lapiz,
 .button-updateP:hover #lapiz {
+=======
+    color: blueviolet;
+}
+
+.button-addP:hover #lapiz {
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
 
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: 1.5;
@@ -184,7 +198,14 @@
 
 }
 
+<<<<<<< HEAD
 .div-background{
 
     background-color: rgb(25, 18, 51);
 }
+=======
+body {
+
+    background-image: none;
+}
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1

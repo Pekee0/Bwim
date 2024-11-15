@@ -9,7 +9,7 @@
 }
 
 body {
-    
+
     background-color: rgb(25, 18, 51);
     font-family: "Chakra Petch", serif;
     font-weight: 400;
@@ -20,6 +20,7 @@ body {
     background-size: 75%;
     background-position: center center;
     min-height: 100vh;
+    position: relative;
 }
 
 .body-blur {

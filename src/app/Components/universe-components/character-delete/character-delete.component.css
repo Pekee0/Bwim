@@ -1,0 +1,13 @@
+.add-project-form {
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: whitesmoke;
+    border-radius: 6px;
+    padding-inline: 8rem;
+    margin-top: 4rem;
+    padding-block: 1rem;
+    height: 400px;
+    width: 675px;
+    align-content: center;
+    margin-bottom: 10px;
+}

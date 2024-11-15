@@ -1,3 +1,57 @@
 *{
     color: white;
 }
+
+.input-pregunta{
+    color: black;
+    margin-inline: 5px;
+}
+
+.oraculo{
+    background-image: url('/assets/fondo-minigames/MirthaJuego.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    height: 84vh;
+}
+
+.pregunta{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding-left: 20rem;
+    padding-top: 10px;
+}
+
+.preguntas-y-respuestas{
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.container-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.p-lista{
+    padding-left: 1rem;
+    border: 1px solid #3f3d3d;
+    background-color: rgba(85, 85, 88, 0.7);
+}
+
+.border-respuesta{
+    border-radius: 25px 25px 25px 0px;
+    margin-right: 5rem;
+}
+
+.border-pregunta{
+    margin-top: 0.60rem;
+    border-radius: 25px 0px 25px 25px;
+    margin-left: 5rem;
+    margin-bottom: 0.5rem;
+}

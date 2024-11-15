@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.authService.isLogin = true;
     }
+    if(localStorage.getItem('tokenAdmin')){
+      this.authService.isAdmin = true;
+    }
     this.id = localStorage.getItem('UsuarioActivo');
     this.getUser();
   }
@@ -51,5 +54,13 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/home');
     localStorage.clear();
     window.location.reload();
+  }
+
+  isActive = false
+
+  toggleMenu()
+  {
+    this.isActive = !this.isActive   
+    
   }
 }

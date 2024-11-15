@@ -18,7 +18,10 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+<<<<<<< HEAD
     "aos": "^2.3.4",
+=======
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tailwind": "^4.0.0",

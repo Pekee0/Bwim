@@ -43,7 +43,6 @@ export class AddProjectComponent implements OnInit, OnDestroy {
   }
 
 
-
   addProject() {
 
     if (this.formulario.invalid) {

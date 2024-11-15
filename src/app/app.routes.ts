@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LogInPageComponent } from './pages/user-pages/log-in-page/log-in-page.component';
 import { ScrollRevealComponent } from './Components/scroll-reveal/scroll-reveal.component';
 import { ProjectPageComponent } from './Components/project-components/project-page/project-page.component';
-import { AboutComponent } from './pages/about/about.component';
 import { UniversePagesComponent } from './pages/universe-pages/universe-pages.component';
 import { authGuardFn } from './auth/service/guard/auth.guard-fn';
 import { authGuardFnLogout } from './auth/service/guard/auth.guard-fn-logout';
@@ -14,6 +12,13 @@ import { AddProjectPageComponent } from './pages/add-project-page/add-project-pa
 import { authGuardAdmin } from './auth/service/guard/auth.guard-fn-admin';
 import { UpdateComponentComponent } from './Components/project-components/update-component/update-component.component';
 import { ProjectsPagesComponent } from './pages/projects-pages/projects-pages.component';
+import { TestPersonalidadComponent } from './Components/mingames-component/test-personalidad/test-personalidad.component';
+import { FormPageComponent } from './pages/universe-pages/form-page/form-page.component';
+import { DeletePageComponent } from './pages/universe-pages/delete-page/delete-page.component';
+import { ContactPageComponent } from './shared/footer/pages/contact-page/contact-page.component';
+import { PrivacyPolicyPageComponent } from './shared/footer/pages/privacy-policy-page/privacy-policy-page.component';
+import { AboutPageComponent } from './about/pages/about-page/about-page.component';
+import { OraculoComponent } from './Components/mingames-component/oraculo/oraculo.component';
 
 
 
@@ -43,11 +48,20 @@ export const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutPageComponent
   },
   {
     path: 'universe',
     component: UniversePagesComponent,
+  },
+  {
+    path: 'universe/add-character',
+    component: FormPageComponent,
+    //canActivate:[authGuardAdmin]
+  },
+  {
+    path: 'universe/delete-character',
+    component: DeletePageComponent
   },
   {
     path: 'update/:id',
@@ -67,6 +81,26 @@ export const routes: Routes = [
   {
     path: 'projects/updateProject/:id',
     component: UpdateComponentComponent
+  },
+  {
+    path: 'contact',
+    component: ContactPageComponent
+  },
+  {
+    path: 'PrivacyPolicy',
+    component: PrivacyPolicyPageComponent
+  },
+  {
+    path: 'minigames/oraculo',
+    component: OraculoComponent
+  },
+  {
+    path: 'minigames/test',
+    component: TestPersonalidadComponent
+  },
+  {
+    path: 'about',
+    component: AboutPageComponent
   },
   {
     path: '**',

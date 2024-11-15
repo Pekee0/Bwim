@@ -1,0 +1,70 @@
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: 3px solid #030302;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  letter-spacing: 1.5px;
+}
+
+.contact-card {
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(29, 20, 128, 0.894);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(29, 17, 160, 0.894);
+}
+
+.contact-card h2 {
+  font-size: 1.7em;
+  color: #34495e;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.contact-card h3 {
+  font-size: 1.4em; /* Reducimos el tamaño del nombre */
+  color: #16a085;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.contact-card p {
+  font-size: 1.1em;
+  color: #7f8c8d;
+  margin-bottom: 18px;
+}
+
+.social-links a {
+  margin-right: 15px; /* Reducimos el espacio entre los iconos */
+  display: inline-block;
+}
+
+.social-links img {
+  width: 38px; /* Reducimos el tamaño de los iconos */
+  height: 38px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

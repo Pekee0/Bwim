@@ -1,51 +1,216 @@
 {
   "characters": [
     {
-      "id": 1,
-      "name": "Nicolas",
-      "age": 25,
-      "description": "description...",
-      "birthdate": "26-11-1998",
-      "projectId": 2,
+      "id": "1",
+      "name": "Damian",
+      "nickname": "El main character",
+      "description": "La joven promesa del espacio tiempo",
+      "birthDate": "26-11-1998",
+      "deathDate": "",
+      "birthPlace": "Yapeyú, Argentina",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
       "images": [
-        "URL imagen 1",
-        "URL imagen 2"
+        "assets/images/damian-imgs/damian.png"
       ]
     },
     {
-      "id": 2,
-      "name": "Leo",
-      "age": 37,
-      "description": "description...",
-      "birthdate": "26-11-1998",
-      "projectId": 2,
+      "id": "2",
+      "name": "Gabriel",
+      "nickname": "El traidor",
+      "description": "El muchachos de los ojos tristes",
+      "birthDate": "26-11-1998",
+      "deathDate": "",
+      "birthPlace": "Yapeyú, Argentina",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
       "images": [
-        "URL imagen 1",
-        "URL imagen 2"
+        "assets/images/gabriel-imgs/gabi-va.png"
       ]
     },
     {
-      "id": 3,
-      "name": "Diego",
-      "age": 21,
-      "description": "description...",
-      "birthdate": "26-11-1998",
-      "projectId": 1,
+      "id": "3",
+      "name": "Manuel Lublo",
+      "nickname": "Sherlok Holmes",
+      "description": "El mejor detective de su epoca la movia, la pisaba y la escondia",
+      "birthDate": "26-11-1998",
+      "deathDate": "",
+      "birthPlace": "Argentina",
+      "projectName": [
+        " Realloc"
+      ],
       "images": [
-        "URL imagen 1",
-        "URL imagen 2"
+        "assets/images/manuel-imgs/manu-va.png"
       ]
     },
     {
-      "id": 4,
-      "name": "Momo",
-      "age": 30,
-      "description": "description...",
-      "birthdate": "26-11-1998",
-      "projectId": 3,
+      "id": "4",
+      "name": "Paz Maliquistain",
+      "nickname": "La tia pachi",
+      "description": "El alma del trío maravilla. Nexo entre Damian y Manuel",
+      "birthDate": "26-11-1998",
+      "deathDate": "",
+      "birthPlace": "Argentina",
+      "projectName": [
+        " Realloc"
+      ],
       "images": [
-        "URL imagen 1",
-        "URL imagen 2"
+        "assets/images/paz-imgs/paz-va.png"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Mirtha Legrand",
+      "nickname": "La chiqui",
+      "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
+      "birthDate": "",
+      "deathDate": "",
+      "birthPlace": "Villa Cañás, Argentina",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/libertadores-imgs/mirtha.png"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Simón José Antonio de la Santísima Trinidad Bolívar Ponte y Palacios Blanco",
+      "nickname": "El Libertador",
+      "description": "Líder fundamental de la independencia de lo que son hoy Venezuela, Colombia, Ecuador y Panamá",
+      "birthDate": "24-07-1783",
+      "deathDate": "17-12-1830",
+      "birthPlace": "Caracas, Imperio español",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/libertadores-imgs/bolivar.png"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Juana Uzurduy",
+      "nickname": "Teniente Coronel Independentista",
+      "description": "Luchó en las guerras de independencia hispanoamericanas por la emancipación del Virreinato del Río de la Plata contra la Monarquía española",
+      "birthDate": "12-07-1780",
+      "deathDate": "25-05-1862",
+      "birthPlace": "Potosí, Bolivia",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/libertadores-imgs/juana.png"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "José Francisco de San Martín y Matorras",
+      "nickname": "Comandante del Regimiento de Granaderos a Caballo",
+      "description": "Militar y político argentino, conocido por ser el libertador de Argentina y Chile, además haber proclamado e impulsado la independencia de Perú",
+      "birthDate": "25-02-1778",
+      "deathDate": "17-08-1850",
+      "birthPlace": "Yapeyú, Imperio español",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/libertadores-imgs/san_martin.png"
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Gengis Kan",
+      "nickname": "Primer Gran Kan del Imperio mongol",
+      "description": "Las estimaciones del número muertes como consecuencia de sus campañas militares oscilan entre los cuatro y los sesenta millones",
+      "birthDate": "16-04-1162",
+      "deathDate": "18-08-1227",
+      "birthPlace": "Dulun Boldak, ca",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/gengis_khan.png"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Alejandro III de Macedonia",
+      "nickname": "Rey de Macedonia, Hegemón de Grecia, Faraón de Egipto, Gran rey de Media y Persia",
+      "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
+      "birthDate": "20-07-356 a.C",
+      "deathDate": "10-06-323 a.C",
+      "birthPlace": "Pélla, Grecia",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/magno.png"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Napoleón Bonaparte",
+      "nickname": "Emperador de los franceses, Protector de la Confederación del Rin",
+      "description": "Entre tres y seis millones de civiles y soldados murieron en lo que se conoció como las guerras napoleónicas",
+      "birthDate": "15-08-1769",
+      "deathDate": "05-05-1821",
+      "birthPlace": "Ajaccio, Francia",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/napoleon.png"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Richard Milhous Nixon",
+      "nickname": "Trigésimo séptimo presidente de los Estados Unidos",
+      "description": "Entre tres y seis millones de civiles y soldados murieron en lo que se conoció como las guerras napoleónicas",
+      "birthDate": "09-01-1913",
+      "deathDate": "22-04-1994",
+      "birthPlace": "Yorba Linda, Estados Unidos",
+      "projectName": [
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/conquistadores-imgs/nixon.png"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "<Undefined>",
+      "nickname": "La figura misteriosa",
+      "description": "El criminal más escurridizo en los 7 mares del tiempo",
+      "birthDate": "",
+      "deathDate": "",
+      "birthPlace": "",
+      "projectName": [
+        " Goto",
+        " Realloc"
+      ],
+      "images": [
+        "assets/images/figura-imgs/figura-misteriosa.png"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Indica Flower",
+      "nickname": "Canna indica",
+      "description": "es una planta perenne de hasta 3 m de altura perteneciente a la familia de las cannaceas",
+      "birthDate": "",
+      "deathDate": "",
+      "birthPlace": "America del sur",
+      "projectName": [],
+      "images": [
+        "assets/images/libertadores-imgs/indica-flower.png"
       ]
     }
   ],

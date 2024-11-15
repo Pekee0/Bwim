@@ -1,0 +1,9 @@
+<section class="add-project-form">
+    <form formGroup="characterForm">
+        <label for="character-name" class="block mb-6 text-sm font-medium text-gray-900 dark:text-white">
+            Nombre del Personaje</label>
+        <input #name formControlName="name" placeholder="Ingrese el nombre del personaje"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        <button type="" class="mt-4 bg-blue-500 text-white p-2 rounded-lg" (click)="buscar(name.value)">Buscar</button>
+    </form>
+</section>

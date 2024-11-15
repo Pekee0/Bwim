@@ -1,0 +1,32 @@
+<div class="quiz-container" *ngIf="!quizCompleted">
+    <div class="title">Test de Personalidad</div>
+    
+    <div id="question" class="question">
+        {{ questions[currentQuestionIndex].questionText }}
+    </div>
+    
+    <div *ngFor="let option of questions[currentQuestionIndex].options">
+        <label class="option">
+            <input 
+                type="radio" 
+                name="option" 
+                [value]="option.value" 
+                [checked]="getSelectedAnswer() === option.value" 
+                (change)="selectAnswer(option.value)"
+            />
+            <span>{{ option.text }}</span>
+        </label>
+    </div>
+    
+    <div class="controls">
+        <button class="next" (click)="nextQuestion()">Siguiente</button>
+    </div>
+</div>
+
+<!-- Mostrar solo la imagen y el nombre en el resultado final -->
+<div *ngIf="quizCompleted && finalResult"  class="result">
+    <h2>Cuestionario Completado!</h2>
+    <img [src]="finalResult.image" alt="Quiz Result Image" class="img-result" />
+    <p class="final-score"> Tu personalidad concuerda con: {{ finalResult.name }}</p>
+    <button (click)="restartQuiz()" class="restart">Reiniciar Cuestionario</button>
+</div>

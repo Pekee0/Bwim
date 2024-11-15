@@ -6,9 +6,12 @@
             <img src="assets/logoVioleta.png" alt="purple-logo" class="logo purple-logo" draggable="false">
         </a>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
     <div class="menu-container">
         <ul class="nav-elements">
-
             <li>
                 <a routerLink="/projects">Proyectos</a>
             </li>
@@ -19,9 +22,10 @@
                 <a routerLink="/about">About</a>
             </li>
             <li>
-                <a routerLink="/minigames">Minijuegos</a>
+                <a href="/minigames">Minijuegos</a>
             </li>
         </ul>
+<<<<<<< HEAD
 
         @if(!authService.isLogin){
         <div class="register-loginWrapper">
@@ -55,3 +59,31 @@
     </div>
 
 </nav>
+=======
+    </div>
+
+
+    @if(!authService.isLogin){
+      <div class="register-loginWrapper">
+        <ul class="register-loginUl">
+            <li>
+                <a routerLink="/login">Iniciar Sesion</a>
+            </li>
+            <li>
+                <a routerLink="/register">Registrarse</a>
+            </li>
+        </ul>
+    </div>
+  }@else {
+    <div class="container-img">
+    <img [src]="usuarioActivo?.imgPerfil" alt="User image" class="usuario-activo-img" (click)="toggleMenu()">
+    <div class="sub-menu-wrapper" [class.open-menu]="isActive" [class.close-menu] ="!isActive">
+      <div class ="sub-menu"> 
+        <a class ="sub-menu-link" [routerLink]="['update',id]"><p>Perfil</p> <span></span></a>
+        <a class ="sub-menu-link" (click)="logOut()"><p>LogOut</p> <span></span></a>
+      </div>
+    </div>
+  </div>  
+  }
+</nav>
+>>>>>>> 2408e09a2218af69fbcb95c01f491e8d9d7d8be1
