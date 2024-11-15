@@ -1,18 +1,17 @@
-
-.ww{
+.ww {
 
     display: flex;
     justify-content: center;
     align-items: flex-end;
     position: fixed;
-    bottom: 1vh; 
-    left: 1vh;  
+    bottom: 1vh;
+    left: 1vh;
     flex-direction: column-reverse;
     z-index: 4;
 }
 
-.weatherwidget-io{
+.weatherwidget-io {
 
     width: 318px;
-    border-radius: 5px;   
+    border-radius: 5px;
 }

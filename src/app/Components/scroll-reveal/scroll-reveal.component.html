@@ -1,18 +1,14 @@
-
-<div class="scroll-container" (window:scroll)="onScroll()">
-  <!-- Sección de la imagen -->
-  <div class="image-section" [ngClass]="{'hidden': isScrolled}" >
+<div class="scroll-container">
+  <!-- Sección de Imagen -->
+  <div class="image-section" [class.fade-out]="scrolledPastImage">
+    <img src="/assets/BwimVFondoB.png" alt="Imagen inicial" />
   </div>
 
-  <!-- Segunda vista (pantalla negra con texto) -->
-  <div class="text-section" [ngClass]="{'visible': isScrolled}">
-
+  <!-- Sección de Texto -->
+  <div class="text-section" [class.show-text]="scrolledPastImage">
     <h1>¿Quiénes Somos?</h1>
     <h2 id="h2Incial">Un grupo de desarrolladores junior, game devs y creadores del Universo Yapeyú.</h2>
     <h2>Conocé más de nosotros, del Universo detrás de nuestras historias y sus personajes.</h2>
     <h2> Contactanos a través de no se qué</h2>
-
   </div>
 </div>
-
-

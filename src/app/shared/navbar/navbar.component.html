@@ -16,40 +16,42 @@
                 <a routerLink="/universe">Universo</a>
             </li>
             <li>
-                <a routerLink="/about">Acerca de</a>
+                <a routerLink="/about">About</a>
             </li>
             <li>
                 <a routerLink="/minigames">Minijuegos</a>
             </li>
         </ul>
-    </div>
-    @if(!authService.isLogin){
-    <div class="register-loginWrapper">
 
-        <ul class="register-loginUl">
-            <li>
-                <a routerLink="/login">Iniciar Sesion</a>
-            </li>
-            <li>
-                <a routerLink="/register">Registrarse</a>
-            </li>
-        </ul>
-    </div>
-    }@else {
-    <div class="container-img">
-        <img [src]="usuarioActivo?.imgPerfil" alt="User image" class="usuario-activo-img" (click)="toggleMenu()">
-        <div class="sub-menu-wrapper" [class.open-menu]="isActive" [class.close-menu]="!isActive">
-            <div class="sub-menu">
-                <a class="sub-menu-link" [routerLink]="['update',id]">
-                    <p>Mi Perfil</p>
-                </a>
-                <hr>
-                <a class="sub-menu-link" (click)="logOut()">
-                    <p>Cerrar Sesión</p>
-                </a>
+        @if(!authService.isLogin){
+        <div class="register-loginWrapper">
 
+            <ul class="register-loginUl">
+                <li>
+                    <a routerLink="/login">LogIn</a>
+                </li>
+                <li>
+                    <a routerLink="/register">SignUp</a>
+                </li>
+            </ul>
+        </div>
+        }@else {
+        <div class="container-img">
+            <img [src]="usuarioActivo?.imgPerfil" alt="User image" class="usuario-activo-img" (click)="toggleMenu()">
+            <div class="sub-menu-wrapper" [class.open-menu]="isActive" [class.close-menu]="!isActive">
+                <div class="sub-menu">
+                    <a class="sub-menu-link" [routerLink]="['update',id]">
+                        <p>Mi Perfil</p>
+                    </a>
+                    <hr>
+                    <a class="sub-menu-link" (click)="logOut()">
+                        <p>Cerrar Sesión</p>
+                    </a>
+
+                </div>
             </div>
         </div>
+        }
     </div>
-    }
+
 </nav>

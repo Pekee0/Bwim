@@ -1,99 +1,60 @@
-/* .scroll-container {
-  width: 100%;
-  height: 175vh; 
-  overflow: hidden;
-  position: relative;
-  background-image: url("/assets/BwimVFondoB.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-} */
-
-
- .image-section {
-  position: relative;
-  transition: opacity 0.5s ease-in-out;
-  width: 100%;
-  height: 100vh; 
-  overflow: hidden;
-  background-image: url("/assets/BwimVFondoB.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
+body {
+  overflow-x: hidden;
 }
 
-.image-section.hidden {
+.scroll-container {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+  overflow: hidden;
+  background-color: rgb(25, 18, 51);
+}
 
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity 0.3s ease-out;
+}
+
+.image-section.fade-out {
   opacity: 0;
- 
-}
-
-.image-section img{
-
-  user-select: none;
-  pointer-events: none;
-  -webkit-user-drag: none;
 }
 
 .text-section {
-  background-color: rgb(18, 12, 39);
-  color: white;
-  top: 0;
-  width: 100%;
-  min-height: 75vh;
-  max-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  opacity: 0;
-  z-index: 0;
-  transform: translateY(500px); 
-  transition: opacity 1s ease-in, transform 1s ease-in;
-  overflow: hidden; 
-  bottom: 6rem;
-  
-}
-
-
-.text-section.visible {
-  opacity: 1;
-  transform: translateY(0); 
-  z-index: -1;
-  overflow: visible;
-  
-} 
-
-.haches{
-
   position: sticky;
-
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(70%);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("/assets/BWIMBody.png");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: center center;
 }
 
-/* h1 {
+.text-section.show-text {
+  opacity: 1;
+  transform: translateY(60%);
+  bottom: 23%;
+}
+
+h1 {
+  color: whitesmoke;
+  font-size: 50px;
+  margin-bottom: 9rem;
   font-family: "Chakra Petch", serif;
   font-weight: 600;
   font-style: italic;
-  margin-bottom: 2rem;
-  
 }
 
-
 h2 {
-  text-align: justify;
-  font-family: "Chakra Petch", serif;
-  font-weight: 500;
-  align-items: center;
+  color: whitesmoke;
   letter-spacing: 0.7px;
-
-} */
-
-#h2Inicial{
-
-  margin: 2rem auto 0; /* Este margen superior crea espacio con el h1  */
-} 
-
-
-
+  font-size: 25px;
+}

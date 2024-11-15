@@ -3,8 +3,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Project } from '../../../interfaces/project.interface';
 import { ProjectsService } from '../../../service/projects.service';
 import { AuthService } from '../../../auth/service/auth.service';
-import { RouterLink } from '@angular/router';
-
+import { RouterLink, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 @Component({
   selector: 'app-project-page',
   standalone: true,
@@ -23,7 +24,7 @@ export class ProjectPageComponent implements OnInit {
     }
   }
 
-
+  toastService = inject(ToastrService);
   authService = inject(AuthService);
   renderer = inject(Renderer2);
   sanitizer = inject(DomSanitizer);
@@ -31,6 +32,7 @@ export class ProjectPageComponent implements OnInit {
   arrProject: Project[] = []
   iframeString: string = '';
   safeIframe: SafeHtml = '';
+  router = inject(Router);
 
   projectList() {
 
@@ -53,6 +55,31 @@ export class ProjectPageComponent implements OnInit {
     this.safeIframe = this.sanitizer.bypassSecurityTrustHtml(url);
 
     return this.safeIframe;
+  }
+
+  delete(id: string) {
+    this.projectService.deleteProject(id).subscribe(
+      {
+        next: () => {
+
+          this.toastService.success('La página se recargara automaticamente', "¡Proyecto eliminado exitosamente!", { closeButton: true });
+          setTimeout(() => {
+            window.location.reload()
+          }, 3000);
+        },
+        error: (e: Error) => {
+
+          console.log(e.message);
+
+        }
+      }
+    )
+
+  }
+
+  navigateToUpdate(id: string) {
+
+    this.router.navigate([`projects/updateProject/${id}`])
   }
 
 

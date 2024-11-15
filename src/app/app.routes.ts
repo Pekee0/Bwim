@@ -12,6 +12,8 @@ import { MyInfoPageComponent } from './pages/user-pages/my-info-page/my-info-pag
 import { MinigamesPageComponent } from './pages/minigames-page/minigames-page.component';
 import { AddProjectPageComponent } from './pages/add-project-page/add-project-page/add-project-page.component';
 import { authGuardAdmin } from './auth/service/guard/auth.guard-fn-admin';
+import { UpdateComponentComponent } from './Components/project-components/update-component/update-component.component';
+import { ProjectsPagesComponent } from './pages/projects-pages/projects-pages.component';
 
 
 
@@ -33,7 +35,7 @@ export const routes: Routes = [
   },
   {
     path: 'projects',
-    component: ProjectPageComponent
+    component: ProjectsPagesComponent
   },
   {
     path: 'minigames',
@@ -61,6 +63,10 @@ export const routes: Routes = [
     path: 'projects/addProject',
     component: AddProjectPageComponent,
     canActivate: [authGuardAdmin]
+  },
+  {
+    path: 'projects/updateProject/:id',
+    component: UpdateComponentComponent
   },
   {
     path: '**',

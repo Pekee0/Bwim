@@ -56,16 +56,14 @@
   display: flex;
   align-items: center;
   height: 100%;
-
-  margin-right: 1rem;
-  position: relative;
+  /* margin-right: 1rem; */
+  position: absolute;
 }
 
 .register-loginWrapper {
-
-  position: relative;
-  justify-self: flex-end;
-
+  position: absolute;
+  right: 0;
+  top: 2;
 }
 
 .register-loginUl {
@@ -105,10 +103,11 @@
 }
 
 .container-img {
-  display: flex;
-  justify-content: flex-end;
-  width: 292px;
+  position: absolute;
+  right: 0;
+  top: 2;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
 .usuario-activo-img {
@@ -132,10 +131,11 @@
   position: absolute;
   margin: 0;
   top: 100%;
-  left: 83.2%;
-  width: 320px;
+  right: 0;
+  width: 300px;
   overflow: hidden;
   transition: max-height 0.5s;
+  margin-top: 0.75rem;
 }
 
 .sub-menu {
@@ -161,7 +161,6 @@ hr {
   color: burlywood;
   padding-inline: 0.5rem;
   font-size: 19px;
-
 }
 
 .sub-menu-link:hover p {
@@ -177,6 +176,7 @@ hr {
 
 .white-logo,
 .purple-logo {
+
   position: absolute;
   transform: translateY(-50%);
   transition: opacity 0.5s ease ease-in;

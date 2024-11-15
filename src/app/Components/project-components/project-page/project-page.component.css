@@ -1,3 +1,4 @@
+
 .title-section {
     text-align: center;
     padding-bottom: 7rem;
@@ -79,12 +80,34 @@
 
 .div-button {
     position: absolute;
-    height: 100%;
+    height: max-content;
     top: 130px;
     right: 75px;
 }
 
-.button-addP {
+.div-delete-updateB{
+
+    position: relative;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-end;  
+}    
+
+.button-updateP, .button-deleteP{
+
+    margin-right: 1rem;
+    margin-top: 3px;
+}
+
+.button-addP i, .button-deleteP i,
+.button-updateP i{
+
+    margin-right: 10px;
+}
+
+.button-addP, .button-deleteP,
+.button-updateP {
     height: 55px;
     width: 182px;
     border-radius: 8px;
@@ -100,10 +123,24 @@
 .button-addP:hover {
     transform: scale(1.1);
     transition: ease-in-out 0.5ms;
-    color: blueviolet;
+    color: rgb(61,117,19);
 }
 
-.button-addP:hover #lapiz {
+.button-deleteP:hover {
+
+    transform: scale(1.1);
+    transition: ease-in-out 0.5ms;
+    color: red;
+}
+
+.button-updateP:hover {
+
+    transform: scale(1.1);
+    transition: ease-in-out 0.5ms;
+    color: blueviolet;
+}
+.button-addP:hover #lapiz, .button-deleteP:hover #lapiz,
+.button-updateP:hover #lapiz {
 
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: 1.5;
@@ -147,7 +184,7 @@
 
 }
 
-body {
+.div-background{
 
-    background-image: none;
+    background-color: rgb(25, 18, 51);
 }

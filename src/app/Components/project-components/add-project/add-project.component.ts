@@ -4,12 +4,13 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { ProjectsService } from '../../../service/projects.service';
 import { ToastrService } from 'ngx-toastr';
 import { Project } from '../../../interfaces/project.interface';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-add-project',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './add-project.component.html',
   styleUrl: './add-project.component.css'
 })
@@ -20,10 +21,10 @@ export class AddProjectComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
   projectService = inject(ProjectsService);
   toastService = inject(ToastrService);
+  router = inject(Router);
 
   formulario = this.fb.nonNullable.group(
     {
-      id: '',
       name: ['', Validators.required],
       description: ['', Validators.required],
       urlProject: ['', Validators.required],
@@ -41,7 +42,7 @@ export class AddProjectComponent implements OnInit, OnDestroy {
     this.renderer.removeClass(document.body, 'body-blur');
   }
 
-  private projectIdCounter = 1;
+
 
   addProject() {
 
@@ -60,7 +61,10 @@ export class AddProjectComponent implements OnInit, OnDestroy {
     this.projectService.postProject(project).subscribe(
       {
         next: (project: Project) => {
-          this.toastService.success("¡Proyecto añadido exitosamente!", ' ', { closeButton: true });
+          this.toastService.success('La página se recargara automaticamente', "¡Proyecto añadido exitosamente!", { closeButton: true });
+          setTimeout(() => {
+            this.router.navigateByUrl('projects');
+          }, 3000);
         },
         error: (e: Error) => {
           console.log(e.message);
@@ -69,8 +73,6 @@ export class AddProjectComponent implements OnInit, OnDestroy {
       }
     )
   }
-
-
 
   imgUrl: string | ArrayBuffer | null | undefined = null;
   onImageChange(event: any) {
@@ -101,4 +103,12 @@ export class AddProjectComponent implements OnInit, OnDestroy {
 // "description": "realloc es la secuela del aclamado 'goto'. Aquí, seguimos la historia de Damián en la línea temporal principal de la saga. Acompañalo en la busqueda del asesino de Gabriel. Pero no te confíes, nada acá es lo que parece",
 // "urlProject": "<iframe frameborder=\"0\" src=\"https://itch.io/embed/2393332?border_width=5&amp;bg_color=f1f1f1&amp;fg_color=439BDB&amp;link_color=D49319&amp;border_color=d44c16\" width=\"600\" height=\"175\"><a href=\"https://ibm-entretainmient.itch.io/gotofuturepast\">goto( future , past ) ; by IBM Entretainmient</a></iframe>",
 // "images": "assets/FondoOficinaResized.png"
+
+// {
+//   "id": 0,
+//   "name": "goto( future , past ) ;",
+//   "description": "'goto' es una novela interactiva del estilo 'Elige Tu Propia Aventura' donde serás testigo de algunos de los momentos más trascendentales en la historia de Argentina y del mundo. ",
+//   "urlProject": "<iframe frameborder="0" src="https://itch.io/embed/2393332?border_width=5&amp;bg_color=f1f1f1&amp;fg_color=439BDB&amp;link_color=D49319&amp;border_color=d44c16\" width="600" height="175"><a href="https://ibm-entretainmient.itch.io/gotofuturepast/">goto( future , past ) ; by IBM Entretainmient</a></iframe>",
+//   "images": "assets/FondoComicResize.png"
+// }
 
