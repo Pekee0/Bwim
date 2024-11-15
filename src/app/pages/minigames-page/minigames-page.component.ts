@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { OraculoComponent } from '../../Components/mingames-component/oraculo/oraculo.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TestPersonalidadComponent } from '../../Components/mingames-component/test-personalidad/test-personalidad.component';
 
 @Component({
@@ -11,5 +11,5 @@ import { TestPersonalidadComponent } from '../../Components/mingames-component/t
   styleUrl: './minigames-page.component.css'
 })
 export class MinigamesPageComponent {
-  
+  router = inject(Router)
 }
