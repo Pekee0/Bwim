@@ -18,7 +18,7 @@ export class ListAboutComponent {
       nombre: 'Marcos Bianchi',
       apodo: '"The Boss"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
-      descripcion: 'we were on a break',
+      descripcion: 'Worst part of prision? The Dementors',
       link_github: 'https://github.com/MarcoosB',
       link_linkedin: 'https://www.linkedin.com/in/marcos-bianchi-81bb45220/'
     },
@@ -27,7 +27,7 @@ export class ListAboutComponent {
       nombre: 'Ivan Ialonardi',
       apodo: '"The Admin"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
-      descripcion: 'light weight baby',
+      descripcion: 'Light weight baby',
       link_github: 'https://github.com/ivi-developer',
       link_linkedin: 'https://www.linkedin.com/in/ivan-ialonardi-b58491187/'
     },
@@ -36,7 +36,7 @@ export class ListAboutComponent {
       nombre: 'Gonzalo Marsala',
       apodo: '"The GOAT"',
       trabajos_participados:['goto(future,past)','Realloc','BWIM'],
-      descripcion: 'bee bee',
+      descripcion: 'Bee bee',
       link_github: 'https://github.com/Pekee0',
       link_linkedin: 'https://www.linkedin.com/in/gonza-marsala-2a1463233/'
     },
@@ -45,7 +45,7 @@ export class ListAboutComponent {
       nombre: 'Pablo Walter',
       apodo: '"The L. Enjoyer"',
       trabajos_participados:['Realloc','BWIM'],
-      descripcion: 'soy un dragoncito violeta',
+      descripcion: 'Soy un dragoncito violeta',
       link_github: 'https://github.com/pablowalter11',
       link_linkedin: 'https://www.linkedin.com/in/pablo-walter-quiroga-89b53324b/'
     },
@@ -54,7 +54,7 @@ export class ListAboutComponent {
       nombre: 'Nicolas Ruiz',
       apodo: '"The Wizard"',
       trabajos_participados:['BWIM'],
-      descripcion: 'a big power conlleva a big responsabilidad',
+      descripcion: 'A big power conlleva a big responsabilidad',
       link_github: 'https://github.com/NiccoRz',
       link_linkedin: 'https://www.linkedin.com/in/nicolasruiz26/'
     }
