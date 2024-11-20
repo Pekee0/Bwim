@@ -1,6 +1,4 @@
-
-.minigames-wrapper
-{
+.minigames-wrapper {
     display: grid;
     align-items: center;
     justify-content: left;
@@ -8,8 +6,8 @@
     height: 90vh;
     overflow: hidden;
 }
-.wrapper
-{
+
+.wrapper {
     display: grid;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -18,26 +16,52 @@
     height: 100%;
     transition: all 0.3s;
 }
-.wrapper:hover
-{
+
+.wrapper:hover {
     scale: 1.1;
+
+    .game-name {
+        opacity: 1;
+    }
 }
-button
-{
+
+.minigames-wrapper:hover> :not(:hover) {
+    filter: blur(5px);
+    opacity: 0.9;
+}
+
+button {
     height: 100%;
 }
-a
-{
+
+a {
     margin-top: 20px;
     justify-self: center;
     align-self: center;
 }
-.oraculo-background
-{
+
+.oraculo-background {
     background-image: url("/assets/Fondos/FondoMiniGameMirtha.png");
 }
 
-.test-background
-{
+.test-background {
     background-image: url("/assets/Fondos/FondoTest.png");
+}
+
+p {
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 40px;
+
+}
+
+.game-name {
+    height: 100%;
+    align-self: center;
+    opacity: 0;
+    margin-top: 6%;
+}
+
+.game-name:hover {
+    opacity: 1;
 }

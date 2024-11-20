@@ -1,4 +1,10 @@
-section{
+.general-sec {
+
+  height: 100%;
+
+}
+
+section {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
@@ -18,6 +24,7 @@ h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 .div-texto {
   padding: 2rem;
   max-width: 800px;
@@ -31,4 +38,3 @@ p {
   margin-bottom: 1.5rem;
   text-align: justify;
 }
-

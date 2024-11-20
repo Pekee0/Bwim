@@ -45,7 +45,7 @@ export const routes: Routes = [
   {
     path: 'minigames',
     component: MinigamesPageComponent,
-    canActivate:[authGuardFn]
+    canActivate: [authGuardFn]
   },
   {
     path: 'about',
@@ -58,12 +58,12 @@ export const routes: Routes = [
   {
     path: 'universe/add-character',
     component: FormPageComponent,
-    canActivate:[authGuardAdmin]
+    canActivate: [authGuardAdmin]
   },
   {
     path: 'universe/delete-character',
     component: DeletePageComponent,
-    canActivate:[authGuardAdmin]
+    canActivate: [authGuardAdmin]
   },
   {
     path: 'update/:id',
@@ -82,7 +82,8 @@ export const routes: Routes = [
   },
   {
     path: 'projects/updateProject/:id',
-    component: UpdateComponentComponent
+    component: UpdateComponentComponent,
+    canActivate: [authGuardAdmin]
   },
   {
     path: 'contact',

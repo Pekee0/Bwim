@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ScrollRevealComponent } from '../../../scroll-reveal/scroll-reveal.component';
+import { ScrollRevealComponent } from '../../../Components/scroll-reveal/scroll-reveal.component';
 
 @Component({
   selector: 'app-home-page',

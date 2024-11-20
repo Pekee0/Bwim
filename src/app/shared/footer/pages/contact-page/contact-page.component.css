@@ -1,3 +1,8 @@
+.general-section {
+
+  height: 99%;
+}
+
 .container {
   width: 100%;
   max-width: 800px;
@@ -7,8 +12,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 4%;
   border: 3px solid #030302;
+  margin-bottom: 4%;
+
 }
 
 h1 {
@@ -40,7 +47,7 @@ h1 {
 }
 
 .contact-card h3 {
-  font-size: 1.4em; /* Reducimos el tamaño del nombre */
+  font-size: 1.4em;
   color: #16a085;
   margin-bottom: 12px;
   font-weight: 500;
@@ -53,12 +60,13 @@ h1 {
 }
 
 .social-links a {
-  margin-right: 15px; /* Reducimos el espacio entre los iconos */
+  margin-right: 15px;
   display: inline-block;
 }
 
 .social-links img {
-  width: 38px; /* Reducimos el tamaño de los iconos */
+  width: 38px;
+  /* Reducimos el tamaño de los iconos */
   height: 38px;
   border-radius: 50%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
