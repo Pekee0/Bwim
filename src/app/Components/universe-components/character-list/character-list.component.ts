@@ -5,11 +5,12 @@ import { CharactersService } from '../../../service/characters.service';
 import { Character } from '../../../interfaces/universeCharacter.interface';
 import { AuthService } from '../../../auth/service/auth.service';
 import { RouterLink } from '@angular/router';
+import { SsMenuComponent } from "../../ss-menu/ss-menu.component";
 
 @Component({
   selector: 'app-character-list',
   standalone: true,
-  imports: [CharacterCardComponent, NgForOf, CommonModule, RouterLink],
+  imports: [CharacterCardComponent, NgForOf, CommonModule, RouterLink, SsMenuComponent],
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.css'
 })

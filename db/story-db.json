@@ -2,7 +2,7 @@
   "characters": [
     {
       "id": "1",
-      "name": "Damian",
+      "name": "Damian Marsachi",
       "nickname": "El main character",
       "description": "La joven promesa del espacio tiempo",
       "birthDate": "26-11-1998",
@@ -21,7 +21,7 @@
       "name": "Gabriel",
       "nickname": "El traidor",
       "description": "El muchachos de los ojos tristes",
-      "birthDate": "26-11-1998",
+      "birthDate": "15-03-1999",
       "deathDate": "",
       "birthPlace": "Yapeyú, Argentina",
       "projectName": [
@@ -35,9 +35,9 @@
     {
       "id": "3",
       "name": "Manuel Lublo",
-      "nickname": "Sherlok Holmes",
+      "nickname": "Sherlock Holmes",
       "description": "El mejor detective de su epoca la movia, la pisaba y la escondia",
-      "birthDate": "26-11-1998",
+      "birthDate": "03-09-1969",
       "deathDate": "",
       "birthPlace": "Argentina",
       "projectName": [
@@ -52,7 +52,7 @@
       "name": "Paz Maliquistain",
       "nickname": "La tia pachi",
       "description": "El alma del trío maravilla. Nexo entre Damian y Manuel",
-      "birthDate": "26-11-1998",
+      "birthDate": "11-08-1993",
       "deathDate": "",
       "birthPlace": "Argentina",
       "projectName": [
@@ -127,7 +127,7 @@
     {
       "id": "9",
       "name": "Gengis Kan",
-      "nickname": "Primer Gran Kan del Imperio mongol",
+      "nickname": "Temuyín",
       "description": "Las estimaciones del número muertes como consecuencia de sus campañas militares oscilan entre los cuatro y los sesenta millones",
       "birthDate": "16-04-1162",
       "deathDate": "18-08-1227",
@@ -141,12 +141,12 @@
     },
     {
       "id": "10",
-      "name": "Alejandro III de Macedonia",
-      "nickname": "Rey de Macedonia, Hegemón de Grecia, Faraón de Egipto, Gran rey de Media y Persia",
-      "description": "Como te ven te tratan, si te ven bien te contratan y si te ven mal te maltratan",
-      "birthDate": "20-07-356 a.C",
-      "deathDate": "10-06-323 a.C",
-      "birthPlace": "Pélla, Grecia",
+      "name": "Carlomagno",
+      "nickname": "Carlos I el Grande",
+      "description": "El padre de la Europa medieval. Emperador de los francos",
+      "birthDate": "02-04-747",
+      "deathDate": "28-01-814",
+      "birthPlace": "Aquisgrán, Reino Franco",
       "projectName": [
         " Realloc"
       ],
@@ -189,9 +189,9 @@
       "name": "<Undefined>",
       "nickname": "La figura misteriosa",
       "description": "El criminal más escurridizo en los 7 mares del tiempo",
-      "birthDate": "",
+      "birthDate": "1A-B-7CE",
       "deathDate": "",
-      "birthPlace": "",
+      "birthPlace": "*( 97 !1@ !0! 1@1 !!7, ^% 11$ !0# 1)1 1!0 1!^ !0% 1!0 9&",
       "projectName": [
         " Goto",
         " Realloc"

@@ -19,6 +19,8 @@ import { ContactPageComponent } from './shared/footer/pages/contact-page/contact
 import { PrivacyPolicyPageComponent } from './shared/footer/pages/privacy-policy-page/privacy-policy-page.component';
 import { AboutPageComponent } from './about/pages/about-page/about-page.component';
 import { OraculoComponent } from './Components/mingames-component/oraculo/oraculo.component';
+import { ShortStoriesComponent } from './Components/short-stories/short-stories.component';
+import { SsMenuComponent } from './Components/ss-menu/ss-menu.component';
 
 
 
@@ -104,6 +106,14 @@ export const routes: Routes = [
   {
     path: 'about',
     component: AboutPageComponent
+  },
+  {
+    path: 'ss',
+    component: ShortStoriesComponent
+  },
+  {
+    path: 'ssmenu',
+    component: SsMenuComponent
   },
   {
     path: '**',

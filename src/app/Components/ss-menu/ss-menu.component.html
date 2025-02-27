@@ -1,0 +1,17 @@
+<section class="carousel-wrapper">
+  <div class="carousel">
+    <div class="carousel-image-container">
+      <button class="left" (click)="prevSlide()"></button>
+      <img [src]="shortStoriesArray[0][currentIndex()].frontPage" class="carousel-image" />
+      <button class="right" (click)="nextSlide()"></button>
+    </div>
+    
+    <a class="ss-information" [attr.href]="shortStoriesArray[0][currentIndex()].ssLinker">
+      <h2 class="ss-title">{{ shortStoriesArray[0][currentIndex()].title }}</h2>
+      <i class="ss-short-description">{{ shortStoriesArray[0][currentIndex()].description }}</i>  
+    </a>
+  </div>
+</section>
+
+
+  

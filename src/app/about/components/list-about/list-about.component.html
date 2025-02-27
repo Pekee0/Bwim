@@ -1,8 +1,18 @@
 <section class="dev-list">
-    <app-about-card
-        *ngFor="let dev of devs"
-        [dev]="dev"
-        class="dev-card"
-    >
-    </app-about-card>
+    <div class="dev-list-container">
+        <app-about-card
+            *ngFor="let dev of devs1"
+            [dev]="dev"
+            class="dev-card"
+            >
+        </app-about-card>
+    </div>
+    <div class="dev-list-container">
+        <app-about-card
+            *ngFor="let dev of devs2"
+            [dev]="dev"
+            class="dev-card"
+            >
+        </app-about-card>
+    </div>
 </section>

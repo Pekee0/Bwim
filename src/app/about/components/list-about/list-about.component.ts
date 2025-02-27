@@ -12,7 +12,7 @@ import { AboutCardComponent } from '../about-card/about-card.component';
 })
 export class ListAboutComponent {
 
-  devs: Developer[] = [
+  devs1: Developer[] = [
     {
       img: ['assets/images/developers-imgs/MarcosCredencial.png','assets/images/developers-imgs/cosmar.jpg'],
       nombre: 'Marcos Bianchi',
@@ -39,7 +39,9 @@ export class ListAboutComponent {
       descripcion: 'W A S D',
       link_github: 'https://github.com/Pekee0',
       link_linkedin: 'https://www.linkedin.com/in/gonza-marsala-2a1463233/'
-    },
+    }
+  ]
+devs2: Developer[] = [
     {
       img: ['assets/images/developers-imgs/PabloCredencial.png','assets/images/developers-imgs/kuka.jpg'],
       nombre: 'Pablo Walter',
@@ -58,5 +60,5 @@ export class ListAboutComponent {
       link_github: 'https://github.com/NiccoRz',
       link_linkedin: 'https://www.linkedin.com/in/nicolasruiz26/'
     }
-  ];
+  ]
 }
