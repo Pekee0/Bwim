@@ -1,89 +1,45 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
+import { Firestore, addDoc, collection, collectionData,doc,getDoc, updateDoc } from '@angular/fire/firestore';
+
+export type UserCreate = Omit<User,'id'>
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  urlBase: string = 'http://localhost:3001/users'
+  private firestore = inject(Firestore);
+  private _collection = collection(this.firestore,'users');
 
-  constructor(private http: HttpClient) { }
-
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.urlBase);
+  create(user:UserCreate){
+    return addDoc(this._collection,user)
   }
 
-  postUser(user: User | undefined): Observable<User> {
-    return this.http.post<User>(this.urlBase, user)
+  getInfoUser():Observable<User[]>{
+    let userRef = collection(this.firestore,'users');
+    return collectionData(userRef,{idField:'id'})as Observable<User[]>
   }
 
-  putUser(user: User, id: string): Observable<User> {
-    return this.http.put<User>(`${this.urlBase}/${id}`, user)
+  getUser(id:string){
+    const docRef = doc(this._collection,id);
+    return getDoc(docRef);
   }
 
-  deleteUser(id: string | undefined): Observable<void> {
-    return this.http.delete<void>(`${this.urlBase}/${id}`)
+  update(user:UserCreate,id:string){
+    const docRef = doc(this._collection,id);
+    return updateDoc(docRef,user);
   }
 
-  getUser_ById(id: string | null): Observable<User> {
-    return this.http.get<User>(`${this.urlBase}/${id}`)
+  toUserCreate(user:User):UserCreate{
+    return {
+      nickname: user.nickname,
+      name:user.name,
+      surname:user.surname,
+      email:user.email,
+      admin:user.admin,
+      imgPerfil:user.imgPerfil
+    }
   }
-
-  getUser_ByName(name: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.urlBase}?name=${name}`)
-  }
-
-  getUser_ByEmail(email: string | undefined | null): Observable<User[]> {
-    return this.http.get<User[]>(`${this.urlBase}?email=${email}`);
-  }
-
-  getUser_ByNickname(nickname: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.urlBase}?nickname=${nickname}`)
-  }
-
-  getUser_BySurname(surname: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.urlBase}?surname=${surname}`)
-  }
-
-  getAdmin(): Observable<User> {
-    return this.http.get<User>(`${this.urlBase}?admin=true`)
-  }
-
-  patch_UserToAdmin(id: string | undefined): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { admin: true })
-  }
-
-  patch_UserName(n: string, id: string | null): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { name: n })
-  }
-
-  patch_UserSurname(n: string, id: string | null): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { surname: n })
-  }
-
-  patch_UserNickname(n: string, id: string | null): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { nickname: n })
-  }
-
-  patch_UserEmail(n: string, id: string | null): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { email: n })
-  }
-
-  patch_UserPassword(n: string, id: string | null): Observable<User> {
-
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { password: n })
-  }
-
-  patch_UserImage(n: string | null | undefined | ArrayBuffer, id: string | null): Observable<User> {
-    return this.http.patch<User>(`${this.urlBase}/${id}`, { imgPerfil: n });
-  }
-  // Método para verificar el login
-  login(email: string | null, password: string | null): Observable<boolean> {
-    return this.http.get<boolean>(`${this.urlBase}?email=${email}?password=${password}`)
-  }
-
-
 }

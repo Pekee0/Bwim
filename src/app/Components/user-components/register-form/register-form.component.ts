@@ -1,12 +1,13 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, inject, Renderer2, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { User } from '../../../interfaces/user.interface';
 import { EmailValidatorService } from '../Validaciones/check-email-exists.directive';
 import { NicknameValidatorService } from '../Validaciones/check-nickname-exists.directive';
 import { passWordMatchValidator } from '../Validaciones/password-match-validator.directive';
-import { UserService } from '../../../service/user.service';
+import { UserCreate, UserService } from '../../../service/user.service';
 import { Router } from '@angular/router';
+import { AuthFirebaseService } from '../auth/service/auth-firebase.service';
 
 @Component({
   selector: 'app-register-form',
@@ -15,18 +16,29 @@ import { Router } from '@angular/router';
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })
-export class RegisterFormComponent {
+export class RegisterFormComponent implements OnInit{
 
 
-  fb = inject(FormBuilder);
-  userService = inject(UserService);
-  emailValidatorService = inject(EmailValidatorService);
-  nicknameValidatorService = inject(NicknameValidatorService);
-  router = inject(Router);
-  renderer = inject(Renderer2);
+  private fb = inject(FormBuilder);
+  private userService = inject(UserService);
+  private emailValidatorService = inject(EmailValidatorService);
+  private nicknameValidatorService = inject(NicknameValidatorService);
+  private router = inject(Router);
+  private renderer = inject(Renderer2);
+  private auth = inject(AuthFirebaseService);
+
+  private users: User[] = []
+
   ngOnInit(): void {
-
     this.renderer.addClass(document.body, 'body-blur');
+
+    this.userService.getInfoUser().subscribe({
+      next:(array:User[]) =>{
+        this.users = array;
+      },error:(e:Error)=>{
+        console.log(e.message);
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -37,26 +49,19 @@ export class RegisterFormComponent {
   formulario = this.fb.nonNullable.group(
     {
       name: ['', [Validators.required]],
-      nickname: ['', [Validators.required, Validators.minLength(3)], [this.nicknameValidatorService.checkNicknameExists()]], /// tiene que ser unico
+      nickname: ['', [Validators.required, Validators.minLength(3)], [this.nicknameValidatorService.nicknameExists()]], /// tiene que ser unico
       surname: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.minLength(3), Validators.email], [this.emailValidatorService.checkEmailExists()]],
+      email: ['', [Validators.required, Validators.minLength(3), Validators.email], [this.emailValidatorService.emailExists()]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
       admin: false
     }, { validators: passWordMatchValidator }
   );
 
-  addUser() {
-    if (this.formulario.invalid) return;
-    const user = this.cargarUsuario()
-    this.addUserDB(user);
-  };
-
   cargarUsuario(): User {
     const user: User = {
       "name": this.formulario.controls['name'].value,
       "email": this.formulario.controls['email'].value,
-      "password": this.formulario.controls['password'].value,
       "surname": this.formulario.controls['surname'].value,
       "nickname": this.formulario.controls['nickname'].value,
       "admin": false,
@@ -65,16 +70,36 @@ export class RegisterFormComponent {
     return user;
   }
 
-  addUserDB(user: User) {
-    this.userService.postUser(user).subscribe({
-      next: (user: User) => {
-        console.log(user);
-        alert('Usuario guardado...');
-        this.router.navigateByUrl('');
-      },
-      error: (e: Error) => {
-        console.log(e.message);
-      }
-    });
+  cargarUserCreate(user:User):UserCreate{
+    const userC:UserCreate ={
+      nickname:user.nickname,
+      name:user.name,
+      surname:user.surname,
+      email:user.email,
+      admin: user.admin,
+      imgPerfil:user.imgPerfil
+    }
+    return userC
   }
+
+  retornarIdUserxEmail(email:string){
+    const retornar = this.users.find(user => user.email === email);
+    return retornar?.id;
+  }
+
+  async submit() {
+    if(this.formulario.invalid)return;
+    try{
+      const nuevo:User = this.cargarUsuario();
+      const userC:UserCreate = this.cargarUserCreate(nuevo);
+      await this.auth.register(nuevo.email,this.formulario.controls['password'].value)
+      await this.userService.create(userC);
+      this.router.navigateByUrl('/login');
+    }catch(error){
+      console.log('Ha ocurrido un error!');
+    }
+  };
+
+
+
 }

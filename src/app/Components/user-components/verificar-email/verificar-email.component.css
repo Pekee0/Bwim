@@ -1,0 +1,53 @@
+/* Contenedor principal centrado */
+.general-sec {
+  width: 100%;
+  max-width: 600px;
+  margin: 15.5rem auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Contenedor para todo el contenido (título + texto) */
+.div-contenido {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Aumentamos el tamaño máximo */
+  text-align: center;
+}
+
+/* Estilo para el título h2 */
+.div-titulo h2 {
+  font-size: 32px; /* Aumentamos el tamaño */
+  color: #333;
+  margin-bottom: 20px; /* Aumentamos el margen */
+}
+
+/* Estilo para el texto */
+.div-texto p {
+  font-size: 18px; /* Aumentamos el tamaño del texto */
+  margin-bottom: 30px; /* Aumentamos el margen inferior */
+  line-height: 1.8;
+}
+
+/* Estilo del botón */
+button {
+  padding: 15px 30px; /* Botón más grande */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px; /* Aumentamos el tamaño del texto del botón */
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

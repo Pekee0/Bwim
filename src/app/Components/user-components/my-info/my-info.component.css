@@ -226,6 +226,29 @@ h2 {
   box-shadow: 0 0 4px rgba(222, 184, 135, 0.7);
 }
 
+#back-btnUwu{
+  background-color: rgb(18, 12, 43);
+  color: rgb(222, 184, 135);
+  padding: 12px 20px;
+  border: 2px solid rgb(222, 184, 135);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+
+/*Boton Gracias de Recuperar Contraseña*/
+#back-btnUwu:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(222, 184, 135, 0.7);
+}
+
+#back-btnUwu:hover {
+  background-color: rgb(222, 184, 135);
+  color: rgb(18, 12, 43);
+}
+
 /* Botón Cancelar */
 .modal-content button:last-child {
   background-color: rgba(82, 69, 69, 0.185);

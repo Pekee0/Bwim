@@ -26,9 +26,9 @@
 
   <div class="form-group flex-row">
     <div class="form-item">
-      <label for="email">Email:</label>
-      <p class="info">{{ pEmail }}</p>
-      <button class="update-btn" (click)="openModalEmail()">Cambiar Mail</button>
+      <label for="contraseña">Contraseña:</label>
+      <p class="info"> ************** </p>
+      <button class="update-btn" (click)="openModalPassword()">Cambiar Contraseña </button>
     </div>
 
     <div class="form-item">
@@ -59,7 +59,7 @@
 
         @if (formNickname.controls['newNickname'].getError('minlength') && formNickname.controls['newNickname'].touched)
         {
-        <div class="validator">Mínimo de 3 caracteres</div>
+        <div class="validator">Mínimo 3 caracteres</div>
         }
 
         @if (formNickname.controls['newNickname'].getError('nicknameTaken') &&
@@ -85,7 +85,7 @@
         }
 
         @if (formName.controls['newName'].getError('minlength') && formName.controls['newName'].touched) {
-        <div class="validator">Mínimo de 3 caracters</div>
+        <div class="validator">Mínimo 3 caracters</div>
         }
 
         <button (click)="updateName()">Actualizar</button>
@@ -98,8 +98,12 @@
 
   <div class="modal" *ngIf="isModalOpenEmail">
     <div class="modal-content">
-      <label>Ingresar nuevo Email</label>
       <form [formGroup]="formEmail">
+
+        <label for="passw">Ingrese Contraseña:</label>
+        <input type="password" name="passw" placeholder="*******" formControlName = 'passw'>
+
+        <label>Ingresar nuevo Email</label>
         <input type="text" name="newEmail" placeholder="New Email" formControlName='newEmail' />
 
         @if (formEmail.controls['newEmail'].getError('required') && formEmail.controls['newEmail'].touched) {
@@ -107,15 +111,15 @@
         }
 
         @if (formEmail.controls['newEmail'].getError('minlength') && formEmail.controls['newEmail'].touched) {
-        <div class="validator">Mínimo de 3 caracteres</div>
+        <div class="validator">Mínimo 3 caracteres</div>
         }
 
         @if (formEmail.controls['newEmail'].getError('email')&& formEmail.controls['newEmail'].touched) {
-        <div class="validator">El Email debe ser válido</div>
+        <div class="validator">El email debe ser válido</div>
         }
 
         @if(formEmail.controls['newEmail'].getError('emailTaken')&& formEmail.controls['newEmail'].touched){
-        <div class="validator">El Email ya esta en uso...</div>
+        <div class="validator">El email ya esta en uso...</div>
         }
         <button (click)="updateEmail()">Actualizar</button>
         <button (click)="closeModalEmail()">Cancelar</button>
@@ -136,7 +140,7 @@
         }
 
         @if (formSurname.controls['newSurname'].getError('minlength') && formSurname.controls['newSurname'].touched) {
-        <div class="validator">Minimun 3 characters</div>
+        <div class="validator">Minimo 3 caracteres</div>
         }
 
         <button (click)="updateSurname()">Actualizar</button>
@@ -151,37 +155,9 @@
     <div class="modal-content">
       <form [formGroup]="formPassword">
 
-        <label>Ingresar Contraseña</label>
-        <input type="password" name="currentPassword" placeholder="Ingresar Contraseña Actual"
-          formControlName="currentPassword">
+        <h2>Le hemos enviado un correo electrónico al email vinculado con su cuenta para cambiar la contraseña!</h2>
 
-        @if(formPassword.controls['currentPassword'].getError('required') &&
-        formPassword.controls['currentPassword'].touched){
-        <div class="validator">¡Se requiere contraseña!</div>
-        }
-
-        <label>Ingresar Contraseña Nueva</label>
-        <input type="password" name="password" placeholder="Ingresar contraseña nueva" formControlName="password">
-
-        @if(formPassword.controls['password'].getError('required') && formPassword.controls['password'].touched){
-        <div class="validator">¡Se requiere contraseña!</div>
-        }
-
-        <label>Enter </label>
-
-        <label>Confirmar Contraseña</label>
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
-
-        @if(formPassword.controls['confirmPassword'].getError('required') &&
-        formPassword.controls['confirmPassword'].touched){
-        <div class="validator">¡Se requiere contraseña!</div>
-        }
-        @else if (formPassword.getError('passWordMatchValidator')) {
-        <div class="validator">¡Las contraseñas deben coincidir!</div>
-        }
-
-        <button (click)="updatePassword()">Actualizar</button>
-        <button (click)="closeModalPassword()">Cancelar</button>
+        <button id="back-btnUwu" (click)="closeModalPassword()" >Gracias!</button>
       </form>
     </div>
   </div>

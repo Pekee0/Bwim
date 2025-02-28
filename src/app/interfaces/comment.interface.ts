@@ -1,4 +1,6 @@
 export interface Comment{
   id?:string,
-  text:string
+  text:string,
+  idUser:string,
+  idStory:string
 }

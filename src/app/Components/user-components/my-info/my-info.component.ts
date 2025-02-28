@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../service/user.service';
 import { User } from '../../../interfaces/user.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -7,8 +7,7 @@ import { CommonModule } from '@angular/common';
 import { EmailValidatorService } from '../Validaciones/check-email-exists.directive';
 import { NicknameValidatorService } from '../Validaciones/check-nickname-exists.directive';
 import { passWordMatchValidator } from '../Validaciones/password-match-validator.directive';
-
-
+import { AuthFirebaseService } from '../auth/service/auth-firebase.service';
 
 @Component({
   selector: 'app-my-info',
@@ -29,38 +28,37 @@ export class MyInfoComponent implements OnInit {
   pUrl: string | null | undefined = null
   /****************************************************************************************************** */
 
-  fb = inject(FormBuilder);
-  userService = inject(UserService);
-  activatedRoute = inject(ActivatedRoute);
+  private fb = inject(FormBuilder);
+  private userService = inject(UserService);
   private router = inject(Router);
-  renderer = inject(Renderer2);
+  private renderer = inject(Renderer2);
+  private activo:any;
+  private auth = inject(AuthFirebaseService)
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'body-blur');
-    this.activatedRoute.paramMap.subscribe({
-      next: (param) => {
-        this.id = param.get('id');
-        this.loadInformation();
-      }
-    })
+    this.id = localStorage.getItem('UsuarioActivo');
+    this.cargarInfo();
   }
   ngOnDestroy(): void {
 
     this.renderer.removeClass(document.body, 'body-blur');
   }
 
-  loadInformation(): void {
-    this.userService.getUser_ById(this.id).subscribe({
-      next: (user: User) => {
-        this.pNickname = user.nickname;
-        this.pName = user.name;
-        this.pSurname = user.surname;
-        this.pEmail = user.email;
-        this.pUrl = user.imgPerfil;
-      }, error: (e: Error) => {
-        console.log(e.message);
+  cargarInfo(){
+    this.userService.getInfoUser().subscribe({
+      next: (users: User[]) => {
+        let userActivo = users.find(user => user.id === this.id);
+        if (userActivo) {
+          this.pNickname = userActivo.nickname;
+          this.pName = userActivo.name;
+          this.pSurname = userActivo.surname;
+          this.pEmail = userActivo.email;
+          this.pUrl = userActivo.imgPerfil;
+          this.activo = userActivo;
+        }
       }
-    })
+    });
   }
 
   goBack() {
@@ -73,7 +71,7 @@ export class MyInfoComponent implements OnInit {
   isModalOpenNickname = false;
 
   formNickname = this.fb.nonNullable.group({
-    newNickname: ['', [Validators.required, Validators.minLength(3)], [this.nicknameValidatorService.checkNicknameExists()]]
+    newNickname: ['', [Validators.required, Validators.minLength(3)], [this.nicknameValidatorService.nicknameExists()]]
   })
 
   openNicknameModal() {
@@ -89,15 +87,15 @@ export class MyInfoComponent implements OnInit {
     if (this.formNickname.invalid) return;
 
     const nickname = this.formNickname.controls['newNickname'].value;
-    this.userService.patch_UserNickname(nickname, this.id).subscribe({
-      next: (user: User) => {
-        this.pNickname = user.nickname;
-        console.log('Updated!');
-      }, error: (e: Error) => {
-        console.log(e.message);
 
-      }
-    })
+    if(this.activo){
+      this.activo.nickname = nickname;
+      const nuevo = this.userService.toUserCreate(this.activo);
+      this.userService.update(nuevo,this.id!);
+      console.log('Updated!');
+    }else{
+      console.log('Error!');
+    }
     this.formNickname.reset();
     this.closeModalNickname();
   }
@@ -120,14 +118,15 @@ export class MyInfoComponent implements OnInit {
     if (this.formName.invalid) return;
     const name = this.formName.controls['newName'].value;
 
-    this.userService.patch_UserName(name, this.id).subscribe({
-      next: (user: User) => {
-        this.pName = user.name;
-        console.log('Updated!');
-      }, error: (e: Error) => {
-        console.log(e.message);
-      }
-    });
+    if(this.activo){
+      this.activo.name = name;
+      const nuevo = this.userService.toUserCreate(this.activo);
+      this.userService.update(nuevo,this.id!);
+      console.log('Updated!');
+    }else{
+      console.log('Error!');
+    }
+
     this.formName.reset();
     this.closeModalName();
   }
@@ -137,7 +136,8 @@ export class MyInfoComponent implements OnInit {
   isModalOpenEmail = false;
 
   formEmail = this.fb.nonNullable.group({
-    newEmail: ['', [Validators.required, Validators.minLength(3), Validators.email], [this.emailValidatorService.checkEmailExists()]]
+    newEmail: ['', [Validators.required, Validators.minLength(3), Validators.email], [this.emailValidatorService.emailExists()]],
+    passw:['']
   });
 
   openModalEmail() {
@@ -153,14 +153,15 @@ export class MyInfoComponent implements OnInit {
 
     const email = this.formEmail.controls['newEmail'].value;
 
-    this.userService.patch_UserEmail(email, this.id).subscribe({
-      next: (user: User) => {
-        this.pEmail = user.email;
-        console.log('Updated!');
-      }, error: (e: Error) => {
-        console.log(e.message);
-      }
-    });
+    if(this.activo){
+      this.activo.email = email;
+      const nuevo = this.userService.toUserCreate(this.activo);
+      this.userService.update(nuevo,this.id!);
+      console.log('Updated!');
+    }else{
+      console.log('Error!');
+    }
+
     this.formEmail.reset();
     this.closeModalEmail();
   }
@@ -185,14 +186,15 @@ export class MyInfoComponent implements OnInit {
 
     const surname = this.formSurname.controls['newSurname'].value;
 
-    this.userService.patch_UserSurname(surname, this.id).subscribe({
-      next: (user: User) => {
-        this.pSurname = user.surname;
-        console.log('Updated!');
-      }, error: (e: Error) => {
-        console.log(e.message);
-      }
-    });
+    if(this.activo){
+      this.activo.surname = surname;
+      const nuevo = this.userService.toUserCreate(this.activo);
+      this.userService.update(nuevo,this.id!);
+      console.log('Updated!');
+    }else{
+      console.log('Error!');
+    }
+
     this.formSurname.reset();
     this.closeModalSurname();
   }
@@ -211,8 +213,15 @@ export class MyInfoComponent implements OnInit {
     validators: passWordMatchValidator
   })
 
-  openModalPassword() {
-    this.isModalOpenPassword = true;
+  async openModalPassword() {
+    try{
+
+      this.isModalOpenPassword = true;
+      await this.updatePassword();
+    }catch(err){
+
+    }
+
   }
 
   closeModalPassword() {
@@ -220,27 +229,13 @@ export class MyInfoComponent implements OnInit {
     this.formPassword.reset();
   }
 
-  updatePassword() {
+  async updatePassword() {
+  try{
+      await this.auth.recuperarPassword(this.activo.email);
+  }catch(err){
+    console.log(err);
 
-    if (this.formPassword.invalid) return;
-
-    const password = this.formPassword.controls['password'].value;
-
-    if (!this.passwordCorrect(password)) {
-      alert('Wrong Password');
-      this.formPassword.reset();
-      return
-    }
-    this.userService.patch_UserPassword(password, this.id).subscribe({
-      next: (user: User) => {
-        this.pPassword = user.password;
-        console.log('Updated!');
-      }, error: (e: Error) => {
-        console.log(e.message);
-      }
-    });
-    this.formPassword.reset();
-    this.closeModalPassword();
+  }
   }
 
   passwordCorrect(p: string): boolean {
@@ -284,19 +279,23 @@ export class MyInfoComponent implements OnInit {
 
   updateImage() {
     if (this.formImage.invalid) return;
-    this.userService.patch_UserImage(this.imgUrl, this.id).subscribe({
-      next: (user: User) => {
-        console.log(this.imgUrl)
-        this.pUrl = user.imgPerfil;
-        console.log(this.imgUrl)
-      }, error: (e: Error) => {
-        console.log(e.message);
-      }
-    })
-    this.formImage.reset();
+
+    if(this.activo){
+      this.activo.imgPerfil = this.imgUrl;
+      console.log(this.imgUrl);
+
+      const nuevo = this.userService.toUserCreate(this.activo);
+      console.log(nuevo.imgPerfil);
+      this.userService.update(nuevo,this.id!);
+      console.log('Updated!');
+    }else{
+      console.log('Error!');
+    }
+    //this.formImage.reset();
     this.closeImageModal();
-    window.location.reload();
   }
+
+  /***************************************************************************************** */
 
 
 

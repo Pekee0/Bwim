@@ -14,7 +14,7 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Nombre" required formControlName="name" />
         @if (formulario.controls['name'].getError('required') && formulario.controls['name'].touched) {
-        <div class="validator">Name required!</div>
+        <div class="validator">Nombre requerido!</div>
         }
       </div>
 
@@ -25,7 +25,7 @@
           placeholder="Apellido" required formControlName="surname" />
 
         @if (formulario.controls['surname'].getError('required') && formulario.controls['surname'].touched) {
-        <div class="validator">Surname required!</div>
+        <div class="validator">Apellido requerido!</div>
         }
       </div>
 
@@ -38,13 +38,13 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="nickname" required formControlName="nickname" />
       @if (formulario.controls['nickname'].getError('required') && formulario.controls['nickname'].touched) {
-      <div class="validator">Nickname required!</div>
+      <div class="validator">Nickname requerido!</div>
       }
       @if (formulario.controls['nickname'].getError('nicknameTaken') && formulario.controls['nickname'].touched) {
-      <div class="validator">The nickname already exists!</div>
+      <div class="validator">El nickname ya existe!</div>
       }
       @if(formulario.controls['nickname'].getError('minlength') && formulario.controls['nickname'].touched){
-      <div class="validator">Min 3 characters</div>
+      <div class="validator">Min 3 caracteres</div>
       }
     </div>
 
@@ -56,17 +56,17 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Correo Electronico" required formControlName="email" />
       @if (formulario.controls['email'].getError('required') && formulario.controls['email'].touched) {
-      <div class="validator">Email required!</div>
+      <div class="validator">Email requerido!</div>
       }
       @if(formulario.controls['email'].getError('minlength') && formulario.controls['email'].touched){
-      <div class="validator">Min 3 characters</div>
+      <div class="validator">Min 3 caracteres</div>
       }
 
       @if (formulario.controls['email'].getError('emailTaken') && formulario.controls['email'].touched) {
-      <div class="validator">The email already exists!</div>
+      <div class="validator">El email ya existe!</div>
       }
       @if(formulario.controls['email'].getError('email')&& formulario.controls['email'].touched){
-      <div class="validator">Email must be valid!</div>
+      <div class="validator">El email debe ser válido!</div>
       }
     </div>
 
@@ -78,10 +78,10 @@
         placeholder="Contraseña" required formControlName="password" />
 
       @if (formulario.controls['password'].getError('required') && formulario.controls['password'].touched) {
-      <div class="validator">Password required!</div>
+      <div class="validator">Contraseña requerida!</div>
       }
       @if(formulario.controls['password'].getError('minlength') && formulario.controls['password'].touched){
-      <div class="validator">Min 8 characters</div>
+      <div class="validator">Min 8 caracteres</div>
       }
     </div>
 
@@ -93,9 +93,9 @@
         placeholder="Repetir Contraseña" formControlName="confirmPassword" required />
       @if (formulario.controls['confirmPassword'].getError('required') &&
       formulario.controls['confirmPassword'].touched) {
-      <div class="validator">Required to complete!</div>
+      <div class="validator">Requiere completar!!</div>
       }@else if(formulario.getError('passWordMatchValidator')) {
-      <div class="validator">Password should match!</div>
+      <div class="validator">Las contraseñas deben coincidir!</div>
       }
 
     </div>
@@ -106,7 +106,7 @@
 
     <div class="flex items-start mb-6 pt-7">
       <div class="flex items-center h-5">
-        <button (click)="addUser()"
+        <button (click)="submit()"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrarse</button>
       </div>
     </div>

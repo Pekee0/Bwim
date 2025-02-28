@@ -1,33 +1,48 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Comment } from '../interfaces/comment.interface';
 import { Observable } from 'rxjs';
+
+export type CommentCreate = Omit<Comment,'id'>
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsService {
+  private firestore = inject(Firestore);
+  private comment = inject(CommentsService);
+  private _collection = collection(this.firestore,'comments');
 
-  urlBase:string = 'http://localhost:3000/comments';
-  constructor(private http:HttpClient) { }
+
+  create(comentario:CommentCreate){
+    return addDoc(this._collection,comentario);
+  }
 
   getComments():Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.urlBase)
+    let commRef = collection(this.firestore,'comments');
+    return collectionData(commRef,{idField:'id'})as Observable<Comment[]>
   }
 
-  postComment(comment:Comment):Observable<Comment>{
-    return this.http.post<Comment>(this.urlBase,comment)
+  getCommet(id:string){
+    const docRef = doc(this._collection,id)
+    return getDoc(docRef);
   }
 
-  putComment(comment:Comment, id:string):Observable<Comment>{
-    return this.http.put<Comment>(`${this.urlBase}/${id}`,comment)
+  update(comment:CommentCreate,id:string){
+    const docRef = doc(this._collection,id);
+    return updateDoc(docRef,comment);
   }
 
-  deleteComment(id:string):Observable<Comment>{
-    return this.http.delete<Comment>(`${this.urlBase}/${id}`)
+  delete(id:string){
+    const docRef = doc(this._collection,id);
+    return deleteDoc(docRef)
   }
 
-  getComment_ById(id:string):Observable<Comment>{
-    return this.http.get<Comment>(`${this.urlBase}/${id}`)
+  toCommentCreate(commet:Comment):CommentCreate{
+    return {
+      text:commet.text,
+      idUser:commet.idUser,
+      idStory:commet.idStory
+    }
   }
-
 }

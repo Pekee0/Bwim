@@ -21,7 +21,8 @@ import { AboutPageComponent } from './about/pages/about-page/about-page.componen
 import { OraculoComponent } from './Components/mingames-component/oraculo/oraculo.component';
 import { ShortStoriesComponent } from './Components/short-stories/short-stories.component';
 import { SsMenuComponent } from './Components/ss-menu/ss-menu.component';
-
+import { RecuperarPasswordComponent } from './Components/user-components/recuperar-password/recuperar-password.component';
+import { VerificarEmailComponent } from './Components/user-components/verificar-email/verificar-email.component';
 
 
 export const routes: Routes = [
@@ -114,6 +115,14 @@ export const routes: Routes = [
   {
     path: 'ssmenu',
     component: SsMenuComponent
+  },
+  {
+    path:'recuperar-password',
+    component:RecuperarPasswordComponent
+  },
+  {
+    path:'verificar-email',
+    component:VerificarEmailComponent
   },
   {
     path: '**',

@@ -12,6 +12,10 @@ import { UserService } from '../../service/user.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+
+  users:User[]=[]
+
+
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
       this.authService.isLogin = true;
@@ -21,6 +25,9 @@ export class NavbarComponent implements OnInit {
     }
     this.id = localStorage.getItem('UsuarioActivo');
     this.getUser();
+
+    
+
   }
 
 
@@ -34,17 +41,13 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.isActive = !this.isActive
-
   }
 
 
   getUser() {
-    this.userService.getUser_ById(this.id).subscribe({
-      next: (user: User) => {
-        this.usuarioActivo = user;
-        console.log(user)
-      }, error: (e: Error) => {
-        console.log(e.message);
+    this.userService.getInfoUser().subscribe({
+      next:(users:User[])=>{
+        this.usuarioActivo = users.find(u => u.id === this.id);
       }
     })
   }
