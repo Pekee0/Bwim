@@ -1,26 +1,25 @@
 import { Injectable, inject } from '@angular/core';
+import { Comentario } from '../interfaces/comentario.interface';
 import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, updateDoc } from '@angular/fire/firestore';
-import { Comment } from '../interfaces/comment.interface';
 import { Observable } from 'rxjs';
 
-export type CommentCreate = Omit<Comment,'id'>
+export type CommentCreate = Omit<Comentario,'id'>
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentsService {
-  private firestore = inject(Firestore);
-  private comment = inject(CommentsService);
-  private _collection = collection(this.firestore,'comments');
+export class ComentarioService {
 
+  private firestore = inject(Firestore);
+  private _collection = collection(this.firestore,'comments');
 
   create(comentario:CommentCreate){
     return addDoc(this._collection,comentario);
   }
 
-  getComments():Observable<Comment[]>{
+  getComments():Observable<Comentario[]>{
     let commRef = collection(this.firestore,'comments');
-    return collectionData(commRef,{idField:'id'})as Observable<Comment[]>
+    return collectionData(commRef,{idField:'id'})as Observable<Comentario[]>
   }
 
   getCommet(id:string){
@@ -38,7 +37,7 @@ export class CommentsService {
     return deleteDoc(docRef)
   }
 
-  toCommentCreate(commet:Comment):CommentCreate{
+  toCommentCreate(commet:Comentario):CommentCreate{
     return {
       text:commet.text,
       idUser:commet.idUser,

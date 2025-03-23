@@ -6,10 +6,16 @@ import { AuthService } from '../../../auth/service/auth.service';
 import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { timeout } from 'rxjs';
+import { User } from '../../../interfaces/user.interface';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../../service/user.service';
+import { ComentarioService, CommentCreate } from '../../../service/comentario.service';
+import { Comentario } from '../../../interfaces/comentario.interface';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-project-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,ReactiveFormsModule,CommonModule],
   templateUrl: './project-page.component.html',
   styleUrl: './project-page.component.css'
 })
@@ -22,6 +28,24 @@ export class ProjectPageComponent implements OnInit {
     if (localStorage.getItem('tokenAdmin')) {
       this.authService.isAdmin = true;
     }
+
+    this.comentService.getComments().subscribe({
+      next:(comentario:Comentario[]) =>{
+        this.arrayComment = comentario;
+        console.log(this.arrayComment);
+        
+      }, error:(e:Error) =>{
+        console.log(e.message);
+      }
+    })
+
+    this.userService.getInfoUser().subscribe({
+      next:(user:User[]) =>{
+        this.usuarioQueComenta = user;
+      },error:(e:Error) =>{
+        console.log(e.message);
+      }
+    })
   }
 
   toastService = inject(ToastrService);
@@ -33,7 +57,8 @@ export class ProjectPageComponent implements OnInit {
   iframeString: string = '';
   safeIframe: SafeHtml = '';
   router = inject(Router);
-
+  usuarioQueComenta?: User[] = []; 
+  
   projectList() {
 
     this.projectService.getProject().subscribe(
@@ -82,6 +107,89 @@ export class ProjectPageComponent implements OnInit {
     this.router.navigate([`projects/updateProject/${id}`])
   }
 
+
+  // Cosas de los comentarios
+  userActive?: User; 
+  fb = inject(FormBuilder); 
+  userService = inject(UserService); 
+  authServie = inject(AuthService); 
+  id:String|null = null; 
+  idUser = localStorage.getItem('UsuarioActivo');
+  comentService = inject(ComentarioService);
+  idProyecto: string = '';   
+  modal = false; 
+  arrayComment: Comentario[] = [];  
+
+
+  
+  
+form = this.fb.nonNullable.group({
+  comment: ['']
+})
+
+constructor() {
+
+}
+
+async addComment(id: string) {
+ if(this.form.invalid) return; 
+
+ try {
+  const nuevo: Comentario = this.createComment(id);
+  const aux: CommentCreate = this.cargarComentarioCreate(nuevo);
+  await this.comentService.create(aux); 
+  //this.isModalClose(); 
+  this.form.reset();
+  this.toastService.success('Comentario agregado exitosamente', '¡Comentario agregado!', { closeButton: true });
+ } catch (error) {
+  
+ }
+
+
+}
+
+createComment(id : string) : Comentario
+{
+ 
+  const comment : Comentario = {text: this.form.controls["comment"].value, idUser : this.idUser! , idStory: id};
+
+  return comment; 
+}
+
+cargarComentarioCreate(comentario: Comentario) : CommentCreate
+{
+
+  const commentCreate: CommentCreate = {text: comentario.text, idUser: comentario.idUser, idStory: comentario.idStory};
+
+  return commentCreate;
+}
+
+isModalOpen()
+{
+    this.modal = true; 
+}
+
+isModalClose()
+{
+  this.modal = false;
+}
+
+
+getUserxComment(idArrival:String)
+{ 
+ 
+  const nickname = this.usuarioQueComenta?.find(u => u.id === idArrival)
+  return (nickname?.nickname); 
+
+  
+}
+
+getImgUserxComment(idArrival:String)
+{ 
+ 
+  const imgP = this.usuarioQueComenta?.find(u => u.id === idArrival)
+  return (imgP?.imgPerfil); 
+}
 
 
 }

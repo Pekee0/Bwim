@@ -24,7 +24,7 @@
 
         @for(project of arrProject; track $index){
 
-        <li style="background-image: url({{project.images}})">
+        <li class="games-items" style="background-image: url({{project.images}})">
             @if(authService.isAdmin){
 
             <div class="div-delete-updateB">
@@ -47,6 +47,40 @@
                 <p class="project-description">{{project.description}}</p>
             </div>
 
+            <!--COMENTARIOS DE LOS PROYECTOS!-->
+        
+            <div class="project-comment-box" >
+                <button (click)="isModalOpen()">Comentar </button>
+            </div>
+                <div class="modal" *ngIf="modal">
+                    <div class= "modal-content">
+                        
+                        <button class="btn-close" (click)="isModalClose()">❌</button>
+                        <h3 class="comment-box-tittle">Comentarios</h3>
+
+                        <form [formGroup]="form" class="comment-form">  
+                            <textarea formControlName="comment" placeholder="Dejanos tu comentario..." class = "text-comment-box"></textarea>
+                            <button id="back-btnUwu" (click)="addComment(project.id!)">Enviar ▶</button>
+                        </form>   
+                        <ul class="comment-list">
+                            @for(comment of arrayComment; track $index){
+                           <li>
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img class="usuario-activo-img" [src]=getImgUserxComment(comment.idUser) alt="">
+                                </div>
+                                <div class="comment-user">
+                                    <p class="user-info">{{getUserxComment(comment.idUser)}} comentó:</p>
+                                </div>
+                                <div class="comment-text">
+                                    <p class= "Comment">{{comment.text}}</p>
+                                </div>   
+                            </div>
+                           </li>
+                        }
+                        </ul>
+                    </div>
+                </div>
         </li>
         }
 

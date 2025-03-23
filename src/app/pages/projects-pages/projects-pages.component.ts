@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProjectPageComponent } from "../../Components/project-components/project-page/project-page.component";
 
+
 @Component({
   selector: 'app-projects-pages',
   standalone: true,

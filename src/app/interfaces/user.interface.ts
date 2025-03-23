@@ -1,4 +1,4 @@
-import { Comment } from "./comment.interface"
+
 export interface User{
   id?:string,
   nickname:string,
