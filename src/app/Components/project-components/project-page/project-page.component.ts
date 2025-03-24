@@ -7,7 +7,7 @@ import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { timeout } from 'rxjs';
 import { User } from '../../../interfaces/user.interface';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../service/user.service';
 import { ComentarioService, CommentCreate } from '../../../service/comentario.service';
 import { Comentario } from '../../../interfaces/comentario.interface';
@@ -32,8 +32,6 @@ export class ProjectPageComponent implements OnInit {
     this.comentService.getComments().subscribe({
       next:(comentario:Comentario[]) =>{
         this.arrayComment = comentario;
-        console.log(this.arrayComment);
-        
       }, error:(e:Error) =>{
         console.log(e.message);
       }
@@ -42,7 +40,8 @@ export class ProjectPageComponent implements OnInit {
     this.userService.getInfoUser().subscribe({
       next:(user:User[]) =>{
         this.usuarioQueComenta = user;
-      },error:(e:Error) =>{
+        this.currentUser = user.find(u=>u.id === (localStorage.getItem('UsuarioActivo')))
+        },error:(e:Error) =>{
         console.log(e.message);
       }
     })
@@ -57,8 +56,9 @@ export class ProjectPageComponent implements OnInit {
   iframeString: string = '';
   safeIframe: SafeHtml = '';
   router = inject(Router);
-  usuarioQueComenta?: User[] = []; 
-  
+  usuarioQueComenta?: User[] = [];
+  currentUser?:User;
+
   projectList() {
 
     this.projectService.getProject().subscribe(
@@ -109,22 +109,20 @@ export class ProjectPageComponent implements OnInit {
 
 
   // Cosas de los comentarios
-  userActive?: User; 
-  fb = inject(FormBuilder); 
-  userService = inject(UserService); 
-  authServie = inject(AuthService); 
-  id:String|null = null; 
-  idUser = localStorage.getItem('UsuarioActivo');
+  fb = inject(FormBuilder);
+  userService = inject(UserService);
+  authServie = inject(AuthService);
+  id:String|null = null;
   comentService = inject(ComentarioService);
-  idProyecto: string = '';   
-  modal = false; 
-  arrayComment: Comentario[] = [];  
+  idProyecto: string = '';
+  modal = false;
+  arrayComment: Comentario[] = [];
 
 
-  
-  
+
+
 form = this.fb.nonNullable.group({
-  comment: ['']
+  comment: ['',[Validators.required]]
 })
 
 constructor() {
@@ -132,17 +130,16 @@ constructor() {
 }
 
 async addComment(id: string) {
- if(this.form.invalid) return; 
+ if(this.form.invalid) return;
 
  try {
   const nuevo: Comentario = this.createComment(id);
   const aux: CommentCreate = this.cargarComentarioCreate(nuevo);
-  await this.comentService.create(aux); 
-  //this.isModalClose(); 
+  await this.comentService.create(aux);
   this.form.reset();
   this.toastService.success('Comentario agregado exitosamente', '¡Comentario agregado!', { closeButton: true });
  } catch (error) {
-  
+
  }
 
 
@@ -150,23 +147,19 @@ async addComment(id: string) {
 
 createComment(id : string) : Comentario
 {
- 
-  const comment : Comentario = {text: this.form.controls["comment"].value, idUser : this.idUser! , idStory: id};
-
-  return comment; 
+  const comment : Comentario = {text: this.form.controls["comment"].value, idUser : this.currentUser?.id! , idStory: id};
+  return comment;
 }
 
 cargarComentarioCreate(comentario: Comentario) : CommentCreate
 {
-
   const commentCreate: CommentCreate = {text: comentario.text, idUser: comentario.idUser, idStory: comentario.idStory};
-
   return commentCreate;
 }
 
 isModalOpen()
 {
-    this.modal = true; 
+    this.modal = true;
 }
 
 isModalClose()
@@ -176,24 +169,52 @@ isModalClose()
 
 
 getUserxComment(idArrival:String)
-{ 
- 
+{
   const nickname = this.usuarioQueComenta?.find(u => u.id === idArrival)
-  return (nickname?.nickname); 
-
-  
+  return (nickname?.nickname);
 }
 
 getImgUserxComment(idArrival:String)
-{ 
- 
+{
   const imgP = this.usuarioQueComenta?.find(u => u.id === idArrival)
-  return (imgP?.imgPerfil); 
+  return (imgP?.imgPerfil);
 }
 
 
+editando:boolean = false;
+aModificar?:string;
+textoParaElTextArea?:string;
+
+
+modificarOpen(id:string,texto:string){
+  this.editando = true;
+  this.aModificar = id;
+  this.textoParaElTextArea = texto;
+  this.txareaForm.get('txarea')?.setValue(this.textoParaElTextArea);
+
 }
 
-// '<iframe frameborder="0" src="https://itch.io/embed/2393332?border_width=5&amp;bg_color=f1f1f1&amp;fg_color=439BDB&amp;link_color=D49319&amp;border_color=d44c16" width="560" height="175"><a href="https://ibm-entretainmient.itch.io/gotofuturepast">goto( future , past ) ; by IBM Entretainmient</a></iframe>'
+modificarClose(){
+  this.editando = false;
+}
 
+txareaForm = this.fb.nonNullable.group({
+  txarea:['',[Validators.required]]
+})
+
+modificarComentario(){
+  if(this.txareaForm.invalid) return;
+
+  const texto:Comentario = this.arrayComment.find(u=>u.id===this.aModificar)!;
+  texto.text = this.txareaForm.controls['txarea'].value;
+  const aux = this.cargarComentarioCreate(texto);
+  this.comentService.update(aux,this.aModificar!);
+  this.modificarClose();
+}
+
+borrarComentario(id:string){
+  this.comentService.delete(id);
+}
+
+}
 

@@ -48,24 +48,25 @@
             </div>
 
             <!--COMENTARIOS DE LOS PROYECTOS!-->
-        
+
             <div class="project-comment-box" >
                 <button (click)="isModalOpen()">Comentar </button>
             </div>
                 <div class="modal" *ngIf="modal">
                     <div class= "modal-content">
-                        
+
                         <button class="btn-close" (click)="isModalClose()">❌</button>
                         <h3 class="comment-box-tittle">Comentarios</h3>
-
-                        <form [formGroup]="form" class="comment-form">  
+                        <form [formGroup]="form" class="comment-form">
                             <textarea formControlName="comment" placeholder="Dejanos tu comentario..." class = "text-comment-box"></textarea>
                             <button id="back-btnUwu" (click)="addComment(project.id!)">Enviar ▶</button>
-                        </form>   
+                        </form>
                         <ul class="comment-list">
-                            @for(comment of arrayComment; track $index){
-                           <li>
+                            @for(comment of arrayComment; track $index)
+                          {
+                           <li class="comment-container-li">
                             <div class="comment-box">
+
                                 <div class="comment-img">
                                     <img class="usuario-activo-img" [src]=getImgUserxComment(comment.idUser) alt="">
                                 </div>
@@ -74,11 +75,33 @@
                                 </div>
                                 <div class="comment-text">
                                     <p class= "Comment">{{comment.text}}</p>
-                                </div>   
+                                </div>
+                                @if (comment.idUser === currentUser?.id) {
+                                <button class="modificar-btn"(click)="modificarOpen(comment.id!,comment.text)">Modificar</button>
+
+                                <!--MODAL PARA MODIFICAR COMENTARIOS-->
+                                <div class="modal" *ngIf="editando">
+                                  <div class="modal-comentarios">
+                                    <form [formGroup]="txareaForm" (ngSubmit)="modificarComentario()">
+                                    <h3 class = "comment-box-tittle">Editar comentario</h3>
+                                    <textarea class="comment-update" formControlName="txarea"></textarea>
+                                    <button type="submit" class="confirmar">Confirmar</button>
+                                    <button class="Cancelar" (click)="modificarClose()">Cancelar</button>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!-------------------------------------------------------------------------->
+                              }
+                                @if(comment.idUser === currentUser?.id || currentUser?.admin){
+                                  <button class ="borrar-btn" (click)="borrarComentario(comment.id!)">Borrar</button>
+                                }
+
                             </div>
                            </li>
-                        }
+                          }
                         </ul>
+
+
                     </div>
                 </div>
         </li>
@@ -87,3 +110,6 @@
     </ul>
 
 </div>
+
+
+
