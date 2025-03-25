@@ -9,11 +9,12 @@ import { AuthFirebaseService } from '../auth/service/auth-firebase.service';
 import { EmailValidatorService } from '../Validaciones/check-email-exists.directive';
 import { FirebaseCodeErrorService } from '../../../service/firebase-code-error.service';
 import { user } from '@angular/fire/auth';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule,CommonModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
@@ -65,7 +66,7 @@ export class LogInComponent implements OnInit {
       localStorage.setItem('UsuarioActivo',userActivo?.id!)
 
     }catch(error){
-      alert(this.firebaseError.codeError(error as string));
+      this.openModal();
     }
   }
 
@@ -73,4 +74,16 @@ export class LogInComponent implements OnInit {
     return this.users.find(user => user.email === email);
   }
 
+
+   /*Modal Error*/
+
+   isModalOpen = false;
+
+   openModal(){
+     this.isModalOpen = true;
+   }
+
+   closeModal(){
+     this.isModalOpen = false;
+   }
 }

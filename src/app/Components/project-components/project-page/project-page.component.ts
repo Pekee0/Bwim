@@ -157,9 +157,12 @@ cargarComentarioCreate(comentario: Comentario) : CommentCreate
   return commentCreate;
 }
 
-isModalOpen()
+
+currentID?:string;
+isModalOpen(id:string)
 {
     this.modal = true;
+    this.currentID = id;
 }
 
 isModalClose()
@@ -191,7 +194,6 @@ modificarOpen(id:string,texto:string){
   this.aModificar = id;
   this.textoParaElTextArea = texto;
   this.txareaForm.get('txarea')?.setValue(this.textoParaElTextArea);
-
 }
 
 modificarClose(){
@@ -215,6 +217,11 @@ modificarComentario(){
 borrarComentario(id:string){
   this.comentService.delete(id);
 }
+
+
+
+
+
 
 }
 

@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { EmailValidatorService } from '../Validaciones/check-email-exists.directive';
 import { AuthFirebaseService } from '../auth/service/auth-firebase.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recuperar-password',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './recuperar-password.component.html',
   styleUrl: './recuperar-password.component.css'
 })
@@ -27,10 +28,23 @@ export class RecuperarPasswordComponent {
     try{
     const email = this.formulario.controls['email'].value;
     await this.auth2.recuperarPassword(email);
-    alert('Revise su email,le hemos enviado un correo electrónico para cambiar su contraseña!');
-    this.router.navigateByUrl('/login');
+    this.openModal();
   }catch(error){
     console.log(error);
   }
+  }
+
+
+
+  isModalOpen = false;
+
+  openModal(){
+    this.isModalOpen = true;
+
+  }
+
+  closeModal(){
+    this.isModalOpen = false;
+    this.router.navigateByUrl('/login');
   }
 }

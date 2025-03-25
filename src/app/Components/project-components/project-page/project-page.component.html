@@ -39,9 +39,7 @@
                 </button>
             </div>
             }
-
             <h2 class="project-name">{{project.name}}</h2>
-
             <div class="project-content">
                 <div class="link" [innerHTML]="safeURL(project.urlProject)"></div>
                 <p class="project-description">{{project.description}}</p>
@@ -50,7 +48,7 @@
             <!--COMENTARIOS DE LOS PROYECTOS!-->
 
             <div class="project-comment-box" >
-                <button (click)="isModalOpen()">Comentar </button>
+                <button (click)="isModalOpen(project.id!)">Comentar</button>
             </div>
                 <div class="modal" *ngIf="modal">
                     <div class= "modal-content">
@@ -61,11 +59,14 @@
                             <textarea formControlName="comment" placeholder="Dejanos tu comentario..." class = "text-comment-box"></textarea>
                             <button id="back-btnUwu" (click)="addComment(project.id!)">Enviar ▶</button>
                         </form>
-                        <ul class="comment-list">
-                            @for(comment of arrayComment; track $index)
-                          {
-                           <li class="comment-container-li">
-                            <div class="comment-box">
+                      <ul class="comment-list">
+                        @for(comment of arrayComment; track $index)
+                        {
+                            @if (comment.idStory === currentID) {
+                              <h3 style="color: white;">IdStory: {{comment.idStory}}</h3>
+                              <h3 style="color: white;">projectId: {{project.id}}</h3>
+                              <li class="comment-container-li">
+                              <div class="comment-box">
 
                                 <div class="comment-img">
                                     <img class="usuario-activo-img" [src]=getImgUserxComment(comment.idUser) alt="">
@@ -99,7 +100,8 @@
                             </div>
                            </li>
                           }
-                        </ul>
+                        }
+                      </ul>
 
 
                     </div>

@@ -45,4 +45,13 @@
     </div>
   </section>
 
+
+   <!--Modal Contraseña Incorrecta-->
+
+   <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+        <h2>La contraseña es incorrecta...</h2>
+        <button id="back-btnUwu" (click)="closeModal()" >Volver</button>
+    </div>
+  </div>
 </section>
