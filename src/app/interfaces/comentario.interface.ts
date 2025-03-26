@@ -3,4 +3,6 @@ export interface Comentario{
   text:string,
   idUser:string,
   idStory:string,
+  upvote?:string[];
+  downvote?:string[];
 }

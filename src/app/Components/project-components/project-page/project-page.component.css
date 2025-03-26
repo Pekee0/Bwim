@@ -209,7 +209,6 @@
 .modal-content {
   background-color: rgb(25, 18, 51);
   height: 75vh;
-
   border-radius: 8px;
   padding: 25px;
   width: 90vw;
@@ -221,7 +220,7 @@
   scrollbar-color: #888 #222;
 }
 
-.modal-content button {
+.borrar-btn, .modificar-btn,.Cancelar,.confirmar {
   padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -233,11 +232,11 @@
   transition: background-color 0.3s ease;
 }
 
-.modal-content button:hover {
+.borrar-btn:hover, .modificar-btn:hover,.Cancelar:hover,.confirmar:hover {
   background-color: rgb(184, 134, 11);
 }
 
-.modal-content button:focus {
+.borrar-btn:focus, .modificar-btn:focus,.Cancelar:focus,.confirmar:focus {
   outline: none;
   box-shadow: 0 0 4px;
 }
@@ -275,15 +274,11 @@
   display: flex;
   border-width: 2px;
   border-style: ridge;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);*/
+  box-shadow: 0 4px 8px rgb(77, 43, 118);
   border-radius: 5px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   gap: 20px;
-}
-.comment-list li p {
-  max-height: min-content;
-  margin-top: 2rem;
-  flex: 1;
 }
 
 .comment-form {
@@ -293,10 +288,6 @@
   display: flex;
   border-radius: 5px;
   background-color: white;
-}
-
-.comment {
-  background-color: #888;
 }
 
 .usuario-activo-img {
@@ -354,7 +345,7 @@
 }
 
 .comment-text {
-  height: fit-content;
+  height: 100%;
   width: 70%;
   text-align: justify;
   word-wrap: text-wrap;
@@ -362,6 +353,9 @@
   margin-right: 2rem;
 }
 
+.Comment{
+  margin: 3rem 0 3rem 0;
+}
 
 
 .modal-comentarios {
@@ -389,3 +383,23 @@
 .modificar-btn, .borrar-btn{
   justify-self: flex-end;
 }
+
+
+.btn-dislike, .btn-like{
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid rgb(222, 184, 135);
+  border-radius: 5px;
+  background-color: none;
+  color: rgb(18, 12, 39);
+  transition: background-color 0.3s ease;
+}
+.btn-dislike:hover, .btn-like:hover{
+  background-color: rgb(184, 134, 11);
+}
+
+.btn-like{
+  margin-right: 1rem;
+}
+

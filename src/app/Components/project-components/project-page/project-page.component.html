@@ -63,8 +63,6 @@
                         @for(comment of arrayComment; track $index)
                         {
                             @if (comment.idStory === currentID) {
-                              <h3 style="color: white;">IdStory: {{comment.idStory}}</h3>
-                              <h3 style="color: white;">projectId: {{project.id}}</h3>
                               <li class="comment-container-li">
                               <div class="comment-box">
 
@@ -76,10 +74,11 @@
                                 </div>
                                 <div class="comment-text">
                                     <p class= "Comment">{{comment.text}}</p>
+                                    <button class="btn-like" (click)="darLike(comment.id!,currentUser?.id!)">👍🏼{{comment.upvote?.length}}</button>
+                                    <button class="btn-dislike" (click)="darDisLike(comment.id!,currentUser?.id!)">👎🏼{{comment.downvote?.length}}</button>
                                 </div>
                                 @if (comment.idUser === currentUser?.id) {
-                                <button class="modificar-btn"(click)="modificarOpen(comment.id!,comment.text)">Modificar</button>
-
+                                <button class="modificar-btn"(click)="modificarOpen(comment.id!,comment.text)">Editar</button>
                                 <!--MODAL PARA MODIFICAR COMENTARIOS-->
                                 <div class="modal" *ngIf="editando">
                                   <div class="modal-comentarios">

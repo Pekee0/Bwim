@@ -32,6 +32,8 @@ export class ProjectPageComponent implements OnInit {
     this.comentService.getComments().subscribe({
       next:(comentario:Comentario[]) =>{
         this.arrayComment = comentario;
+
+
       }, error:(e:Error) =>{
         console.log(e.message);
       }
@@ -139,21 +141,19 @@ async addComment(id: string) {
   this.form.reset();
   this.toastService.success('Comentario agregado exitosamente', '¡Comentario agregado!', { closeButton: true });
  } catch (error) {
-
+  console.log(error);
  }
-
-
 }
 
 createComment(id : string) : Comentario
 {
-  const comment : Comentario = {text: this.form.controls["comment"].value, idUser : this.currentUser?.id! , idStory: id};
+  const comment : Comentario = {text: this.form.controls["comment"].value, idUser : this.currentUser?.id! , idStory: id,upvote:[],downvote:[]};
   return comment;
 }
 
 cargarComentarioCreate(comentario: Comentario) : CommentCreate
 {
-  const commentCreate: CommentCreate = {text: comentario.text, idUser: comentario.idUser, idStory: comentario.idStory};
+  const commentCreate: CommentCreate = {text: comentario.text, idUser: comentario.idUser, idStory: comentario.idStory,upvote:comentario.upvote,downvote:comentario.downvote};
   return commentCreate;
 }
 
@@ -222,6 +222,44 @@ borrarComentario(id:string){
 
 
 
+
+
+
+darLike(id:string,currentID:string){
+  const comentario:Comentario = this.arrayComment.find(u=>u.id === id)!;
+  if(comentario.downvote!.find(u=> u === currentID)){
+    const index = comentario.downvote?.indexOf(currentID);
+    comentario.downvote?.splice(index!,1);
+  }
+  if(comentario.upvote!.find(u=>u===currentID)){
+    const index = comentario.upvote?.indexOf(currentID);
+    comentario.upvote?.splice(index!,1);
+
+
+  }else{
+    comentario.upvote?.push(currentID);
+  }
+  const aux = this.cargarComentarioCreate(comentario);
+  this.comentService.update(aux,id);
+  
+}
+
+darDisLike(id:string,currentID:string){
+  const comentario:Comentario = this.arrayComment.find(u=>u.id === id)!;
+  if(comentario.upvote!.find(u=>u===currentID)){
+    const index = comentario.upvote?.indexOf(currentID);
+    comentario.upvote?.splice(index!,1);
+  }
+  if(comentario.downvote!.find(u=>u===currentID)){
+    const index = comentario.downvote?.indexOf(currentID);
+    comentario.downvote?.splice(index!,1);
+  }else{
+    comentario.downvote?.push(currentID);
+  }
+  const aux = this.cargarComentarioCreate(comentario);
+  this.comentService.update(aux,id);
+
+}
 
 }
 
