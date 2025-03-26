@@ -7,7 +7,10 @@ html {
     box-sizing: inherit;
   }
 
-
+  .test-wrapper{
+    height: 100dvh;
+    overflow: hidden;
+  }
   .quiz-container {
     border-radius: 3px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -15,10 +18,11 @@ html {
     padding: 3rem;
     text-shadow: 0 1px #00000010;
     width: 60%;
-    margin: 5rem auto;
+    margin: 10rem auto;
     display: flex;
     flex-direction: column;
-    background: white
+    background: white;
+
   }
 
   .title {
@@ -31,7 +35,7 @@ html {
     text-transform: uppercase;
   }
 
-  .question 
+  .question
   {
     margin: 2rem 0;
     font-size: 1.5rem;
@@ -58,10 +62,10 @@ html {
   button.next {
     background: #3c91e6;
   }
- 
+
 
   button:hover,
-  button:focus 
+  button:focus
   {
     transform: scale(1);
     font-weight: 500;
@@ -91,10 +95,10 @@ html {
     color: white;
   }
 
-  .img-result 
+  .img-result
   {
     display: flex;
- 
+
     max-width: 15%;
-    
+
   }

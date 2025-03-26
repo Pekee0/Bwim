@@ -17,7 +17,7 @@ interface Result {
   styleUrl: './test-personalidad.component.css'
 })
 export class TestPersonalidadComponent {
-  
+
   questions: Question[] = [
     { questionText: 'Priorizas y planificas las tareas con eficacia, y sueles terminarlas mucho antes de la fecha límite.', options: [
       { text: 'No, soy una persona que le gusta improvisar', value: 1 }, { text: 'Tengo mi propia agenda con colores y recordatorios', value: 2 }, { text: 'Siempre encuento a alguien que lo haga por mi', value: 3 }, { text: 'Me organizo tanto a mi como a los que trabajan conmigo', value: 4 }, { text: 'Aprendi y soy una persona meticulosa', value: 5 }
