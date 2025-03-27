@@ -94,7 +94,7 @@ export class RegisterFormComponent implements OnInit{
       const userC:UserCreate = this.cargarUserCreate(nuevo);
       await this.auth.register(nuevo.email,this.formulario.controls['password'].value)
       await this.userService.create(userC);
-      this.router.navigateByUrl('/login');
+      this.router.navigate(['/verificar-email'])
     }catch(error){
       console.log('Ha ocurrido un error!');
     }

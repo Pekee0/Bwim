@@ -42,21 +42,7 @@ export class AuthFirebaseService {
 
   verficarEmail(){
     this.auth2.currentUser.then(user=>user?.sendEmailVerification())
-                          .then(()=>{
-                            alert('Enviamos un  correo electrónico para verificar su Email!');
-                          });
   }
-
-
-  /*cambiarEmail(email:string,password:string,newE:string){
-    this.auth2.signInWithEmailAndPassword(email,password).then(function(userCredential){
-      console.log('h' + userCredential);
-      console.log('o' + userCredential.user);
-      console.log(userCredential.additionalUserInfo);
-      userCredential.user?.updateEmail(newE);
-    }).catch((err)=>{alert('Contraseña incorrecta: ' + err);
-    })
-  }*/
 
   cambiarEmail(email:string){
     this.auth2.signInWithEmailAndPassword('nico.ruiz.mdp@gmail.com','nico981126').then(function(userCredential){
