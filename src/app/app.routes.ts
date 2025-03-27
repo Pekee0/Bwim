@@ -23,6 +23,7 @@ import { ShortStoriesComponent } from './Components/short-stories/short-stories.
 import { SsMenuComponent } from './Components/ss-menu/ss-menu.component';
 import { RecuperarPasswordComponent } from './Components/user-components/recuperar-password/recuperar-password.component';
 import { VerificarEmailComponent } from './Components/user-components/verificar-email/verificar-email.component';
+import { ShortStoriesInstantesComponent } from './Components/short-stories-instantes/short-stories-instantes.component';
 
 
 export const routes: Routes = [
@@ -109,12 +110,16 @@ export const routes: Routes = [
     component: AboutPageComponent
   },
   {
-    path: 'ss',
+    path: 'ecos-temporales',
     component: ShortStoriesComponent
   },
   {
     path: 'ssmenu',
     component: SsMenuComponent
+  },
+  {
+    path: 'instantes',
+    component: ShortStoriesInstantesComponent
   },
   {
     path:'recuperar-password',

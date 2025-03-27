@@ -42,6 +42,7 @@
 .story-content p, i{
 
   padding: 30px;
+  text-justify: justify;
 }
 
 .universe-title{

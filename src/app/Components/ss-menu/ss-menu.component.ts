@@ -17,19 +17,13 @@ export class SsMenuComponent {
         title: "Ecos Temporales",
         description: "Estuviste aquí antes, ¿verdad?",
         frontPage: 'assets/ETPortada.jpg',
-        ssLinker: "/ss"
+        ssLinker: "/ecos-temporales"
       },
       {
-        title: "Otra Historia",
-        description: "Lalalalalal",
-        frontPage: 'assets/FondoComicResize.png',
-        ssLinker: "/ss"
-      },
-      {
-        title: "Otra otra Historia",
-        description: "Lelelele",
+        title: "Instantes",
+        description: "¿Cual es el límite cuando tengo todo el tiempo del mundo?",
         frontPage: 'assets/FondoOficinaResized.png',
-        ssLinker: "/ss"
+        ssLinker: "/instantes"
       }
     ]
   ];
